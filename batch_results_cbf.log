@@ -1,0 +1,32 @@
+Batch Evaluation Log
+========================================
+Controller: vanillacbf, T=1
+  Collision Rate: 31.47%
+  Average Speed: 14.89
+  Average Calc Time: 148.840 ms
+----------------------------------------
+Controller: vanillacbf, T=10
+  Collision Rate: 27.79%
+  Average Speed: 14.74
+  Average Calc Time: 1224.752 ms
+----------------------------------------
+Controller: vanillacbf, T=20
+  Collision Rate: 27.20%
+  Average Speed: 14.74
+  Average Calc Time: 2196.153 ms
+----------------------------------------
+Controller: cpcbf, T=1
+  Collision Rate: 30.65%
+  Average Speed: 14.89
+  Average Calc Time: 118.983 ms
+----------------------------------------
+Controller: cpcbf, T=10
+  Collision Rate: 27.47%
+  Average Speed: 14.74
+  Average Calc Time: 986.757 ms
+----------------------------------------
+Controller: cpcbf, T=20
+  Collision Rate: 27.24%
+  Average Speed: 14.74
+  Average Calc Time: 1928.276 ms
+----------------------------------------

@@ -1,0 +1,17 @@
+Batch Evaluation Log
+========================================
+Controller: vanillampc, T=1
+  Collision Rate: 67.56%
+  Average Speed: 15.03
+  Average Calc Time: 122.885 ms
+----------------------------------------
+Controller: vanillampc, T=10
+  Collision Rate: 50.61%
+  Average Speed: 14.96
+  Average Calc Time: 2075.829 ms
+----------------------------------------
+Controller: vanillampc, T=20
+  Collision Rate: 20.42%
+  Average Speed: 14.93
+  Average Calc Time: 3778.179 ms
+----------------------------------------
