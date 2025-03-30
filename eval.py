@@ -3,6 +3,7 @@ from tqdm import tqdm
 from envs.dynamics import update_car_position, update_walker_position
 from mpc.tubempc_controller import mpc_control
 from mpc.vanillampc_controller import mpc_control_vanilla
+from mpc.ped_dynamics import forward_ped
 
 import pygame
 import argparse
@@ -107,11 +108,35 @@ def main(args):
 
             pygame.draw.rect(screen, BLACK, (car_x, car_y, 40, 20))
             pygame.draw.circle(screen, BLACK, (int(walker_x), int(walker_y)), 10)
-            pygame.draw.circle(screen, RED, (int(car_x) + 20, int(car_y) + 10), 20, 2)
-            pygame.draw.circle(screen, RED, (int(walker_x), int(walker_y)), 20, 2)
+            pygame.draw.circle(screen, RED, (int(car_x) + 20, int(car_y) + 10), 15, 2)
+            pygame.draw.circle(screen, RED, (int(walker_x), int(walker_y)), 15, 2)
+
+            # ===== Tube MPC 可视化 =====
+            if args.mode == 'tubempc':
+                u_seq = [car_speed] * args.T
+                tube = forward_ped([walker_x, walker_y], u_seq)
+
+                for step, (lo, hi) in enumerate(tube):
+                    # 蓝色渐变
+                    color = (0, 0, 255 - int(180 * step / args.T))  # 从亮蓝到深蓝
+
+                    x_min, y_min = lo
+                    x_max, y_max = hi
+
+                    rect_x = int(x_min)
+                    rect_y = int(y_min)
+                    rect_w = max(1, int(x_max - x_min))
+                    rect_h = max(1, int(y_max - y_min))
+
+                    pygame.draw.rect(
+                        screen,
+                        color,
+                        pygame.Rect(rect_x, rect_y, rect_w, rect_h),
+                        width=2  # 只画边框，不填充
+                    )
 
             pygame.display.flip()
-            clock.tick(30)
+            clock.tick(15)
 
         pygame.quit()
         sys.exit()
