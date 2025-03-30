@@ -7,7 +7,10 @@ A learning-based Model Predictive Control framework for safe planning in interac
 
 ## 🎥 Demo
 
-![demo](./results/tube.gif)
+
+<p align="center">
+  <img src="./results/tube.gif" width="400"/>
+</p>
 
 ---
 
