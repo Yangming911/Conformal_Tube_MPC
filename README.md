@@ -2,14 +2,22 @@
 
 A learning-based Model Predictive Control framework for safe planning in interactive multi-agent systems with coupled dynamics and uncertainty.
 
+
 ---
+
+## 🎥 Demo
+
+![demo](./results/tube.gif)
+
+---
+
 
 ## 📖 Project Overview
 
 This project implements the framework described in our paper:
 
 **"Learning-Based Conformal Tube MPC for Safe Control in Interactive Multi-Agent Systems"**  
-*Shuqi Wang, Xiang Yin*
+*Shuqi Wang, Yue Gao, Xiang Yin*
 
 The goal is to safely control a system (e.g., autonomous vehicle) in environments with **uncontrollable, state-coupled agents** (e.g., pedestrians). We predict agent actions using neural networks and quantify uncertainty with **conformal prediction**, embedding it into a **dynamic reachable tube MPC** for probabilistic safety.
 
@@ -85,15 +93,6 @@ python main.py
 ```
 
 ---
-
-## 📊 Example Result
-
-> (Insert simulation image or gif here)
-
-![example](./figs/example.png)
-
----
-
 ## 📌 Parameters (config.yaml)
 
 | Parameter     | Description                           | Example        |
