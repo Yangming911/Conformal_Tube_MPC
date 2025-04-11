@@ -1,6 +1,6 @@
 import numpy as np
-from mpc.car_dynamics_batch import forward_car_batch
-from mpc.ped_dynamics_batch import forward_ped_batch
+from mpc.car_dynamics import forward_car_batch
+from mpc.ped_dynamics import forward_ped_batch
 from mpc.tube_utils import is_tube_safe
 from mpc.tube_utils import batch_is_tube_safe
 
