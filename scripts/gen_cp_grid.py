@@ -6,7 +6,7 @@ from models.conformal_grid import build_conformal_grid
 
 def main():
     parser = argparse.ArgumentParser(description="Generate conformal prediction grid and save it.")
-    parser.add_argument('--alpha', type=float, default=0.85, help='Quantile level for conformal region')
+    parser.add_argument('--alpha', type=float, default=0.9, help='Quantile level for conformal region')
     parser.add_argument('--num_samples', type=int, default=20000, help='Number of samples for CP calibration')
     parser.add_argument('--save_path', type=str, default='assets/conformal_grid.pkl', help='Path to save the grid')
     args = parser.parse_args()

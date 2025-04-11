@@ -27,7 +27,7 @@ RED = (255, 0, 0)
 d_safe = 10
 COLLISION_THRESHOLD = 10
 
-def calculate_collision_probability(T=1, sample_num=10000, mode='random'):
+def calculate_collision_probability(T=1, sample_num=1000, mode='random'):
     collision_count = 0
     average_speed = 0
     average_calcu_time = 0
@@ -48,7 +48,9 @@ def calculate_collision_probability(T=1, sample_num=10000, mode='random'):
             walker_x, walker_y = update_walker_position(car_speed, walker_x, walker_y)
             
             start_time = time.perf_counter()
-            if mode == 'vanillacbf':
+            if mode == 'random':
+                car_speed = 15
+            elif mode == 'vanillacbf':
                 car_speed = vanilla_cbf_controller(car_x, np.array([walker_x, walker_y]), T, d_safe, car_y)
             elif mode == 'cpcbf':
                 car_speed = cp_cbf_controller(car_x, np.array([walker_x, walker_y]), T, d_safe, car_y)
@@ -127,9 +129,9 @@ def main(args):
             print(f"Average calculation time: {average_calcu_time:.6f} s")
 
         elif args.mode == 'batch':
-            controllers = ['vanillacbf', 'cpcbf']
+            controllers = ['random','vanillacbf', 'cpcbf']
             T_values = [1, 10, 20]
-            log_file = "batch_results_cbf.log"
+            log_file = "batch_results_cbf_parallel.log"
             with open(log_file, 'w') as f:
                 f.write("Batch Evaluation Log\n")
                 f.write("=" * 40 + "\n")

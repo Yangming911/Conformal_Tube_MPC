@@ -1,0 +1,17 @@
+Batch Evaluation Log
+========================================
+Controller: tubempc, T=1
+  Collision Rate: 65.10%
+  Average Speed: 14.98
+  Average Calc Time: 400.745 ms
+----------------------------------------
+Controller: tubempc, T=10
+  Collision Rate: 15.20%
+  Average Speed: 14.92
+  Average Calc Time: 3365.504 ms
+----------------------------------------
+Controller: tubempc, T=20
+  Collision Rate: 1.40%
+  Average Speed: 14.89
+  Average Calc Time: 6888.803 ms
+----------------------------------------

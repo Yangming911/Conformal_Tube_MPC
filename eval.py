@@ -150,10 +150,10 @@ def main(args):
             print(f"Average calculation time: {average_calcu_time:.6f} s")
 
         elif args.mode == 'batch':
-            # controllers = ['random', 'tubempc', 'vanillampc']
-            controllers = ['vanillampc']
+            controllers = ['random', 'tubempc', 'vanillampc']
+            # controllers = ['vanillampc']
             T_values = [1, 10, 20]
-            log_file = "mpc_batch_results_vanilla.log"
+            log_file = "mpc_batch_results.log"
             with open(log_file, 'w') as f:
                 f.write("Batch Evaluation Log\n")
                 f.write("=" * 40 + "\n")
@@ -171,11 +171,11 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mode', type=str, default='tubempc',
+    parser.add_argument('--mode', type=str, default='batch',
                         choices=['random', 'tubempc', 'vanillampc', 'batch'],
                         help='Mode of the simulation')
     parser.add_argument('--display', type=bool, default=False, help='Display the animation')
-    parser.add_argument('--T', type=int, default=10, help='Prediction horizon T')
+    parser.add_argument('--T', type=int, default=20, help='Prediction horizon T')
     args = parser.parse_args()
 
     main(args)
