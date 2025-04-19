@@ -19,7 +19,7 @@ A learning-based Model Predictive Control framework for safe planning in interac
 
 This project implements the framework described in our paper:
 
-**"Learning-Based Conformal Tube MPC for Safe Control in Interactive Multi-Agent Systems"**  
+[**"Learning-Based Conformal Tube MPC for Safe Control in Interactive Multi-Agent Systems"**](https://arxiv.org/abs/2504.03293) 
 *Shuqi Wang, Yue Gao, Xiang Yin*
 
 The goal is to safely control a system (e.g., autonomous vehicle) in environments with **uncontrollable, state-coupled agents** (e.g., pedestrians). We predict agent actions using neural networks and quantify uncertainty with **conformal prediction**, embedding it into a **dynamic reachable tube MPC** for probabilistic safety.
@@ -66,9 +66,10 @@ Conformal_Tube_MPC/
 ├── main.py                         # Main entry point for running a simulation
 ├── eval.py                         # Evaluate performance of MPC policy
 ├── evalcbf.py                      # Evaluate performance of CBF controller
+├── eval_parallel.py                # Parallel Evaluation
 ├── mpc_batch_results.log           # Batch results for tube-based MPC
-├── mpc_batch_results_vanilla.log  # Batch results for vanilla MPC
-├── batch_results_cbf.log          # Batch results for CBF controller
+├── mpc_batch_results_vanilla.log   # Batch results for vanilla MPC
+├── batch_results_cbf.log           # Batch results for CBF controller
 ├── LICENSE                         # MIT License
 └── README.md                       # Project documentation
 
@@ -112,7 +113,15 @@ python main.py
 If you find this project useful, please cite:
 
 ```
-xxxxxxx
+@misc{wang2025learningbasedconformaltubempc,
+      title={Learning-Based Conformal Tube MPC for Safe Control in Interactive Multi-Agent Systems}, 
+      author={Shuqi Wang and Yue Gao and Xiang Yin},
+      year={2025},
+      eprint={2504.03293},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+      url={https://arxiv.org/abs/2504.03293}, 
+}
 ```
 
 ---
