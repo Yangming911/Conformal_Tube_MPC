@@ -1,0 +1,2426 @@
+
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 08:16:01
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 51.00%
+  Collision Count: 51/100
+  Average Steps: 26.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 7.00%
+  Collision Count: 7/100
+  Average Steps: 78.6
+  Average Speed: 7.13 m/s
+  Average Calc Time: 35.697 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (7.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 08:29:43
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 45.00%
+  Collision Count: 45/100
+  Average Steps: 27.3
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 14.00%
+  Collision Count: 14/100
+  Average Steps: 72.6
+  Average Speed: 7.49 m/s
+  Average Calc Time: 36.081 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 17.00%
+  Collision Count: 17/100
+  Average Steps: 65.2
+  Average Speed: 7.82 m/s
+  Average Calc Time: 34.740 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (14.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 08:43:34
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 44.00%
+  Collision Count: 44/100
+  Average Steps: 27.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 71.9
+  Average Speed: 7.35 m/s
+  Average Calc Time: 33.991 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 18.00%
+  Collision Count: 18/100
+  Average Steps: 64.4
+  Average Speed: 7.94 m/s
+  Average Calc Time: 34.126 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 10:00:00
+Sample Number: 1000
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 40.70%
+  Collision Count: 407/1000
+  Average Steps: 28.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 13.90%
+  Collision Count: 139/1000
+  Average Steps: 71.5
+  Average Speed: 7.60 m/s
+  Average Calc Time: 31.155 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 16.10%
+  Collision Count: 161/1000
+  Average Steps: 63.2
+  Average Speed: 8.25 m/s
+  Average Calc Time: 29.974 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (13.90%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 12:34:39
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 44.00%
+  Collision Count: 44/100
+  Average Steps: 27.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 72.1
+  Average Speed: 7.32 m/s
+  Average Calc Time: 45.883 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 18.00%
+  Collision Count: 18/100
+  Average Steps: 64.4
+  Average Speed: 7.94 m/s
+  Average Calc Time: 41.584 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 12:52:47
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 44.00%
+  Collision Count: 44/100
+  Average Steps: 27.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 72.0
+  Average Speed: 7.34 m/s
+  Average Calc Time: 32.123 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 12:58:56
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 44.00%
+  Collision Count: 44/100
+  Average Steps: 27.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 71.9
+  Average Speed: 7.35 m/s
+  Average Calc Time: 33.127 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 13:08:35
+Sample Number: 100
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 44.00%
+  Collision Count: 44/100
+  Average Steps: 27.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 72.1
+  Average Speed: 7.32 m/s
+  Average Calc Time: 32.164 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 13:50:47
+Sample Number: 1000
+Number of Pedestrians: 3
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 40.70%
+  Collision Count: 407/1000
+  Average Steps: 28.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 14.00%
+  Collision Count: 140/1000
+  Average Steps: 71.8
+  Average Speed: 7.56 m/s
+  Average Calc Time: 32.996 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (14.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 14:19:35
+Sample Number: 1000
+Number of Pedestrians: 1
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.20%
+  Collision Count: 162/1000
+  Average Steps: 30.1
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.30%
+  Collision Count: 23/1000
+  Average Steps: 49.5
+  Average Speed: 10.98 m/s
+  Average Calc Time: 27.003 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.30%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 14:55:07
+Sample Number: 1000
+Number of Pedestrians: 1
+Prediction Horizon T: 10
+Safety Distance: 2.5
+alpha: 0.75
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.20%
+  Collision Count: 162/1000
+  Average Steps: 30.1
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.00%
+  Collision Count: 20/1000
+  Average Steps: 49.3
+  Average Speed: 11.04 m/s
+  Average Calc Time: 27.184 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+################################################################################
+walker_noise_y_sigma = 2
+walker_noise_x_sigma = 0.5
+################################################################################
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 15:21:59
+Sample Number: 100
+Number of Pedestrians: 1
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 15:27:05
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.75
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 20.00%
+  Collision Count: 20/100
+  Average Steps: 30.1
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 9.00%
+  Collision Count: 9/100
+  Average Steps: 60.5
+  Average Speed: 10.37 m/s
+  Average Calc Time: 26.515 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (9.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 15:55:46
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.75
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 14.00%
+  Collision Count: 14/100
+  Average Steps: 30.9
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 4.00%
+  Collision Count: 4/100
+  Average Steps: 53.3
+  Average Speed: 10.56 m/s
+  Average Calc Time: 26.205 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (4.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 16:20:33
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.75
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.70%
+  Collision Count: 157/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.10%
+  Collision Count: 21/1000
+  Average Steps: 50.3
+  Average Speed: 11.03 m/s
+  Average Calc Time: 26.459 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.10%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 16:54:10
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.75
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.80%
+  Collision Count: 168/1000
+  Average Steps: 30.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 5.50%
+  Collision Count: 55/1000
+  Average Steps: 60.3
+  Average Speed: 10.62 m/s
+  Average Calc Time: 25.896 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (5.50%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 17:24:41
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.75
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.70%
+  Collision Count: 167/1000
+  Average Steps: 29.9
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 6.70%
+  Collision Count: 67/1000
+  Average Steps: 55.5
+  Average Speed: 10.54 m/s
+  Average Calc Time: 27.564 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (6.70%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 19:02:45
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.95
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.20%
+  Collision Count: 22/1000
+  Average Steps: 50.0
+  Average Speed: 10.84 m/s
+  Average Calc Time: 29.083 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.20%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 19:44:34
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.5
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.70%
+  Collision Count: 27/1000
+  Average Steps: 53.3
+  Average Speed: 10.15 m/s
+  Average Calc Time: 29.921 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.70%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 23:35:02
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 3/100
+  Average Steps: 50.4
+  Average Speed: 10.84 m/s
+  Average Calc Time: 51.362 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (3.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 23:41:56
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 3/100
+  Average Steps: 50.4
+  Average Speed: 10.84 m/s
+  Average Calc Time: 26.031 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (3.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 23:49:45
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 3/100
+  Average Steps: 50.4
+  Average Speed: 10.84 m/s
+  Average Calc Time: 25.354 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 48.3
+  Average Speed: 11.16 m/s
+  Average Calc Time: 24.540 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi_no_eta (2.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 23:58:14
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 51.9
+  Average Speed: 10.62 m/s
+  Average Calc Time: 25.263 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 48.3
+  Average Speed: 11.16 m/s
+  Average Calc Time: 24.423 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 01:48:31
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 30/1000
+  Average Steps: 39.0
+  Average Speed: 13.18 m/s
+  Average Calc Time: 36.722 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 8.40%
+  Collision Count: 84/1000
+  Average Steps: 34.5
+  Average Speed: 13.88 m/s
+  Average Calc Time: 36.677 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (3.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 02:55:50
+Sample Number: 1000
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 7.60%
+  Collision Count: 76/1000
+  Average Steps: 79.4
+  Average Speed: 7.05 m/s
+  Average Calc Time: 41.010 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 64.7
+  Average Speed: 8.00 m/s
+  Average Calc Time: 51.808 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (7.60%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 02:56:11
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 85.9
+  Average Speed: 4.21 m/s
+  Average Calc Time: 36.183 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 84.0
+  Average Speed: 4.50 m/s
+  Average Calc Time: 43.536 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 03:25:44
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.60%
+  Collision Count: 26/1000
+  Average Steps: 68.1
+  Average Speed: 7.18 m/s
+  Average Calc Time: 45.206 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 1.70%
+  Collision Count: 17/1000
+  Average Steps: 63.2
+  Average Speed: 7.80 m/s
+  Average Calc Time: 32.489 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi_no_eta (1.70%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 04:24:36
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+MARK: Normal Comparison
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.30%
+  Collision Count: 23/1000
+  Average Steps: 51.8
+  Average Speed: 10.51 m/s
+  Average Calc Time: 36.574 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 3.80%
+  Collision Count: 38/1000
+  Average Steps: 46.6
+  Average Speed: 11.23 m/s
+  Average Calc Time: 34.907 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.30%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 04:27:26
+Sample Number: 1000
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 8.90%
+  Collision Count: 89/1000
+  Average Steps: 96.5
+  Average Speed: 5.50 m/s
+  Average Calc Time: 52.804 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 23.70%
+  Collision Count: 237/1000
+  Average Steps: 77.6
+  Average Speed: 6.34 m/s
+  Average Calc Time: 47.786 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (8.90%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 04:21:27
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.5
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 30/1000
+  Average Steps: 48.8
+  Average Speed: 10.91 m/s
+  Average Calc Time: 36.392 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 3.80%
+  Collision Count: 38/1000
+  Average Steps: 46.6
+  Average Speed: 11.23 m/s
+  Average Calc Time: 35.979 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (3.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 13:26:20
+Sample Number: 1000
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 6.00%
+  Collision Count: 60/1000
+  Average Steps: 108.8
+  Average Speed: 4.77 m/s
+  Average Calc Time: 50.115 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 25.30%
+  Collision Count: 253/1000
+  Average Steps: 88.8
+  Average Speed: 5.39 m/s
+  Average Calc Time: 55.474 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (6.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 13:57:15
+Sample Number: 1000
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 4.30%
+  Collision Count: 43/1000
+  Average Steps: 114.9
+  Average Speed: 4.47 m/s
+  Average Calc Time: 55.051 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 25.30%
+  Collision Count: 253/1000
+  Average Steps: 94.7
+  Average Speed: 4.98 m/s
+  Average Calc Time: 62.219 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (4.30%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:16:02
+Sample Number: 100
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 36.00%
+  Collision Count: 36/100
+  Average Steps: 28.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 8.00%
+  Collision Count: 8/100
+  Average Steps: 79.9
+  Average Speed: 6.97 m/s
+  Average Calc Time: 67.382 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 68.4
+  Average Speed: 7.68 m/s
+  Average Calc Time: 68.388 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (8.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:21:01
+Sample Number: 100
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 56.00%
+  Collision Count: 56/100
+  Average Steps: 25.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 8.00%
+  Collision Count: 8/100
+  Average Steps: 95.8
+  Average Speed: 5.56 m/s
+  Average Calc Time: 77.180 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 21.00%
+  Collision Count: 21/100
+  Average Steps: 81.1
+  Average Speed: 6.14 m/s
+  Average Calc Time: 66.474 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (8.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:25:03
+Sample Number: 100
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.00%
+  Collision Count: 74/100
+  Average Steps: 23.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 4.00%
+  Collision Count: 4/100
+  Average Steps: 107.0
+  Average Speed: 4.86 m/s
+  Average Calc Time: 88.126 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 18.00%
+  Collision Count: 18/100
+  Average Steps: 92.5
+  Average Speed: 5.32 m/s
+  Average Calc Time: 61.302 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (4.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:27:27
+Sample Number: 100
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 80.00%
+  Collision Count: 80/100
+  Average Steps: 22.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 6.00%
+  Collision Count: 6/100
+  Average Steps: 110.5
+  Average Speed: 4.62 m/s
+  Average Calc Time: 97.880 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 19.00%
+  Collision Count: 19/100
+  Average Steps: 96.0
+  Average Speed: 5.06 m/s
+  Average Calc Time: 59.426 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (6.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:28:43
+Sample Number: 100
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 51.9
+  Average Speed: 10.62 m/s
+  Average Calc Time: 33.865 ms
+----------------------------------------
+CURRENT_CBF_MULTI_NO_ETA:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 48.3
+  Average Speed: 11.16 m/s
+  Average Calc Time: 27.119 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:38:29
+Sample Number: 100
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 36.00%
+  Collision Count: 36/100
+  Average Steps: 28.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 10.00%
+  Collision Count: 10/100
+  Average Steps: 74.5
+  Average Speed: 7.33 m/s
+  Average Calc Time: 63.404 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (10.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:41:32
+Sample Number: 100
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 56.00%
+  Collision Count: 56/100
+  Average Steps: 25.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 11.00%
+  Collision Count: 11/100
+  Average Steps: 90.9
+  Average Speed: 5.79 m/s
+  Average Calc Time: 71.241 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (11.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:43:46
+Sample Number: 100
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.00%
+  Collision Count: 74/100
+  Average Steps: 23.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 7.00%
+  Collision Count: 7/100
+  Average Steps: 101.9
+  Average Speed: 5.07 m/s
+  Average Calc Time: 76.551 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (7.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:45:04
+Sample Number: 100
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 80.00%
+  Collision Count: 80/100
+  Average Steps: 22.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 10.00%
+  Collision Count: 10/100
+  Average Steps: 106.5
+  Average Speed: 4.71 m/s
+  Average Calc Time: 80.138 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (10.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 21:58:17
+Sample Number: 100
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 36.00%
+  Collision Count: 36/100
+  Average Steps: 28.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 10.00%
+  Collision Count: 10/100
+  Average Steps: 81.3
+  Average Speed: 6.74 m/s
+  Average Calc Time: 52.263 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (10.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 22:00:28
+Sample Number: 100
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 56.00%
+  Collision Count: 56/100
+  Average Steps: 25.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 9.00%
+  Collision Count: 9/100
+  Average Steps: 97.6
+  Average Speed: 5.38 m/s
+  Average Calc Time: 56.509 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (9.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 22:02:11
+Sample Number: 100
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.00%
+  Collision Count: 74/100
+  Average Steps: 23.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 4.00%
+  Collision Count: 4/100
+  Average Steps: 108.5
+  Average Speed: 4.77 m/s
+  Average Calc Time: 59.850 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (4.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-15 22:03:35
+Sample Number: 100
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 80.00%
+  Collision Count: 80/100
+  Average Steps: 22.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.00%
+  Collision Count: 2/100
+  Average Steps: 115.3
+  Average Speed: 4.47 m/s
+  Average Calc Time: 63.221 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:40:13
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 3.00%
+  Collision Count: 30/1000
+  Average Steps: 39.0
+  Average Speed: 13.18 m/s
+  Average Calc Time: 44.083 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (3.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:50:28
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.30%
+  Collision Count: 23/1000
+  Average Steps: 51.8
+  Average Speed: 10.51 m/s
+  Average Calc Time: 45.315 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.30%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:02:07
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.60%
+  Collision Count: 26/1000
+  Average Steps: 68.1
+  Average Speed: 7.18 m/s
+  Average Calc Time: 46.162 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.60%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:19:06
+Sample Number: 1000
+Number of Pedestrians: 1
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 85.9
+  Average Speed: 4.21 m/s
+  Average Calc Time: 48.606 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:37:04
+Sample Number: 1000
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 13.60%
+  Collision Count: 136/1000
+  Average Steps: 54.7
+  Average Speed: 10.14 m/s
+  Average Calc Time: 61.519 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (13.60%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 02:09:57
+Sample Number: 1000
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 7.60%
+  Collision Count: 76/1000
+  Average Steps: 79.4
+  Average Speed: 7.05 m/s
+  Average Calc Time: 59.634 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (7.60%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 02:39:49
+Sample Number: 1000
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 2.40%
+  Collision Count: 24/1000
+  Average Steps: 101.7
+  Average Speed: 5.22 m/s
+  Average Calc Time: 57.390 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (2.40%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 02:50:38
+Sample Number: 1000
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 19.10%
+  Collision Count: 191/1000
+  Average Steps: 70.6
+  Average Speed: 7.81 m/s
+  Average Calc Time: 61.943 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (19.10%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 03:11:18
+Sample Number: 1000
+Number of Pedestrians: 3
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 122.2
+  Average Speed: 3.99 m/s
+  Average Calc Time: 54.863 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 03:47:36
+Sample Number: 1000
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 8.90%
+  Collision Count: 89/1000
+  Average Steps: 96.5
+  Average Speed: 5.50 m/s
+  Average Calc Time: 60.361 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (8.90%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 04:25:25
+Sample Number: 1000
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 19.10%
+  Collision Count: 191/1000
+  Average Steps: 83.4
+  Average Speed: 6.54 m/s
+  Average Calc Time: 67.609 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (19.10%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 04:33:35
+Sample Number: 1000
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.70%
+  Collision Count: 7/1000
+  Average Steps: 114.2
+  Average Speed: 4.58 m/s
+  Average Calc Time: 59.489 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.70%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 05:22:58
+Sample Number: 1000
+Number of Pedestrians: 5
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 131.5
+  Average Speed: 3.87 m/s
+  Average Calc Time: 59.808 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 05:48:54
+Sample Number: 1000
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 6.00%
+  Collision Count: 60/1000
+  Average Steps: 108.8
+  Average Speed: 4.77 m/s
+  Average Calc Time: 66.487 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (6.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 06:16:42
+Sample Number: 1000
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 10.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 16.60%
+  Collision Count: 166/1000
+  Average Steps: 93.9
+  Average Speed: 5.65 m/s
+  Average Calc Time: 70.539 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (16.60%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 06:43:37
+Sample Number: 1000
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.20%
+  Collision Count: 2/1000
+  Average Steps: 120.9
+  Average Speed: 4.28 m/s
+  Average Calc Time: 64.204 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.20%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 07:41:52
+Sample Number: 1000
+Number of Pedestrians: 7
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 136.8
+  Average Speed: 3.74 m/s
+  Average Calc Time: 60.662 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 07:55:03
+Sample Number: 1000
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 1.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 4.30%
+  Collision Count: 43/1000
+  Average Steps: 114.9
+  Average Speed: 4.47 m/s
+  Average Calc Time: 65.464 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (4.30%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 08:47:27
+Sample Number: 1000
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.40%
+  Collision Count: 4/1000
+  Average Steps: 124.4
+  Average Speed: 4.13 m/s
+  Average Calc Time: 59.413 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.40%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN TEST RUN
+====================================================================================================
+
+Multi-Pedestrian CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 09:44:27
+Sample Number: 1000
+Number of Pedestrians: 9
+Conformal Prediction Alpha: 0.85
+Prediction Horizon T: 1
+Safety Distance: 2.5
+CBF Gamma: 0.25
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/1000
+  Average Steps: 140.0
+  Average Speed: 3.65 m/s
+  Average Calc Time: 52.223 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf_multi (0.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)

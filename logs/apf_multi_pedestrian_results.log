@@ -1,0 +1,839 @@
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:52:25
+Sample Number: 1000
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 18.50%
+  Collision Count: 185/1000
+  Average Steps: 76.2
+  Average Speed: 8.32 m/s
+  Average Calc Time: 0.027 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:55:36
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.15
+k_rep: 18.0
+d_influence: 10.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 32.00%
+  Collision Count: 32/100
+  Average Steps: 69.8
+  Average Speed: 4.72 m/s
+  Average Calc Time: 0.028 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:55:46
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.2
+k_rep: 14.0
+d_influence: 9.0
+v_min: 0.0
+v_max: 12.0
+lateral_bias_gain: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 28.00%
+  Collision Count: 28/100
+  Average Steps: 73.5
+  Average Speed: 5.59 m/s
+  Average Calc Time: 0.032 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:55:54
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.25
+k_rep: 12.0
+d_influence: 8.0
+v_min: 0.0
+v_max: 13.0
+lateral_bias_gain: 0.4
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 18.00%
+  Collision Count: 18/100
+  Average Steps: 81.5
+  Average Speed: 5.99 m/s
+  Average Calc Time: 0.030 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:58:24
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 24.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 8.5
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 22.00%
+  Collision Count: 22/100
+  Average Steps: 80.8
+  Average Speed: 3.84 m/s
+  Average Calc Time: 0.029 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:58:39
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.1
+k_rep: 28.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 8.0
+lateral_bias_gain: 0.9
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/100
+  Average Steps: 95.2
+  Average Speed: 3.27 m/s
+  Average Calc Time: 0.030 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:58:48
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.15
+k_rep: 22.0
+d_influence: 11.0
+v_min: 0.0
+v_max: 9.5
+lateral_bias_gain: 0.7
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 32.00%
+  Collision Count: 32/100
+  Average Steps: 69.9
+  Average Speed: 4.70 m/s
+  Average Calc Time: 0.028 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 00:59:02
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 22.0
+d_influence: 13.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 25.00%
+  Collision Count: 25/100
+  Average Steps: 78.2
+  Average Speed: 3.89 m/s
+  Average Calc Time: 0.031 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:03:04
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.1
+k_rep: 28.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 8.0
+lateral_bias_gain: 0.9
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 0.00%
+  Collision Count: 0/100
+  Average Steps: 95.2
+  Average Speed: 3.27 m/s
+  Average Calc Time: 0.029 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:03:16
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.14
+k_rep: 26.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.5
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 31.00%
+  Collision Count: 31/100
+  Average Steps: 71.4
+  Average Speed: 4.43 m/s
+  Average Calc Time: 0.028 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:03:26
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.16
+k_rep: 24.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.5
+lateral_bias_gain: 0.75
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 31.00%
+  Collision Count: 31/100
+  Average Steps: 70.3
+  Average Speed: 4.88 m/s
+  Average Calc Time: 0.028 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:03:35
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.18
+k_rep: 24.0
+d_influence: 11.5
+v_min: 0.0
+v_max: 11.0
+lateral_bias_gain: 0.7
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 30.00%
+  Collision Count: 30/100
+  Average Steps: 72.3
+  Average Speed: 5.24 m/s
+  Average Calc Time: 0.027 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:03:49
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 6.00%
+  Collision Count: 6/100
+  Average Steps: 90.8
+  Average Speed: 3.70 m/s
+  Average Calc Time: 0.029 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:04:04
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.14
+k_rep: 26.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 32.00%
+  Collision Count: 32/100
+  Average Steps: 70.7
+  Average Speed: 4.44 m/s
+  Average Calc Time: 0.024 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:07:35
+Sample Number: 1000
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 8.10%
+  Collision Count: 81/1000
+  Average Steps: 84.4
+  Average Speed: 3.84 m/s
+  Average Calc Time: 0.029 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:08:25
+Sample Number: 1000
+Number of Pedestrians: 3
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 10.70%
+  Collision Count: 107/1000
+  Average Steps: 142.4
+  Average Speed: 2.87 m/s
+  Average Calc Time: 0.035 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:09:34
+Sample Number: 1000
+Number of Pedestrians: 5
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 6.40%
+  Collision Count: 64/1000
+  Average Steps: 214.6
+  Average Speed: 2.26 m/s
+  Average Calc Time: 0.037 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:11:10
+Sample Number: 1000
+Number of Pedestrians: 7
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.12
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 9.0
+lateral_bias_gain: 0.85
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 4.90%
+  Collision Count: 49/1000
+  Average Steps: 405.0
+  Average Speed: 1.61 m/s
+  Average Calc Time: 0.039 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:13:29
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.14
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 11.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 32.00%
+  Collision Count: 32/100
+  Average Steps: 71.3
+  Average Speed: 4.40 m/s
+  Average Calc Time: 0.033 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:13:55
+Sample Number: 100
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 15.00%
+  Collision Count: 15/100
+  Average Steps: 30.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 18.00%
+  Collision Count: 18/100
+  Average Steps: 82.7
+  Average Speed: 3.91 m/s
+  Average Calc Time: 0.029 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:15:10
+Sample Number: 1000
+Number of Pedestrians: 1
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 17.40%
+  Collision Count: 174/1000
+  Average Steps: 29.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 15.30%
+  Collision Count: 153/1000
+  Average Steps: 78.8
+  Average Speed: 4.02 m/s
+  Average Calc Time: 0.030 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:15:38
+Sample Number: 1000
+Number of Pedestrians: 3
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 42.10%
+  Collision Count: 421/1000
+  Average Steps: 27.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 19.80%
+  Collision Count: 198/1000
+  Average Steps: 133.6
+  Average Speed: 3.03 m/s
+  Average Calc Time: 0.036 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:16:33
+Sample Number: 1000
+Number of Pedestrians: 5
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 62.10%
+  Collision Count: 621/1000
+  Average Steps: 24.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 14.50%
+  Collision Count: 145/1000
+  Average Steps: 202.6
+  Average Speed: 2.41 m/s
+  Average Calc Time: 0.042 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:18:22
+Sample Number: 1000
+Number of Pedestrians: 7
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 74.90%
+  Collision Count: 749/1000
+  Average Steps: 22.8
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 7.90%
+  Collision Count: 79/1000
+  Average Steps: 392.5
+  Average Speed: 1.68 m/s
+  Average Calc Time: 0.047 ms
+----------------------------------------
+
+====================================================================================================
+NEW MULTI-PEDESTRIAN APF TEST RUN
+====================================================================================================
+
+Multi-Pedestrian APF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-16 01:23:30
+Sample Number: 1000
+Number of Pedestrians: 9
+Prediction Horizon T: 1
+Safety Distance: 2.5
+k_att: 0.125
+k_rep: 27.0
+d_influence: 12.0
+v_min: 0.0
+v_max: 10.0
+lateral_bias_gain: 0.8
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 82.30%
+  Collision Count: 823/1000
+  Average Steps: 21.7
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+APF_MULTI:
+  Collision Probability: 4.80%
+  Collision Count: 48/1000
+  Average Steps: 1088.3
+  Average Speed: 0.98 m/s
+  Average Calc Time: 0.046 ms
+----------------------------------------

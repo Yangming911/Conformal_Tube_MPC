@@ -1,0 +1,35 @@
+MPC Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-13 12:10:00
+Sample Number: 100
+Prediction Horizon T: 10
+Safety Distance: 5.0
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.00%
+  Collision Count: 16/100
+  Average Steps: 31.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+TUBEMPC:
+  Collision Probability: 19.00%
+  Collision Count: 19/100
+  Average Steps: 29.2
+  Average Speed: 15.00 m/s
+  Average Calc Time: 28.824 ms
+----------------------------------------
+VANILLAMPC:
+  Collision Probability: 10.00%
+  Collision Count: 10/100
+  Average Steps: 30.4
+  Average Speed: 15.00 m/s
+  Average Calc Time: 10.902 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): vanillampc (10.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)

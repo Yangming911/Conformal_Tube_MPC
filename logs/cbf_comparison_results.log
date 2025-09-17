@@ -1,0 +1,211 @@
+CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-13 17:31:30
+Sample Number: 100
+Prediction Horizon T: 10
+Safety Distance: 0.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 12.00%
+  Collision Count: 12/100
+  Average Steps: 30.1
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF:
+  Collision Probability: 22.00%
+  Collision Count: 22/100
+  Average Steps: 31.3
+  Average Speed: 13.91 m/s
+  Average Calc Time: 34.879 ms
+----------------------------------------
+CURRENT_CBF_NO_ETA:
+  Collision Probability: 24.00%
+  Collision Count: 24/100
+  Average Steps: 31.6
+  Average Speed: 14.00 m/s
+  Average Calc Time: 33.300 ms
+----------------------------------------
+VANILLA_CBF:
+  Collision Probability: 12.00%
+  Collision Count: 12/100
+  Average Steps: 31.4
+  Average Speed: 14.77 m/s
+  Average Calc Time: 11.245 ms
+----------------------------------------
+CP_CBF:
+  Collision Probability: 7.00%
+  Collision Count: 7/100
+  Average Steps: 32.3
+  Average Speed: 14.74 m/s
+  Average Calc Time: 14.775 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): cp_cbf (7.00%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW TEST RUN
+====================================================================================================
+
+CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-13 18:49:27
+Sample Number: 2000
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.90%
+  Collision Count: 338/2000
+  Average Steps: 30.0
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF:
+  Collision Probability: 20.35%
+  Collision Count: 407/2000
+  Average Steps: 32.3
+  Average Speed: 13.82 m/s
+  Average Calc Time: 34.461 ms
+----------------------------------------
+CURRENT_CBF_NO_ETA:
+  Collision Probability: 22.10%
+  Collision Count: 442/2000
+  Average Steps: 32.0
+  Average Speed: 13.89 m/s
+  Average Calc Time: 33.416 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): constant_speed (16.90%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW TEST RUN
+====================================================================================================
+
+CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-13 21:37:53
+Sample Number: 1000
+Prediction Horizon T: 10
+Safety Distance: 2.5
+MARK: USE_SLSQP
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.90%
+  Collision Count: 169/1000
+  Average Steps: 29.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF:
+  Collision Probability: 29.00%
+  Collision Count: 290/1000
+  Average Steps: 34.3
+  Average Speed: 12.81 m/s
+  Average Calc Time: 27.186 ms
+----------------------------------------
+CURRENT_CBF_NO_ETA:
+  Collision Probability: 26.80%
+  Collision Count: 268/1000
+  Average Steps: 33.9
+  Average Speed: 13.00 m/s
+  Average Calc Time: 27.182 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): constant_speed (16.90%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW TEST RUN
+====================================================================================================
+
+CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-13 22:21:46
+Sample Number: 1000
+Prediction Horizon T: 10
+Safety Distance: 2.5
+MARK: 之前CBF导数方向写错了!!!
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 18.30%
+  Collision Count: 183/1000
+  Average Steps: 29.6
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF:
+  Collision Probability: 1.70%
+  Collision Count: 17/1000
+  Average Steps: 47.9
+  Average Speed: 11.18 m/s
+  Average Calc Time: 26.559 ms
+----------------------------------------
+CURRENT_CBF_NO_ETA:
+  Collision Probability: 2.80%
+  Collision Count: 28/1000
+  Average Steps: 46.6
+  Average Speed: 11.28 m/s
+  Average Calc Time: 26.669 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf (1.70%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
+
+====================================================================================================
+NEW TEST RUN
+====================================================================================================
+
+CBF Controllers Comparison Results
+================================================================================
+Test Time: 2025-09-14 08:36:06
+Sample Number: 1000
+Prediction Horizon T: 10
+Safety Distance: 2.5
+================================================================================
+
+CONSTANT_SPEED:
+  Collision Probability: 16.90%
+  Collision Count: 169/1000
+  Average Steps: 30.1
+  Average Speed: 15.00 m/s
+  Average Calc Time: 0.000 ms
+----------------------------------------
+CURRENT_CBF:
+  Collision Probability: 2.20%
+  Collision Count: 22/1000
+  Average Steps: 49.6
+  Average Speed: 10.94 m/s
+  Average Calc Time: 29.742 ms
+----------------------------------------
+CURRENT_CBF_NO_ETA:
+  Collision Probability: 2.60%
+  Collision Count: 26/1000
+  Average Steps: 46.8
+  Average Speed: 11.28 m/s
+  Average Calc Time: 26.474 ms
+----------------------------------------
+
+COMPARISON ANALYSIS:
+========================================
+Best Safety (Lowest Collision Rate): current_cbf (2.20%)
+Best Speed (Highest Average Speed): constant_speed (15.00 m/s)
+Best Efficiency (Fastest Calculation): constant_speed (0.000 ms)
