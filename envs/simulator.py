@@ -34,21 +34,21 @@ def _initial_state_multi_pedestrian(car_v: float, rng: np.random.RandomState, nu
     if num_pedestrians is None:
         num_pedestrians = C.num_pedestrians
     
-    # 为每个行人生成初始位置
+    # Generate initial position for each pedestrian
     walker_x_list = []
     walker_y_list = []
     walker_vx_list = []
     walker_vy_list = []
     
     for i in range(num_pedestrians):
-        # 在x方向上稍微分散行人，避免重叠
-        # x_offset = rng.uniform(-2.0, 2.0)  # 在起始位置附近±2米范围内
+        # Slightly disperse pedestrians in x direction to avoid overlap
+        # x_offset = rng.uniform(-2.0, 2.0)  # Within ±2 meters around starting position
         walker_x_list.append(float(C.WALKER_START_X))
         
-        # y位置在起点和终点之间均匀分布
+        # y position uniformly distributed between start and end points
         walker_y_list.append(float(rng.uniform(C.WALKER_START_Y, C.WALKER_DESTINATION_Y)))
         
-        # 初始速度为0
+        # Initial velocity is 0
         walker_vx_list.append(float(C.WALKER_START_V_X))
         walker_vy_list.append(float(C.WALKER_START_V_Y))
     
@@ -137,15 +137,15 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
 
     num_pedestrians = len(walker_x_list)
     
-    # 为每个行人计算下一步状态
+    # Calculate next state for each pedestrian
     next_walker_x_list = []
     next_walker_y_list = []
     next_walker_vx_list = []
     next_walker_vy_list = []
 
     for i in range(num_pedestrians):
-        # 暂时使用简化的行人动力学模型，避免神经网络加载问题
-        # 使用社会力模型预测每个行人的下一步速度
+        # Temporarily use simplified pedestrian dynamics model to avoid neural network loading issues
+        # Use social force model to predict next velocity for each pedestrian
         from envs.dynamics_social_force import walker_logic_SF
         
         next_walker_vx, next_walker_vy = walker_logic_SF(
@@ -162,7 +162,7 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
             rng=rng,
         )
         
-        # 积分位置
+        # Integrate position
         dt = float(C.dt)
         next_walker_x = walker_x_list[i] + next_walker_vx * dt
         next_walker_y = walker_y_list[i] + next_walker_vy * dt

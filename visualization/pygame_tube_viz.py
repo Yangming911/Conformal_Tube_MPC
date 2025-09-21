@@ -5,19 +5,19 @@ from mpc.ped_dynamics import forward_ped
 from mpc.car_dynamics import forward_car
 from mpc.tube_utils import is_tube_safe
 
-# 初始化 Pygame
+# Initialize Pygame
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
 # pygame.display.set_caption("Reachable Tube Visualization")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Arial", 22)
 
-# 设置参数
-y0 = np.array([400.0, 200.0])   # walker 初始位置
-x0 = 370.0                      # car 起点
-T = 10                          # 预测步数
+# Set parameters
+y0 = np.array([400.0, 200.0])   # walker initial position
+x0 = 370.0                      # car starting point
+T = 10                          # prediction steps
 
-# 控制率序列
+# Control sequence
 u_seq = np.clip(np.random.normal(loc=5.0, scale=1.5, size=T), 0.0, 15.0)
 x_seq = forward_car(x0, u_seq)
 tube = forward_ped(y0, u_seq, cp_alpha=0.85)
@@ -25,16 +25,16 @@ tube_centers = [(lo + hi) / 2 for lo, hi in tube]
 ped_positions = [y0] + tube_centers
 car_positions = [(x, 12.0) for x in x_seq]
 
-# 主循环
+# Main loop
 step = 0
 running = True
 while running:
-    clock.tick(1)  # 每秒1帧，慢速展示
+    clock.tick(1)  # 1 frame per second, slow display
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill((255, 255, 255))  # 白底
+    screen.fill((255, 255, 255))  # White background
 
     # ✅ 背景地图
     pygame.draw.rect(screen, (169, 169, 169), (0, 250, 800, 200))  # 灰色道路

@@ -73,7 +73,7 @@ def cbf_controller(state, T=10, N=100, d_safe=2.5, model_path='assets/best_model
     # gamma is now passed as function parameter
     u_max = 15.0
     u_min = 0.0
-    u_des = u_max  # 想尽可能快
+    u_des = u_max  # Want to go as fast as possible
 
     # If collision detected, return conservative control
     if _is_collision(state):
@@ -207,14 +207,14 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
     # gamma is now passed as function parameter
     u_max = 15.0
     u_min = 0.0
-    u_des = u_max  # 想尽可能快
+    u_des = u_max  # Want to go as fast as possible
 
-    # 检查是否与任何行人发生碰撞
+    # Check if collision occurs with any pedestrian
     from envs.simulator import _is_collision_multi_pedestrian
     if _is_collision_multi_pedestrian(state):
         return u_min
 
-    # 为每个行人预测下一步状态
+    # Predict next state for each pedestrian
     all_constraints = []
     all_gradients = []
     all_h_values = []
@@ -223,24 +223,24 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
         predictor = WalkerActionPredictor(model_path=model_path, device=device)
         
         for i in range(num_pedestrians):
-            # 使用神经网络预测每个行人的下一步速度
+            # Use neural network to predict next velocity for each pedestrian
             next_walker_vx, next_walker_vy = predictor.predict(
                 car_x, car_y, car_v, walker_x_list[i], walker_y_list[i], walker_vx_list[i], walker_vy_list[i]
             )
             
-            # 预测下一步位置
+            # Predict next position
             dt = float(C.dt)
             next_car_x = car_x + car_v * dt
             next_car_y = car_y  # Car y position doesn't change (stays in lane)
             next_walker_x = walker_x_list[i] + next_walker_vx * dt
             next_walker_y = walker_y_list[i] + next_walker_vy * dt
             
-            # 计算距离和梯度
+            # Calculate distance and gradient
             dx_next = next_car_x - next_walker_x
             dy_next = next_car_y - next_walker_y
             dist_next = np.sqrt(dx_next**2 + dy_next**2)
             
-            # 调整安全距离
+            # Adjust safety distance
             if use_eta:
                 # eta_x, eta_y = get_eta(car_x, car_v, walker_x_list[i], walker_y_list[i], walker_vx_list[i], walker_vy_list[i], cp_alpha)
                 eta_x, eta_y = DEFAULE_ETA_X, DEFAULE_ETA_Y
@@ -248,7 +248,7 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
             else:
                 d_safe_adjusted = d_safe
             
-            # 检查预测状态是否会发生碰撞
+            # Check if predicted state will cause collision
             next_state = {
                 "car_x": next_car_x,
                 "car_y": next_car_y,
@@ -261,7 +261,7 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
             if _is_collision_multi_pedestrian(next_state):
                 return u_min
             
-            # 计算CBF约束
+            # Calculate CBF constraint
             grad_h = dx_next / dist_next
             h_val = dist_next - d_safe_adjusted
             
@@ -270,7 +270,7 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
             
     except Exception as e:
         print(f"Prediction failed: {e}, using current state")
-        # 如果预测失败，使用当前状态
+        # If prediction fails, use current state
         # for i in range(num_pedestrians):
         #     dx_next = car_x - walker_x_list[i]
         #     dy_next = car_y - walker_y_list[i]
@@ -289,21 +289,21 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
         #     all_gradients.append(grad_h)
         #     all_h_values.append(h_val)
 
-    # 定义控制变量
+    # Define control variable
     u = cp.Variable()
 
-    # 为每个行人添加CBF约束
+    # Add CBF constraints for each pedestrian
     constraints = [u >= u_min, u <= u_max]
     for i in range(num_pedestrians):
         cbf_constraint = all_gradients[i] * u + gamma * all_h_values[i] >= 0
         constraints.append(cbf_constraint)
 
-    # 求解CBF优化问题
+    # Solve CBF optimization problem
     if use_slsqp:
-        # 使用SLSQP求解器
+        # Use SLSQP solver
         return solve_cbf_multi_pedestrian_with_slsqp(all_gradients, all_h_values, u_des, u_min, u_max, gamma, time_limit=0.1)
     else:
-        # 使用CVXPY with OSQP solver
+        # Use CVXPY with OSQP solver
         objective = cp.Minimize((u - u_des)**2)
         prob = cp.Problem(objective, constraints)
 
@@ -326,32 +326,32 @@ def cbf_controller_multi_pedestrian(state, T=10, N=100, d_safe=2.5, model_path='
 
 def solve_cbf_multi_pedestrian_with_slsqp(gradients, h_values, u_des, u_min, u_max, gamma, time_limit=0.1):
     """
-    使用SLSQP求解器求解多行人CBF优化问题，带时间限制
+    Use SLSQP solver to solve multi-pedestrian CBF optimization problem with time limit
     
     Args:
-        gradients: 每个行人的CBF约束梯度列表
-        h_values: 每个行人的CBF函数值列表
-        u_des: 期望控制输入
-        u_min: 最小控制输入
-        u_max: 最大控制输入
-        gamma: CBF参数
-        time_limit: 时间限制（秒）
+        gradients: List of CBF constraint gradients for each pedestrian
+        h_values: List of CBF function values for each pedestrian
+        u_des: Desired control input
+        u_min: Minimum control input
+        u_max: Maximum control input
+        gamma: CBF parameter
+        time_limit: Time limit (seconds)
     
     Returns:
-        float: 控制输入值，如果超时则返回u_min
+        float: Control input value, returns u_min if timeout
     """
     def objective(u_val):
         return (u_val - u_des)**2
     
     def constraint(u_val):
-        # 返回所有约束中的最小值，确保所有约束都满足
+        # Return minimum value among all constraints to ensure all constraints are satisfied
         constraint_values = [grad * u_val + gamma * h_val for grad, h_val in zip(gradients, h_values)]
         return min(constraint_values)
     
-    # 初始猜测
+    # Initial guess
     u0 = np.clip(u_des, u_min, u_max)
     
-    # 约束条件
+    # Constraints
     constraints = {'type': 'ineq', 'fun': constraint}
     bounds = [(u_min, u_max)]
     
@@ -384,19 +384,19 @@ def solve_cbf_multi_pedestrian_with_slsqp(gradients, h_values, u_des, u_min, u_m
 
 def solve_cbf_with_slsqp(grad_h, h_val, u_des, u_min, u_max, gamma, time_limit=0.1):
     """
-    使用SLSQP求解器求解CBF优化问题，带时间限制
+    Use SLSQP solver to solve CBF optimization problem with time limit
     
     Args:
-        grad_h: CBF约束的梯度
-        h_val: CBF函数值
-        u_des: 期望控制输入
-        u_min: 最小控制输入
-        u_max: 最大控制输入
-        gamma: CBF参数
-        time_limit: 时间限制（秒）
+        grad_h: CBF constraint gradient
+        h_val: CBF function value
+        u_des: Desired control input
+        u_min: Minimum control input
+        u_max: Maximum control input
+        gamma: CBF parameter
+        time_limit: Time limit (seconds)
     
     Returns:
-        float: 控制输入值，如果超时则返回u_min
+        float: Control input value, returns u_min if timeout
     """
     def objective(u_val):
         return (u_val - u_des)**2
@@ -404,10 +404,10 @@ def solve_cbf_with_slsqp(grad_h, h_val, u_des, u_min, u_max, gamma, time_limit=0
     def constraint(u_val):
         return grad_h * u_val + gamma * h_val
     
-    # 初始猜测
+    # Initial guess
     u0 = np.clip(u_des, u_min, u_max)
     
-    # 约束条件
+    # Constraints
     constraints = {'type': 'ineq', 'fun': constraint}
     bounds = [(u_min, u_max)]
     
@@ -423,7 +423,7 @@ def solve_cbf_with_slsqp(grad_h, h_val, u_des, u_min, u_max, gamma, time_limit=0
         )
         solve_time = time.time() - start_time
         
-        # 如果求解时间超过限制，返回安全控制
+        # If solve time exceeds limit, return safe control
         if solve_time > time_limit:
             # print(f"Warning: SLSQP solve time {solve_time:.3f}s exceeded {time_limit}s limit, returning u_min")
             return u_min

@@ -4,14 +4,14 @@ import torch.nn.functional as F
 
 class WalkerSpeedPredictor(nn.Module):
     """
-    行人速度预测神经网络
-    输入: [car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy] (7维)
-    输出: [next_walker_vx, next_walker_vy] (2维)
+    Pedestrian velocity prediction neural network
+    Input: [car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy] (7D)
+    Output: [next_walker_vx, next_walker_vy] (2D)
     """
     def __init__(self, input_dim=7, hidden_dims=[128, 128, 64], output_dim=2, dropout_rate=0.1):
         super(WalkerSpeedPredictor, self).__init__()
         
-        # 构建网络层
+        # Build network layers
         layers = []
         prev_dim = input_dim
         
@@ -24,16 +24,16 @@ class WalkerSpeedPredictor(nn.Module):
             ])
             prev_dim = hidden_dim
         
-        # 输出层
+        # Output layer
         layers.append(nn.Linear(prev_dim, output_dim))
         
         self.network = nn.Sequential(*layers)
         
-        # 初始化权重
+        # Initialize weights
         self._initialize_weights()
     
     def _initialize_weights(self):
-        """Xavier初始化"""
+        """Xavier initialization"""
         for m in self.modules():
             if isinstance(m, nn.Linear):
                 nn.init.xavier_uniform_(m.weight)
@@ -45,12 +45,12 @@ class WalkerSpeedPredictor(nn.Module):
 
 class WalkerSpeedPredictorV2(nn.Module):
     """
-    改进版行人速度预测网络，使用残差连接和注意力机制
+    Improved pedestrian velocity prediction network using residual connections and attention mechanism
     """
     def __init__(self, input_dim=7, hidden_dim=128, output_dim=2, num_layers=4, dropout_rate=0.1):
         super(WalkerSpeedPredictorV2, self).__init__()
         
-        # 输入投影层
+        # Input projection layer
         self.input_proj = nn.Linear(input_dim, hidden_dim)
         
         # 残差块
@@ -61,7 +61,7 @@ class WalkerSpeedPredictorV2(nn.Module):
         # 注意力机制
         self.attention = nn.MultiheadAttention(hidden_dim, num_heads=4, dropout=dropout_rate)
         
-        # 输出层
+        # Output layer
         self.output_layer = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.ReLU(),

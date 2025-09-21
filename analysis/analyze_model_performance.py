@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-详细分析模型性能
+Detailed model performance analysis
 """
 
 import sys
@@ -10,7 +10,7 @@ import pandas as pd
 from pathlib import Path
 import torch
 
-# 添加项目根目录到路径
+# Add project root directory to path
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -21,10 +21,10 @@ import utils.constants as C
 
 
 def analyze_single_simulation(car_speed, walker_y_init, dt=0.1, max_steps=200):
-    """分析单个仿真"""
+    """Analyze single simulation"""
     predictor = WalkerActionPredictor('../assets/walker_speed_predictor_new.pth')
     
-    # 初始状态
+    # Initial state
     car_x = C.CAR_START_X
     car_y = C.CAR_LANE_Y
     walker_x = C.WALKER_START_X

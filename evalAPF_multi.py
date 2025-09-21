@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-多行人APF（人工势场）控制器批量测试评估脚本
-将行人视为当前时刻的静态圆形障碍，仅用当前位置进行排斥。
-输出与 evalcbf_multi.py 一致的指标：collision rate、average steps、average speed、average calc time。
+Multi-pedestrian APF (Artificial Potential Field) controller batch testing and evaluation script
+Treat pedestrians as static circular obstacles at current moment, only use current position for repulsion.
+Output metrics consistent with evalcbf_multi.py: collision rate, average steps, average speed, average calc time.
 """
 
 import numpy as np
@@ -27,7 +27,7 @@ from envs.simulator import (
 import utils.constants as C
 
 
-# 默认参数（与 evalcbf_multi.py 对齐）
+# Default parameters (aligned with evalcbf_multi.py)
 DEFAULT_SAMPLE_NUM = 1000
 DEFAULT_MAX_STEPS = 10000
 DEFAULT_T = 1
@@ -44,10 +44,10 @@ def apf_controller_multi_pedestrian(state: Dict[str, Any], *,
                                     v_max: float = 9.0,
                                     lateral_bias_gain: float = 0.85) -> float:
     """
-    极简APF速度控制器：
-    - 吸引项：向目标x推进（常量期望速度，按与目标x距离线性缩放）
-    - 排斥项：对每个行人基于当前欧氏距离添加速度减小项（仅前向速度维度）
-    - 可选横向偏置（未使用转向控制，这里只调节速度；偏置只用于速度扣减的方向性加权）
+    Minimal APF velocity controller:
+    - Attraction term: Advance towards target x (constant desired velocity, linearly scaled by distance to target x)
+    - Repulsion term: Add velocity reduction term for each pedestrian based on current Euclidean distance (only forward velocity dimension)
+    - Optional lateral bias (no steering control used, only speed adjustment here; bias only for directional weighting of speed reduction)
     返回：当前步的车辆速度（m/s）。
     """
     car_x = float(state["car_x"])  # type: ignore

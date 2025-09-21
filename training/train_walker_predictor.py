@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-行人速度预测模型训练脚本
-使用sf_dataset.csv数据进行训练
+Pedestrian velocity prediction model training script
+Train using sf_dataset.csv data
 """
 
 import os
@@ -20,7 +20,7 @@ from tqdm import tqdm
 import json
 from pathlib import Path
 
-# 添加项目根目录到路径
+# Add project root directory to path
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -29,7 +29,7 @@ from models.model_def import WalkerSpeedPredictor, WalkerSpeedPredictorV2
 
 
 class WalkerDataset(Dataset):
-    """行人数据集类"""
+    """Pedestrian dataset class"""
     
     def __init__(self, features, targets):
         self.features = torch.FloatTensor(features)
@@ -43,7 +43,7 @@ class WalkerDataset(Dataset):
 
 
 class WalkerTrainer:
-    """行人速度预测模型训练器"""
+    """Pedestrian velocity prediction model trainer"""
     
     def __init__(self, model_name='WalkerSpeedPredictor', config=None):
         self.model_name = model_name
@@ -54,7 +54,7 @@ class WalkerTrainer:
             print(f"GPU: {torch.cuda.get_device_name(0)}")
             print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB")
         
-        # 初始化模型
+        # Initialize model
         if model_name == 'WalkerSpeedPredictor':
             self.model = WalkerSpeedPredictor(
                 input_dim=self.config['input_dim'],
@@ -75,7 +75,7 @@ class WalkerTrainer:
         
         self.model.to(self.device)
         
-        # 优化器和损失函数
+        # Optimizer and loss function
         self.optimizer = optim.Adam(
             self.model.parameters(),
             lr=self.config['learning_rate'],
@@ -86,13 +86,13 @@ class WalkerTrainer:
         )
         self.criterion = nn.MSELoss()
         
-        # 训练历史
+        # Training history
         self.train_losses = []
         self.val_losses = []
         self.best_val_loss = float('inf')
         
     def _get_default_config(self):
-        """默认配置"""
+        """Default configuration"""
         return {
             'input_dim': 7,
             'output_dim': 2,

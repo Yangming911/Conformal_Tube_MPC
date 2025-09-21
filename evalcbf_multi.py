@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-多行人CBF控制器批量测试评估脚本
-对比多行人场景下的CBF控制器性能
+Multi-pedestrian CBF controller batch testing and evaluation script
+Compare CBF controller performance in multi-pedestrian scenarios
 """
 
 import numpy as np
@@ -25,10 +25,10 @@ from envs.simulator import (
 from cbf.current_cbf_controller import cbf_controller_multi_pedestrian, cbf_controller_multi_pedestrian_no_eta
 import utils.constants as C
 
-# 设置随机种子
+# Set random seed
 np.random.seed(42)
 
-# 测试参数
+# Test parameters
 DEFAULT_SAMPLE_NUM = 1000
 DEFAULT_MAX_STEPS = 10000
 DEFAULT_D_SAFE = 2.5
@@ -39,15 +39,15 @@ def simulate_single_episode_multi_pedestrian(state, controller_func, controller_
                                            T=DEFAULT_T, d_safe=DEFAULT_D_SAFE, 
                                            max_steps=DEFAULT_MAX_STEPS, rng=None, cp_alpha=0.85, gamma=1.0):
     """
-    模拟单个多行人episode
+    Simulate a single multi-pedestrian episode
     
     Args:
-        state: 初始状态字典
-        controller_func: 控制器函数
-        controller_name: 控制器名称
-        T: 预测步长
-        d_safe: 安全距离
-        max_steps: 最大步数
+        state: Initial state dictionary
+        controller_func: Controller function
+        controller_name: Controller name
+        T: Prediction horizon
+        d_safe: Safety distance
+        max_steps: Maximum steps
     
     Returns:
         tuple: (collision_occurred, steps_taken, average_speed, average_calc_time)
@@ -61,34 +61,34 @@ def simulate_single_episode_multi_pedestrian(state, controller_func, controller_
         if _done_multi_pedestrian(current_state):
             break
             
-        # 检查碰撞
+        # Check collision
         if _is_collision_multi_pedestrian(current_state):
             return True, steps_taken, total_speed / max(1, steps_taken), total_calc_time / max(1, steps_taken)
         
-        # 计算控制输入
+        # Calculate control input
         start_time = time.perf_counter()
         
         if controller_name == "constant_speed":
-            # 匀速通过，固定15m/s
+            # Constant speed through, fixed at 15m/s
             control_input = 15.0
         else:
-            # 使用CBF控制器
+            # Use CBF controller
             control_input = controller_func(current_state, T=T, d_safe=d_safe, cp_alpha=cp_alpha, gamma=gamma)
         
         end_time = time.perf_counter()
         calc_time = end_time - start_time
         
-        # 更新状态
+        # Update state
         current_state["car_v"] = control_input
         next_state, _ = _step_multi_pedestrian(current_state, rng)
         current_state = next_state
         
-        # 记录统计信息
+        # Record statistics
         total_speed += control_input
         total_calc_time += calc_time
         steps_taken += 1
     
-    # 最终检查碰撞
+    # Final collision check
     collision_occurred = _is_collision_multi_pedestrian(current_state)
     
     return collision_occurred, steps_taken, total_speed / max(1, steps_taken), total_calc_time / max(1, steps_taken)
@@ -100,19 +100,19 @@ def batch_evaluate_controller_multi_pedestrian(controller_func, controller_name,
                                              num_pedestrians=DEFAULT_NUM_PEDESTRIANS,
                                              cp_alpha=0.85, gamma=1.0):
     """
-    批量评估单个多行人控制器
+    Batch evaluate a single multi-pedestrian controller
     
     Args:
-        controller_func: 控制器函数
-        controller_name: 控制器名称
-        sample_num: 样本数量
-        T: 预测步长
-        d_safe: 安全距离
-        max_steps: 最大步数
-        num_pedestrians: 行人数量
+        controller_func: Controller function
+        controller_name: Controller name
+        sample_num: Number of samples
+        T: Prediction horizon
+        d_safe: Safety distance
+        max_steps: Maximum steps
+        num_pedestrians: Number of pedestrians
     
     Returns:
-        dict: 评估结果
+        dict: Evaluation results
     """
     collision_count = 0
     total_steps = 0
@@ -122,12 +122,12 @@ def batch_evaluate_controller_multi_pedestrian(controller_func, controller_name,
     print(f"Evaluating {controller_name} with {num_pedestrians} pedestrians...")
     
     for i in tqdm(range(sample_num), desc=f"{controller_name}"):
-        # 生成随机初始状态，使用固定的种子确保可重复性
+        # Generate random initial state, use fixed seed to ensure reproducibility
         rng = np.random.RandomState(42 + i)  # 为每个样本使用不同的但固定的种子
         car_speed = float(rng.uniform(1.0, 15.0))
         initial_state = _initial_state_multi_pedestrian(car_speed, rng, num_pedestrians)
         
-        # 模拟单个episode
+        # Simulate single episode
         collision_occurred, steps_taken, avg_speed, avg_calc_time = simulate_single_episode_multi_pedestrian(
             initial_state, controller_func, controller_name, T, d_safe, max_steps, rng, cp_alpha, gamma
         )
@@ -139,7 +139,7 @@ def batch_evaluate_controller_multi_pedestrian(controller_func, controller_name,
         total_speed += avg_speed
         total_calc_time += avg_calc_time
     
-    # 计算统计结果
+    # Calculate statistical results
     collision_probability = collision_count / sample_num
     average_steps = total_steps / sample_num
     average_speed = total_speed / sample_num
@@ -166,17 +166,17 @@ def compare_controllers_multi_pedestrian(sample_num=DEFAULT_SAMPLE_NUM,
                                        num_pedestrians=DEFAULT_NUM_PEDESTRIANS,
                                        cp_alpha=0.85, gamma=1.0):
     """
-    对比所有多行人控制器的性能
+    Compare performance of all multi-pedestrian controllers
     
     Args:
-        sample_num: 样本数量
-        T: 预测步长
-        d_safe: 安全距离
-        max_steps: 最大步数
-        num_pedestrians: 行人数量
+        sample_num: Number of samples
+        T: Prediction horizon
+        d_safe: Safety distance
+        max_steps: Maximum steps
+        num_pedestrians: Number of pedestrians
     
     Returns:
-        list: 所有控制器的评估结果
+        list: Evaluation results for all controllers
     """
     print("=" * 80)
     print("Multi-Pedestrian CBF Controllers Comparison")
@@ -189,7 +189,7 @@ def compare_controllers_multi_pedestrian(sample_num=DEFAULT_SAMPLE_NUM,
     print(f"Max steps per episode: {max_steps}")
     print("=" * 80)
     
-    # 定义控制器
+    # Define controllers
     controllers = [
         (lambda state, **kwargs: 15.0, "constant_speed"),
         (cbf_controller_multi_pedestrian, "current_cbf_multi"),
@@ -204,7 +204,7 @@ def compare_controllers_multi_pedestrian(sample_num=DEFAULT_SAMPLE_NUM,
         )
         results.append(result)
         
-        # 打印单个控制器结果
+        # Print single controller results
         print(f"\n{controller_name.upper()}:")
         print(f"  Collision Probability: {result['collision_probability']*100:.2f}%")
         print(f"  Collision Count: {result['collision_count']}/{result['sample_num']}")
@@ -216,11 +216,11 @@ def compare_controllers_multi_pedestrian(sample_num=DEFAULT_SAMPLE_NUM,
 
 def save_results_to_file_multi_pedestrian(results, filename="logs/cbf_multi_pedestrian_results.log"):
     """
-    保存多行人结果到文件（追加模式）
+    Save multi-pedestrian results to file (append mode)
     
     Args:
-        results: 评估结果列表
-        filename: 输出文件名（如果文件已存在，将追加到文件末尾）
+        results: List of evaluation results
+        filename: Output filename (if file exists, will append to end of file)
     """
     import os
     os.makedirs(os.path.dirname(filename), exist_ok=True)
@@ -255,11 +255,11 @@ def save_results_to_file_multi_pedestrian(results, filename="logs/cbf_multi_pede
             f.write(f"  Average Calc Time: {result['average_calc_time']*1000:.3f} ms\n")
             f.write("-" * 40 + "\n")
         
-        # 添加对比分析
+        # Add comparison analysis
         f.write("\nCOMPARISON ANALYSIS:\n")
         f.write("=" * 40 + "\n")
         
-        # 找出最佳控制器
+        # Find best controllers
         best_safety = min(results, key=lambda x: x['collision_probability'])
         best_speed = max(results, key=lambda x: x['average_speed'])
         best_efficiency = min(results, key=lambda x: x['average_calc_time'])
@@ -296,12 +296,12 @@ def main():
     
     args = parser.parse_args()
     
-    # 快速测试模式
+    # Quick test mode
     if args.quick:
         args.sample_num = 100
         print("Quick test mode: using 100 samples")
     
-    # 执行对比测试
+    # Execute comparison test
     results = compare_controllers_multi_pedestrian(
         sample_num=args.sample_num,
         T=args.T,
@@ -312,10 +312,10 @@ def main():
         gamma=args.gamma
     )
     
-    # 保存结果
+    # Save results
     save_results_to_file_multi_pedestrian(results, args.output)
     
-    # 打印总结
+    # Print summary
     print("\n" + "=" * 80)
     print("SUMMARY")
     print("=" * 80)

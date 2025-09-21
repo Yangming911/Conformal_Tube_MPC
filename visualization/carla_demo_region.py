@@ -2,7 +2,7 @@
 
 """
 CARLA Episode Demo with Proper Pygame Integration
-基于manual_control.py的架构，集成CBF控制器和行人预测
+Based on manual_control.py architecture, integrated with CBF controller and pedestrian prediction
 """
 
 import carla
@@ -62,7 +62,7 @@ from pygame.locals import K_MINUS
 from pygame.locals import K_EQUALS
 
 
-# 导入我们的模块
+# Import our modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from cbf.current_cbf_controller import cbf_controller_multi_pedestrian
 from models.predictor import WalkerActionPredictor
@@ -95,45 +95,45 @@ class World(object):
         self.controller_state_transform_x = -50
         self.controller_state_transform_y = -60
         
-        # 行人控制相关
-        self.walker_velocities = []  # 存储每个行人的速度
-        self.walker_destination_y = 80.0  # 行人目的地Y坐标 (CARLA坐标)
+        # Pedestrian control related
+        self.walker_velocities = []  # Store velocity for each pedestrian
+        self.walker_destination_y = 80.0  # Pedestrian destination Y coordinate (CARLA coordinates)
         
-        # 控制模式相关
-        self.control_mode = "CBF"  # "CBF" 或 "MANUAL" 或 "STRAIGHT" 或 "LEFT_TURN"
+        # Control mode related
+        self.control_mode = "CBF"  # "CBF" or "MANUAL" or "STRAIGHT" or "LEFT_TURN"
         self.manual_control = {
             'throttle': 0.0,
             'brake': 0.0,
             'steer': 0.0
         }
         
-        # 左转控制器相关
+        # Left turn controller related
         self.turn_controller = {
             'enabled': False,
             'start_x': 0.0,
             'start_y': 0.0,
             'start_yaw': 0.0,
-            'turn_radius': 15.0,  # 转弯半径
-            'turn_speed': 8.0,    # 转弯时的速度
-            'turn_progress': 0.0,  # 转弯进度 (0-1)
-            'target_yaw': 0.0,    # 目标航向角
+            'turn_radius': 15.0,  # Turn radius
+            'turn_speed': 8.0,    # Speed during turn
+            'turn_progress': 0.0,  # Turn progress (0-1)
+            'target_yaw': 0.0,    # Target heading angle
             'turn_completed': False
         }
         
-        # 视频录制相关
+        # Video recording related
         self.recording = False
         self.recorded_frames = []
         self.video_filename = f"simulation_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.mp4"
-        self.auto_recording = args.record  # 自动录制开关
-        self.show_debug = True  # debug绘制开关
+        self.auto_recording = args.record  # Auto recording switch
+        self.show_debug = True  # Debug drawing switch
         
-        # 初始化预测器（固定选择已提供的v2_fixed权重）
+        # Initialize predictor (fixed selection of provided v2_fixed weights)
         self.predictor = WalkerActionPredictor(model_path=os.path.join('assets', 'walker_speed_predictor_v2_fixed.pth'))
         
-        # 生成车辆和行人
+        # Spawn vehicle and pedestrians
         self.spawn_actors()
         
-        # 初始化行人控制，确保所有行人都有初始速度
+        # Initialize pedestrian control, ensure all pedestrians have initial velocity
         for i, walker in enumerate(self.walkers):
             if i < len(self.walker_velocities):
                 vx, vy = self.walker_velocities[i]
@@ -145,7 +145,7 @@ class World(object):
                     walker_control.direction = carla.Vector3D(x=direction_x, y=direction_y, z=0.0)
                     walker_control.speed = speed
                     walker.apply_control(walker_control)
-                    print(f"行人{i}初始控制应用: 速度={speed:.2f}, 方向=({direction_x:.2f}, {direction_y:.2f})")
+                    print(f"Pedestrian {i} initial control applied: speed={speed:.2f}, direction=({direction_x:.2f}, {direction_y:.2f})")
         
         # 设置摄像头
         self.camera_manager = CameraManager(self.player, self.hud, self._gamma)

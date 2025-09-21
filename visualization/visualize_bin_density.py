@@ -2,20 +2,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
-# 加载 bin count 数据
+# Load bin count data
 count_path = "assets/conformal_grid_counts.pkl"
 with open(count_path, "rb") as f:
     bin_count = pickle.load(f)
 
-# 初始化 heatmaps
+# Initialize heatmaps
 heatmap_aperp_zone0 = np.zeros((3, 15))
 heatmap_aperp_zone1 = np.zeros((3, 15))
 heatmap_apar_zone0 = np.zeros((1, 15))
 heatmap_apar_zone1 = np.zeros((1, 15))
 
-# 填入计数
+# Fill in counts
 for (i, j, k, m), count in bin_count.items():
-    # a_perp 分 3 段 (j), a_par 分 1 段 (k=0)
+    # a_perp divided into 3 segments (j), a_par divided into 1 segment (k=0)
     if m == 0:
         heatmap_aperp_zone0[j, i] += count
         heatmap_apar_zone0[k, i] += count
@@ -23,10 +23,10 @@ for (i, j, k, m), count in bin_count.items():
         heatmap_aperp_zone1[j, i] += count
         heatmap_apar_zone1[k, i] += count
 
-# 设置轴标签
+# Set axis labels
 car_labels = [f"[{i}-{i+1})" for i in range(15)]
 aperp_labels = ["[0–1)", "[1–2)", "[2–3)"]
-apar_labels = ["[0–1)"]  # 只有一段
+apar_labels = ["[0–1)"]  # Only one segment
 
 # ===== Plot: a_perp zone 0 =====
 plt.figure(figsize=(9, 3))

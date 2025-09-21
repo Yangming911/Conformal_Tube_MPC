@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-可视化模型性能：比较实际轨迹和模型预测轨迹
+Visualize model performance: compare actual trajectories and model predicted trajectories
 """
 
 import sys
@@ -10,7 +10,7 @@ import pandas as pd
 from pathlib import Path
 import torch
 
-# 添加项目根目录到路径
+# Add project root directory to path
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -21,15 +21,15 @@ import utils.constants as C
 
 
 class TrajectoryVisualizer:
-    """轨迹可视化器"""
+    """Trajectory visualizer"""
     
     def __init__(self, model_path='../assets/walker_speed_predictor_new.pth'):
         self.predictor = WalkerActionPredictor(model_path)
         self.dt = 0.1
         
     def simulate_trajectory(self, car_speed, walker_y_init, max_steps=200):
-        """模拟轨迹"""
-        # 初始状态
+        """Simulate trajectory"""
+        # Initial state
         car_x = C.CAR_START_X
         car_y = C.CAR_LANE_Y
         walker_x = C.WALKER_START_X
@@ -37,7 +37,7 @@ class TrajectoryVisualizer:
         walker_vx = C.WALKER_START_V_X
         walker_vy = C.WALKER_START_V_Y
         
-        # 存储轨迹数据
+        # Store trajectory data
         car_trajectory = []
         walker_actual_trajectory = []
         walker_predicted_trajectory = []
@@ -45,12 +45,12 @@ class TrajectoryVisualizer:
         walker_predicted_velocities = []
         
         for step in range(max_steps):
-            # 记录当前位置
+            # Record current position
             car_trajectory.append([car_x, car_y])
             walker_actual_trajectory.append([walker_x, walker_y])
-            walker_predicted_trajectory.append([walker_x, walker_y])  # 初始位置相同
+            walker_predicted_trajectory.append([walker_x, walker_y])  # Initial position same
             
-            # 实际下一步速度（来自social force模型）
+            # Actual next step velocity (from social force model)
             actual_vx, actual_vy = walker_logic_SF(
                 car_speed, car_x, car_y, walker_x, walker_y, walker_vx, walker_vy,
                 v_max=C.v_max, a_max=C.a_max, destination_y=C.WALKER_DESTINATION_Y
@@ -89,7 +89,7 @@ class TrajectoryVisualizer:
     
     def simulate_predicted_trajectory(self, car_speed, walker_y_init, max_steps=200):
         """使用模型预测的速度模拟完整轨迹"""
-        # 初始状态
+        # Initial state
         car_x = C.CAR_START_X
         car_y = C.CAR_LANE_Y
         walker_x = C.WALKER_START_X
@@ -97,13 +97,13 @@ class TrajectoryVisualizer:
         walker_vx = C.WALKER_START_V_X
         walker_vy = C.WALKER_START_V_Y
         
-        # 存储轨迹数据
+        # Store trajectory data
         car_trajectory = []
         walker_predicted_trajectory = []
         walker_predicted_velocities = []
         
         for step in range(max_steps):
-            # 记录当前位置
+            # Record current position
             car_trajectory.append([car_x, car_y])
             walker_predicted_trajectory.append([walker_x, walker_y])
             

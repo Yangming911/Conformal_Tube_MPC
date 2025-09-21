@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-比较基础版本和V2版本模型的性能
+Compare performance of base version and V2 version models
 """
 
 import sys
@@ -10,7 +10,7 @@ import pandas as pd
 from pathlib import Path
 import torch
 
-# 添加项目根目录到路径
+# Add project root directory to path
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -21,7 +21,7 @@ import utils.constants as C
 
 
 class ModelComparator:
-    """模型比较器"""
+    """Model comparator"""
     
     def __init__(self):
         self.dt = 0.1
@@ -29,7 +29,7 @@ class ModelComparator:
         self.predictor_v2 = WalkerActionPredictor('../assets/walker_speed_predictor_v2_fixed.pth')
     
     def simulate_with_model(self, predictor, car_speed, walker_y_init, max_steps=200):
-        """使用指定模型模拟轨迹"""
+        """Simulate trajectory using specified model"""
         # 初始状态
         car_x = C.CAR_START_X
         car_y = C.CAR_LANE_Y

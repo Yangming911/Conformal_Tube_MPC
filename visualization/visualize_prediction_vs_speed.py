@@ -4,21 +4,21 @@ import torch
 import pickle
 from models.model_def import WalkerSpeedPredictor
 
-# 加载模型
+# Load model
 model = WalkerSpeedPredictor()
 model.load_state_dict(torch.load("assets/walker_speed_predictor.pth"))
 model.eval()
 
-# 加载 CP Grid
+# Load CP Grid
 with open("assets/conformal_grid.pkl", "rb") as f:
     cp_grid = pickle.load(f)
 
-# 准备数据：15 个 car_speed bin（[0, 1), [1, 2), ..., [14, 15)）
+# Prepare data: 15 car_speed bins ([0, 1), [1, 2), ..., [14, 15))
 car_bins = np.linspace(0, 15, 16)
 car_centers = (car_bins[:-1] + car_bins[1:]) / 2
 
-# 每个 bin 采样若干 walker_y（这里选 275, 375 分别对应 zone 0, 1）
-walker_y = 275  # 固定一个 walker_y（你可以尝试不同值）
+# Sample several walker_y for each bin (here choose 275, 375 corresponding to zone 0, 1)
+walker_y = 275  # Fixed walker_y (you can try different values)
 v_par_means, v_perp_means = [], []
 v_par_etas, v_perp_etas = [], []
 
@@ -32,14 +32,14 @@ for i in range(15):  # car speed bin
     v_perp_means.append(pred[1])
 
     j = min(int(pred[1]), 2)  # v_perp bin
-    k = 0                     # v_par 只有一个 bin
+    k = 0                     # v_par has only one bin
     m = 0 if walker_y < 300 else 1
 
     eta_par, eta_perp = cp_grid.get((i, j, k, m), (0.5, 0.5))
     v_par_etas.append(eta_par)
     v_perp_etas.append(eta_perp)
 
-# 绘图
+# Plot
 plt.figure(figsize=(10, 6))
 
 # Δa_perp
@@ -72,7 +72,7 @@ for car_v in car_centers:
     ground_truth_vx.append(walker_v_x)
     ground_truth_vy.append(walker_v_y)
 
-# 在图中添加虚线
+# Add dashed lines to the plot
 plt.plot(car_centers, ground_truth_vy, 'b--', label=r'Ground Truth $a_{\perp}$')
 plt.plot(car_centers, ground_truth_vx, 'r--', label=r'Ground Truth $a_{\parallel}$')
 

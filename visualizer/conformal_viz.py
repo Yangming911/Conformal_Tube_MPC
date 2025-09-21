@@ -31,7 +31,7 @@ def plot_eta_vs_car_v(
     grid_path: str = CP_GRID_PATH,
 ):
     """
-    6D 网格切片：固定 car_x / walker_y / past_vx / past_vy，沿 car_v (0..14) 画 η_x 或 η_y。
+    6D grid slice: fix car_x / walker_y / past_vx / past_vy, plot η_x or η_y along car_v (0..14).
     """
     grid = load_grid(grid_path)
     K_CAR_V = 15
@@ -61,7 +61,7 @@ def plot_eta_heatmap_carx_carv(
     counts_overlay: bool = True,
 ):
     """
-    6D 网格切片：固定 walker_y / past_vx / past_vy，绘制 (car_x, car_v) 的 η 热力图。
+    6D grid slice: fix walker_y / past_vx / past_vy, draw η heatmap over (car_x, car_v).
     """
     grid = load_grid(grid_path)
     counts = load_counts() if counts_overlay else None
@@ -84,7 +84,7 @@ def plot_eta_heatmap_carx_carv(
     plt.title(f'eta_{dim} heatmap over (car_x, car_v) | wy={walker_y_bin}, pvx={past_vx_bin}, pvy={past_vy_bin}')
 
     if counts is not None:
-        # 仅在低计数时标记
+        # Mark only when count is low
         for i in range(K_CAR_X):
             for j in range(K_CAR_V):
                 key = (i, j, 0, walker_y_bin, past_vx_bin, past_vy_bin)
@@ -97,7 +97,7 @@ def plot_eta_heatmap_carx_carv(
 
 
 if __name__ == '__main__':
-    # 示例：按 car_v 绘制一个切片
+    # Example: plot a slice by car_v
     plot_eta_vs_car_v(dim='x', car_x_bin=10, walker_y_bin=3, past_vx_bin=2, past_vy_bin=2)
-    # 示例：绘制 (car_x, car_v) 热力图
+    # Example: draw (car_x, car_v) heatmap
     plot_eta_heatmap_carx_carv(dim='y', walker_y_bin=3, past_vx_bin=2, past_vy_bin=2)

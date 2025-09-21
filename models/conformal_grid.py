@@ -53,9 +53,9 @@ def build_conformal_grid(
     calib_csv_path: str = None,
 ) -> Dict[Tuple[int, int, int, int, int, int], Tuple[float, float]]:
     """
-    构建 conformal region grid, key: (i_car_x, i_car_v, i_walker_x, i_walker_y, i_past_vx, i_past_vy)
+    Build conformal region grid, key: (i_car_x, i_car_v, i_walker_x, i_walker_y, i_past_vx, i_past_vy)
 
-    维度建议：40 x 15 x 1 x 10 x 5 x 5
+    Dimension recommendation: 40 x 15 x 1 x 10 x 5 x 5
     """
 
     # Load data. If external calibration CSV is provided, use it; otherwise collect fresh.
@@ -144,7 +144,7 @@ def build_conformal_grid(
 
 
 def get_eta(car_x: float, car_v: float, walker_x: float, walker_y: float, walker_vx: float, walker_vy: float, cp_alpha: float = DEFAULT_ALPHA):
-    """从已加载的 grid 中获取 eta 值，按照 40x15x1x10x5x5 网格索引。"""
+    """Get eta values from loaded grid, indexed by 40x15x1x10x5x5 grid."""
     global _CP_GRID_CACHE
     
     # Generate file path based on cp_alpha

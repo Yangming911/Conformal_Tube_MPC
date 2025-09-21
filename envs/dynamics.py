@@ -30,7 +30,7 @@ def walker_logic(car_v, walker_y_position):
     return walker_v_x, walker_v_y
 
 def update_car_position(car_x_position, car_v, dt=0.1):
-    car_x_position += car_v * dt  # 正确使用 x = x + v*dt
+    car_x_position += car_v * dt  # Correctly use x = x + v*dt
     if car_x_position > 800:
         car_x_position = -40
         car_v = np.random.uniform(low=1, high=15)
@@ -39,8 +39,8 @@ def update_car_position(car_x_position, car_v, dt=0.1):
 def update_walker_position(car_v, walker_x_position, walker_y_position, dt=0.1):
     if 200 <= walker_y_position < 450:
         walker_v_x, walker_v_y = walker_logic(car_v, walker_y_position)
-        walker_y_position += walker_v_y * dt  # 正确使用 x = x + v*dt
-        walker_x_position += walker_v_x * dt  # 正确使用 x = x + v*dt
+        walker_y_position += walker_v_y * dt  # Correctly use x = x + v*dt
+        walker_x_position += walker_v_x * dt  # Correctly use x = x + v*dt
     else:
         walker_y_position = 200
         walker_x_position = 400

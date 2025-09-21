@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-批量调用 evalcbf_multi.py，针对多组行人数量运行评估：1, 3, 5, 7, 9。
+Batch call evalcbf_multi.py, run evaluation for multiple pedestrian counts: 1, 3, 5, 7, 9.
 
-用法示例：
-  - 快速模式（每组100样本）:
+Usage examples:
+  - Quick mode (100 samples per group):
       python tools/run_evalcbf_multi_batch.py --quick
-  - 常规模式（使用 evalcbf_multi.py 的默认 sample_num）:
+  - Regular mode (use evalcbf_multi.py default sample_num):
       python tools/run_evalcbf_multi_batch.py
-  - 自定义gamma参数:
+  - Custom gamma parameter:
       python tools/run_evalcbf_multi_batch.py --gamma 0.5
-  - 自定义行人数量列表:
+  - Custom pedestrian count list:
       python tools/run_evalcbf_multi_batch.py --nums 1,2,4,8
 """
 

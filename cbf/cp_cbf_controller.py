@@ -15,12 +15,12 @@ import utils.constants as C
 
 def cp_cbf_controller(state, T=10, d_safe=10.0, cp_alpha=0.85):
     """
-    考虑 conformal 预测误差的轨迹CBF控制器，输出当前控制输入 u0。
+    Trajectory CBF controller considering conformal prediction error, outputs current control input u0.
     
     Args:
         state: Dict containing car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy
-        T: 预测步长
-        d_safe: 安全距离
+        T: Prediction horizon
+        d_safe: Safety distance
     
     Returns:
         float: Control input (car velocity)
@@ -33,14 +33,14 @@ def cp_cbf_controller(state, T=10, d_safe=10.0, cp_alpha=0.85):
     walker_vx = state["walker_vx"]
     walker_vy = state["walker_vy"]
     
-    # 初始位置
+    # Initial position
     x0 = car_x
     y0 = [walker_x, walker_y]
     
     u_des = 15.0
     u_min, u_max = 0.0, 15.0
 
-    # Step 1: 尝试匀速是否安全
+    # Step 1: Try if constant speed is safe
     u_nominal = np.full(T, u_des)
     x_nominal = forward_car(x0, u_nominal)
     y_nominal = forward_ped_trace(y0, x_nominal, car_x0=x0, car_y=car_y)
@@ -50,11 +50,11 @@ def cp_cbf_controller(state, T=10, d_safe=10.0, cp_alpha=0.85):
         car_pos = np.array([x_nominal[t], car_y])
         ped_pos = np.array(y_nominal[t])
 
-        # 提取信息用于获取 eta (采用可用量的近似)
+        # Extract information to get eta (using approximation of available quantities)
         car_speed = u_nominal[t]
         car_x_curr = x_nominal[t]
         walker_x_curr, walker_y_curr = ped_pos[0], ped_pos[1]
-        # 用至今位移均速近似行人当前速度
+        # Use average velocity from displacement so far to approximate pedestrian current velocity
         approx_vx = (ped_pos[0] - y0[0]) / (t + 1e-3)
         approx_vy = (ped_pos[1] - y0[1]) / (t + 1e-3)
         eta_x, eta_y = get_eta(car_x_curr, car_speed, walker_x_curr, walker_y_curr, approx_vx, approx_vy, cp_alpha)
@@ -68,7 +68,7 @@ def cp_cbf_controller(state, T=10, d_safe=10.0, cp_alpha=0.85):
     if is_safe:
         return u_des
 
-    # Step 2: 构造优化问题（目标仍是 u0 接近 u_des）
+    # Step 2: Construct optimization problem (objective is still u0 close to u_des)
     u_seq = cp.Variable(T)
     x_trace = forward_car(x0, u_seq)
     x_sample = forward_car(x0, np.full(T, u_des))
@@ -79,7 +79,7 @@ def cp_cbf_controller(state, T=10, d_safe=10.0, cp_alpha=0.85):
         dx = x_trace[t] - y_trace[t][0]
         dy = car_y - y_trace[t][1]
 
-        # 同样获取 eta 并构造 d_eff
+        # Similarly get eta and construct d_eff
         car_speed = u_des  # 用 sample 轨迹的速度近似
         car_x_curr = x_sample[t]
         walker_x_curr, walker_y_curr = y_trace[t][0], y_trace[t][1]
@@ -123,14 +123,14 @@ def cp_cbf_controller_multi_pedestrian(state, T=10, d_safe=10.0, cp_alpha=0.85):
     
     num_pedestrians = len(walker_x_list)
     
-    # 初始位置
+    # Initial position
     x0 = car_x
     y0_list = [[walker_x_list[i], walker_y_list[i]] for i in range(num_pedestrians)]
     
     u_des = 15.0
     u_min, u_max = 0.0, 15.0
 
-    # Step 1: 尝试匀速是否安全
+    # Step 1: Try if constant speed is safe
     u_nominal = np.full(T, u_des)
     x_nominal = forward_car(x0, u_nominal)
     
@@ -152,7 +152,7 @@ def cp_cbf_controller_multi_pedestrian(state, T=10, d_safe=10.0, cp_alpha=0.85):
             car_speed = u_nominal[t]
             car_x_curr = x_nominal[t]
             walker_x_curr, walker_y_curr = ped_pos[0], ped_pos[1]
-            # 用至今位移均速近似行人当前速度
+            # Use average velocity from displacement so far to approximate pedestrian current velocity
             approx_vx = (ped_pos[0] - y0_list[i][0]) / (t + 1e-3)
             approx_vy = (ped_pos[1] - y0_list[i][1]) / (t + 1e-3)
             eta_x, eta_y = get_eta(car_x_curr, car_speed, walker_x_curr, walker_y_curr, approx_vx, approx_vy, cp_alpha)
@@ -169,7 +169,7 @@ def cp_cbf_controller_multi_pedestrian(state, T=10, d_safe=10.0, cp_alpha=0.85):
     if is_safe:
         return u_des
 
-    # Step 2: 构造优化问题（目标仍是 u0 接近 u_des）
+    # Step 2: Construct optimization problem (objective is still u0 close to u_des)
     u_seq = cp.Variable(T)
     x_trace = forward_car(x0, u_seq)
     x_sample = forward_car(x0, np.full(T, u_des))
@@ -188,7 +188,7 @@ def cp_cbf_controller_multi_pedestrian(state, T=10, d_safe=10.0, cp_alpha=0.85):
             dx = x_trace[t] - y_trace_list[i][t][0]
             dy = car_y - y_trace_list[i][t][1]
 
-            # 同样获取 eta 并构造 d_eff
+            # Similarly get eta and construct d_eff
             car_speed = u_des  # 用 sample 轨迹的速度近似
             car_x_curr = x_sample[t]
             walker_x_curr, walker_y_curr = y_trace_list[i][t][0], y_trace_list[i][t][1]
@@ -246,14 +246,14 @@ def cp_cbf_controller_multi_pedestrian(state, T=10, d_safe=10.0, cp_alpha=0.85):
 #     walker_vx = state["walker_vx"]
 #     walker_vy = state["walker_vy"]
     
-#     # 初始位置
+#     # Initial position
 #     x0 = car_x
 #     y0 = [walker_x, walker_y]
     
 #     u_des = 15.0
 #     u_min, u_max = 0.0, 15.0
 
-#     # Step 1: 尝试匀速是否安全（使用真实的网络预测）
+#     # Step 1: Try if constant speed is safe（使用真实的网络预测）
 #     u_nominal = np.full(T, u_des)
 #     x_nominal = forward_car(x0, u_nominal)
 #     y_nominal = forward_ped_trace(y0, x_nominal, car_x0=x0, car_y=car_y)

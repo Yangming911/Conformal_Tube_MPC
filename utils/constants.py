@@ -16,7 +16,7 @@ dt = 0.1
 walker_noise_y_sigma = 0.5
 walker_noise_x_sigma = 0.1
 mass_pedestrian = 80
-num_pedestrians = 3  # 默认使用3个行人进行测试
+num_pedestrians = 3  # Default to use 3 pedestrians for testing
 
 
 __all__ = [

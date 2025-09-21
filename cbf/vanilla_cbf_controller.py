@@ -14,15 +14,15 @@ import utils.constants as C
 
 def vanilla_cbf_controller(state, T=10, d_safe=0.5):
     """
-    使用cvxpy求解轨迹CBF问题，返回当前控制输入 u0。
+    Use cvxpy to solve trajectory CBF problem, return current control input u0.
 
-    参数：
+    Parameters:
         state: Dict containing car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy
-        T: 预测步长
-        d_safe: 安全距离
+        T: Prediction horizon
+        d_safe: Safety distance
 
-    返回：
-        u0: 当前步速度（float）
+    Returns:
+        u0: Current step velocity (float)
     """
     car_x = state["car_x"]
     car_y = state["car_y"]
@@ -32,14 +32,14 @@ def vanilla_cbf_controller(state, T=10, d_safe=0.5):
     walker_vx = state["walker_vx"]
     walker_vy = state["walker_vy"]
     
-    # 初始位置
+    # Initial position
     x0 = car_x
     y0 = [walker_x, walker_y]
     
     u_des = 15.0
     u_min, u_max = 0.0, 15.0
 
-    # Step 1: 尝试匀速控制是否安全
+    # Step 1: Try if constant speed control is safe
     u_nominal = np.full(T, u_des)
     x_nominal = forward_car(x0, u_nominal)
     y_nominal = forward_ped_trace(y0, x_nominal, car_x0=x0, car_y=car_y)
@@ -52,7 +52,7 @@ def vanilla_cbf_controller(state, T=10, d_safe=0.5):
             is_safe = False
             break
     if is_safe:
-        return u_des  # 匀速控制已足够安全，直接返回
+        return u_des  # Constant speed control is safe enough, return directly
 
     # Step 2: 构造cvxpy优化问题，优化整个 u_seq
     u_seq = cp.Variable(T)

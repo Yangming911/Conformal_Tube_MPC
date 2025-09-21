@@ -1,149 +1,207 @@
-# 项目结构说明
+# Project Structure Documentation
 
-## 📁 目录结构
+## 📁 Directory Structure
 
 ```
-cp_mpc_coupled_adjust/
-├── analysis/                    # 模型分析脚本
-│   ├── analyze_model_performance.py    # 详细性能分析
-│   └── compare_models.py               # 模型对比分析
-├── assets/                      # 资源文件
-│   ├── *.pth                    # 训练好的模型文件
-│   ├── *.pkl                    # 预处理的网格数据
-│   ├── *.csv                    # 数据集文件
-│   └── *.json                   # 训练结果文件
-├── cbf/                         # 控制屏障函数控制器
+icra_2026/
+├── analysis/                    # Model analysis scripts
+│   ├── analyze_model_performance.py    # Detailed performance analysis
+│   └── compare_models.py               # Model comparison analysis
+├── assets/                      # Resource files
+│   ├── *.pth                    # Trained model files
+│   ├── *.pkl                    # Preprocessed grid data
+│   ├── *.csv                    # Dataset files
+│   └── *.json                   # Training result files
+├── cbf/                         # Control Barrier Function controllers
 │   ├── cp_cbf_controller.py
 │   ├── current_cbf_controller.py
 │   └── vanilla_cbf_controller.py
-├── envs/                        # 环境定义
-│   ├── dynamics_social_force.py # 社会力动力学
-│   ├── dynamics.py              # 基础动力学
-│   └── simulator.py             # 仿真器
-├── logs/                        # 日志和输出文件
-│   ├── *.log                    # 训练和运行日志
-│   ├── *.png                    # 生成的图片
-│   ├── *.csv                    # 分析数据
-│   └── *.md                     # 分析报告
-├── models/                      # 模型定义
-│   ├── conformal_grid.py        # 保形网格
-│   ├── model_def.py             # 神经网络模型定义
-│   └── predictor.py             # 模型预测器
-├── mpc/                         # 模型预测控制
-│   ├── car_dynamics.py          # 车辆动力学
-│   ├── ped_dynamics.py          # 行人动力学
-│   ├── tube_utils.py            # 管状MPC工具
-│   ├── tubempc_controller.py    # 管状MPC控制器
-│   └── vanillampc_controller.py # 标准MPC控制器
-├── results/                     # 实验结果
-│   ├── *.png                    # 结果图片
-│   └── *.pdf                    # 结果文档
-├── scripts/                     # 工具脚本
-│   └── gen_cp_grid.py           # 生成保形网格
-├── simulation/                  # 仿真脚本
-│   └── run_simulation.py        # 运行仿真
-├── training/                    # 训练脚本
-│   ├── test_model.py            # 模型测试
-│   └── train_walker_predictor.py # 模型训练
-├── utils/                       # 工具函数
-│   └── constants.py             # 常量定义
-├── visualization/               # 可视化脚本
-│   ├── visualize_bin_density.py
-│   ├── visualize_model_performance.py
-│   ├── visualize_prediction_vs_speed.py
-│   └── visulize_cp_grid.py
-├── visualizer/                  # 可视化工具
-│   └── conformal_viz.py         # 保形可视化
-├── evaluation/                  # 评估目录
-├── main.py                      # 主程序入口
-├── eval.py                      # 评估脚本
-├── evalcbf.py                   # CBF评估脚本
-├── generate_cp_grid.py          # 生成保形网格
-├── pygame_tube_viz.py           # Pygame可视化
-├── tube_test.py                 # 管状测试
-├── requirements.txt             # 依赖包列表
-├── LICENSE                      # 许可证
-├── README.md                    # 项目说明
-└── PROJECT_STRUCTURE.md         # 本文件
+├── demo_HD/                     # Demo files
+│   ├── demo_HD_cover.jpg        # Demo cover image
+│   └── demo_HD.mp4              # Demo video
+├── envs/                        # Environment definitions
+│   ├── dynamics_social_force.py # Social force dynamics
+│   ├── dynamics.py              # Basic dynamics
+│   └── simulator.py             # Simulator
+├── logs/                        # Log and output files
+│   ├── *.log                    # Training and runtime logs
+│   ├── *.png                    # Generated images
+│   ├── *.csv                    # Analysis data
+│   └── *.md                     # Analysis reports
+├── models/                      # Model definitions
+│   ├── conformal_grid.py        # Conformal grid
+│   ├── model_def.py             # Neural network model definition
+│   └── predictor.py             # Model predictor
+├── mpc/                         # Model Predictive Control
+│   ├── car_dynamics.py          # Car dynamics
+│   ├── ped_dynamics.py          # Pedestrian dynamics
+│   ├── tube_utils.py            # Tube MPC utilities
+│   ├── tubempc_controller.py    # Tube MPC controller
+│   └── vanillampc_controller.py # Standard MPC controller
+├── results/                     # Experimental results
+│   ├── *.png                    # Result images
+│   ├── *.pdf                    # Result documents
+│   └── *.gif                    # Animation files
+├── simulation/                  # Simulation scripts
+│   └── run_simulation.py        # Run simulation
+├── tools/                       # Utility tools
+│   ├── identify_best_model.py   # Model identification tool
+│   └── run_evalcbf_multi_batch.py # Batch evaluation runner
+├── training/                    # Training scripts
+│   ├── test_model.py            # Model testing
+│   └── train_walker_predictor.py # Model training
+├── utils/                       # Utility functions
+│   └── constants.py             # Constant definitions
+├── visualization/               # Visualization scripts
+│   ├── carla_demo_region.py     # CARLA demo visualization
+│   ├── multi_ped_results.csv    # Multi-pedestrian results
+│   ├── plot_cbf_beta_analysis.py # CBF beta analysis plots
+│   ├── plot_cbf_beta_comparison.py # CBF beta comparison plots
+│   ├── plot_multi_ped_comparison.py # Multi-pedestrian comparison plots
+│   ├── pygame_tube_viz.py       # Pygame tube visualization
+│   ├── visualize_bin_density.py # Bin density visualization
+│   ├── visualize_model_performance.py # Model performance visualization
+│   ├── visualize_prediction_vs_speed.py # Prediction vs speed visualization
+│   └── visulize_cp_grid.py      # Conformal prediction grid visualization
+├── visualizer/                  # Visualization tools
+│   └── conformal_viz.py         # Conformal visualization
+├── evalAPF_multi.py             # Multi-pedestrian APF evaluation
+├── evalcbf_multi.py             # Multi-pedestrian CBF evaluation
+├── find_max_errors.py           # Error analysis script
+├── main.py                      # Main program entry
+├── requirements.txt             # Dependency list
+├── README.md                    # Project description
+└── PROJECT_STRUCTURE.md         # This file
 ```
 
-## 🚀 使用方法
+## 🚀 Usage
 
-### 训练模型
+### Training Models
 ```bash
-# 进入训练目录
+# Enter training directory
 cd training
 
-# 训练基础模型
+# Train basic model
 python train_walker_predictor.py --model WalkerSpeedPredictor --epochs 50
 
-# 训练残差+注意力模型
+# Train residual+attention model
 python train_walker_predictor.py --model WalkerSpeedPredictorV2 --epochs 50
 
-# 测试模型
+# Test model
 python test_model.py
 ```
 
-### 分析模型性能
+### Analyze Model Performance
 ```bash
-# 进入分析目录
+# Enter analysis directory
 cd analysis
 
-# 详细性能分析
+# Detailed performance analysis
 python analyze_model_performance.py
 
-# 模型对比分析
+# Model comparison analysis
 python compare_models.py
 ```
 
-### 可视化结果
+### Visualize Results
 ```bash
-# 进入可视化目录
+# Enter visualization directory
 cd visualization
 
-# 模型性能可视化
+# Model performance visualization
 python visualize_model_performance.py
 ```
 
-### 运行仿真
+### Run Simulation
 ```bash
-# 在项目根目录
+# In project root directory
 python main.py
 ```
 
-## 📂 文件说明
+### Evaluate Controllers
+```bash
+# Multi-pedestrian CBF evaluation
+python evalcbf_multi.py --sample_num 1000 --num_pedestrians 3
 
-### 核心文件
-- `main.py`: 主程序入口，运行完整的仿真
-- `models/model_def.py`: 神经网络模型定义
-- `models/predictor.py`: 模型预测器接口
-- `envs/simulator.py`: 仿真环境
+# Multi-pedestrian APF evaluation
+python evalAPF_multi.py --sample_num 1000 --num_pedestrians 3
 
-### 训练相关
-- `training/train_walker_predictor.py`: 模型训练脚本
-- `training/test_model.py`: 模型测试脚本
-- `assets/*.pth`: 训练好的模型文件
+# Batch evaluation with different pedestrian counts
+python tools/run_evalcbf_multi_batch.py --nums 1,3,5,7,9 --quick
+```
 
-### 分析相关
-- `analysis/analyze_model_performance.py`: 详细性能分析
-- `analysis/compare_models.py`: 模型对比分析
-- `logs/*.png`: 分析结果图片
-- `logs/*.csv`: 分析数据
+### Error Analysis
+```bash
+# Find maximum errors in calibration dataset
+python find_max_errors.py
+```
 
-### 可视化相关
-- `visualization/visualize_model_performance.py`: 模型性能可视化
-- `results/*.png`: 实验结果图片
+## 📂 File Descriptions
 
-## 🔧 路径配置
+### Core Files
+- `main.py`: Main program entry, runs complete simulation
+- `models/model_def.py`: Neural network model definition (WalkerSpeedPredictor, WalkerSpeedPredictorV2)
+- `models/predictor.py`: Model predictor interface with legacy and new format support
+- `models/conformal_grid.py`: Conformal prediction grid implementation
+- `envs/simulator.py`: Multi-pedestrian simulation environment
+- `envs/dynamics.py`: Basic dynamics implementation
+- `envs/dynamics_social_force.py`: Social force model dynamics
 
-所有脚本都已配置为相对于项目根目录的路径：
-- 训练脚本使用 `../assets/` 访问资源文件
-- 分析脚本使用 `../logs/` 保存输出文件
-- 可视化脚本使用 `../logs/` 保存图片
+### Controller Implementations
+- `cbf/current_cbf_controller.py`: Current CBF controller with conformal prediction
+- `cbf/cp_cbf_controller.py`: Conformal prediction CBF controller
+- `cbf/vanilla_cbf_controller.py`: Vanilla CBF controller
+- `mpc/tubempc_controller.py`: Tube-based MPC controller
+- `mpc/vanillampc_controller.py`: Vanilla MPC controller
+- `mpc/car_dynamics.py`: Car dynamics for MPC
+- `mpc/ped_dynamics.py`: Pedestrian dynamics for MPC
+- `mpc/tube_utils.py`: Tube MPC utility functions
 
-## 📝 注意事项
+### Training Related
+- `training/train_walker_predictor.py`: Model training script with support for multiple architectures
+- `training/test_model.py`: Model testing and loading verification
+- `assets/*.pth`: Trained model files (walker_speed_predictor.pth, walker_speed_predictor_v2_fixed.pth, etc.)
+- `assets/*.json`: Training results and metrics
 
-1. 运行脚本时请确保在正确的目录中
-2. 所有输出文件都会保存到 `logs/` 目录
-3. 模型文件保存在 `assets/` 目录
-4. 实验结果保存在 `results/` 目录
+### Evaluation Scripts
+- `evalcbf_multi.py`: Multi-pedestrian CBF controller evaluation
+- `evalAPF_multi.py`: Multi-pedestrian APF controller evaluation
+- `find_max_errors.py`: Calibration dataset error analysis
+- `tools/run_evalcbf_multi_batch.py`: Batch evaluation runner for multiple pedestrian counts
+
+### Analysis Related
+- `analysis/analyze_model_performance.py`: Detailed model performance analysis
+- `analysis/compare_models.py`: Model comparison analysis between different architectures
+- `logs/*.png`: Analysis result images and plots
+- `logs/*.csv`: Analysis data and simulation results
+- `logs/*.md`: Analysis reports and summaries
+
+### Visualization Related
+- `visualization/carla_demo_region.py`: CARLA demo with CBF controller integration
+- `visualization/visualize_model_performance.py`: Model performance visualization
+- `visualization/visualize_prediction_vs_speed.py`: Prediction vs speed analysis plots
+- `visualization/pygame_tube_viz.py`: Pygame-based tube visualization
+- `visualization/plot_cbf_beta_analysis.py`: CBF beta parameter analysis plots
+- `visualization/plot_multi_ped_comparison.py`: Multi-pedestrian comparison plots
+- `visualizer/conformal_viz.py`: Conformal prediction grid visualization
+- `results/*.png`: Experimental result images and plots
+- `results/*.pdf`: Result documents and papers
+- `results/*.gif`: Animation files
+
+### Demo and Media
+- `demo_HD/demo_HD_cover.jpg`: Demo cover image
+- `demo_HD/demo_HD.mp4`: Demo video file
+
+## 🔧 Path Configuration
+
+All scripts are configured with paths relative to the project root directory:
+- Training scripts use `../assets/` to access resource files
+- Analysis scripts use `../logs/` to save output files
+- Visualization scripts use `../logs/` to save images
+
+## 📝 Notes
+
+1. Make sure you are in the correct directory when running scripts
+2. All output files will be saved to the `logs/` directory
+3. Model files are saved in the `assets/` directory
+4. Experimental results are saved in the `results/` directory

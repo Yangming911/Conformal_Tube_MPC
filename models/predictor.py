@@ -4,7 +4,7 @@ import numpy as np
 from models.model_def import WalkerSpeedPredictor, WalkerSpeedPredictorV2
 
 class WalkerActionPredictor:
-    """行人动作预测器 - 兼容旧版本和新版本模型"""
+    """Pedestrian action predictor - compatible with old and new version models"""
     
     def __init__(self, model_path='assets/walker_speed_predictor.pth', device='cpu'):
         self.device = device
@@ -16,15 +16,15 @@ class WalkerActionPredictor:
         self._load_model(model_path)
     
     def _load_model(self, model_path):
-        """加载模型，支持新旧格式"""
+        """Load model, supports old and new formats"""
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found: {model_path}")
         
         try:
-            # 尝试加载新格式（包含scaler）
+            # Try loading new format (includes scaler)
             checkpoint = torch.load(model_path, map_location=self.device)
             if 'model_state_dict' in checkpoint:
-                # 新格式
+                # New format
                 config = checkpoint.get('config', {})
                 model_name = config.get('model_name', 'WalkerSpeedPredictor')
                 
@@ -49,7 +49,7 @@ class WalkerActionPredictor:
                 self.scaler_y = checkpoint.get('scaler_y')
                 self.is_legacy_model = False
             else:
-                # 旧格式
+                # Old format
                 self.model = WalkerSpeedPredictor()
                 self.model.load_state_dict(checkpoint)
                 self.is_legacy_model = True
@@ -63,16 +63,16 @@ class WalkerActionPredictor:
     
     def predict(self, car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy):
         """
-        预测行人下一步速度
+        Predict pedestrian next step velocity
         
         Args:
-            car_x, car_y, car_v: 车辆位置和速度
-            walker_x, walker_y, walker_vx, walker_vy: 行人位置和速度
+            car_x, car_y, car_v: Vehicle position and velocity
+            walker_x, walker_y, walker_vx, walker_vy: Pedestrian position and velocity
         
         Returns:
             tuple: (next_walker_vx, next_walker_vy)
         """
-        # 准备输入特征
+        # Prepare input features
         if self.is_legacy_model:
             # 旧模型只使用car_v和walker_y
             features = np.array([[car_v, walker_y]], dtype=np.float32)

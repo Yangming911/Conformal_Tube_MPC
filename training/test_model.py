@@ -1,5 +1,5 @@
 """
-测试训练好的行人速度预测模型
+Test trained pedestrian velocity prediction model
 """
 
 import sys
@@ -8,7 +8,7 @@ import pandas as pd
 import torch
 from pathlib import Path
 
-# 添加项目根目录到路径
+# Add project root directory to path
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -18,11 +18,11 @@ from models.model_def import WalkerSpeedPredictor, WalkerSpeedPredictorV2
 
 
 def test_model_loading():
-    """测试模型加载"""
+    """Test model loading"""
     print("Testing model loading...")
     
     try:
-        # 测试新模型加载
+        # Test new model loading
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
         print(f"Using device: {device}")
         predictor = WalkerActionPredictor('../assets/walker_speed_predictor.pth', device=device)
