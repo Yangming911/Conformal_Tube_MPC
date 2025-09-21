@@ -12,7 +12,7 @@ The system achieves safe vehicle-pedestrian interaction through the following co
 - **Social Force Model Simulator**: Simulates realistic pedestrian behavior patterns
 ---
 ## 🎥 Demo
-See the demo video in the `demo_HD` folder.
+See the high-definition demo video at `demo_HD/demo_HD.mp4`.
 
 <p align="center">
   <img src="./demo_HD/demo_HD.gif" width="400"/>
