@@ -68,9 +68,9 @@ def run_episodes_scp(
         old_warn_handler = warnings.showwarning
         warnings.showwarning = warning_to_log
         
-        # Write experiment header
-        with open(log_file, 'w') as f:
-            f.write("="*70 + "\n")
+        # Write experiment header (append mode to preserve history)
+        with open(log_file, 'a') as f:
+            f.write("\n\n" + "="*70 + "\n")
             f.write("SCP Evaluation Experiment Log\n")
             f.write("="*70 + "\n")
             f.write(f"Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
