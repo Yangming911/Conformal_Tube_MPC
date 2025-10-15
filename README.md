@@ -1,4 +1,4 @@
-# SPARC: Safe Prediction-based Autonomous Robust Control
+# Chance-Constrained Neural-Network MPC for Interactive Multi-Agent Systems via Sequential Convex Programming
 
 This project implements a vehicle-pedestrian interaction safety control system based on **Sequential Convex Programming (SCP)** with **Conformal Prediction**, combining neural network-based pedestrian trajectory prediction and robust optimization techniques to ensure safe vehicle operation in complex traffic environments.
 
