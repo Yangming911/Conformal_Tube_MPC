@@ -1,17 +1,21 @@
-# SPARC: A Safe Prediction-Based Robust Controller with Dynamically Coupled Uncontrollable Agents
+# SPARC: Safe Prediction-based Autonomous Robust Control
 
-This project implements a vehicle-pedestrian interaction safety control system based on Control Barrier Functions (CBF), combining neural network prediction and Conformal Prediction techniques to ensure safe vehicle operation in complex traffic environments.
+This project implements a vehicle-pedestrian interaction safety control system based on **Sequential Convex Programming (SCP)** with **Conformal Prediction**, combining neural network-based pedestrian trajectory prediction and robust optimization techniques to ensure safe vehicle operation in complex traffic environments.
 
 ## 📖 Project Overview
 
 The system achieves safe vehicle-pedestrian interaction through the following core technologies:
 
-- **Neural Network Predictor**: Predicts pedestrian motion trajectories
-- **Control Barrier Functions (CBF)**: Ensures vehicles maintain safe distances from pedestrians
-- **Conformal Prediction**: Quantifies prediction uncertainty and dynamically adjusts safety boundaries
+- **Causal Sequence Predictor**: GRU-based neural network that predicts pedestrian trajectories causally based on vehicle control inputs
+- **Conformal Prediction**: Quantifies prediction uncertainty and provides statistically valid safety regions
+- **Sequential Convex Programming (SCP)**: Iteratively solves the non-convex optimal control problem through convex subproblems
+- **Trust Region Method**: Ensures convergence and robustness with exponentially decaying step size limits
 - **Social Force Model Simulator**: Simulates realistic pedestrian behavior patterns
+
 ---
+
 ## 🎥 Demo
+
 See the high-definition demo video at `demo_HD/demo_HD.mp4`.
 
 <p align="center">
@@ -19,108 +23,225 @@ See the high-definition demo video at `demo_HD/demo_HD.mp4`.
 </p>
 
 ---
+
 ## Project Structure
 
 ```
-├── cbf/                          # Control Barrier Function controllers
-│   └── current_cbf_controller.py # Main CBF controller implementation
-├── models/                       # Neural network models
-│   ├── model_def.py             # Model definitions
-│   ├── predictor.py             # Predictor implementation
-│   └── conformal_grid.py        # Conformal prediction grid
-├── envs/                        # Environment simulation
+├── models_control/              # Control-oriented models and algorithms
+│   ├── model_def.py            # Causal pedestrian predictor (GRU-based)
+│   ├── train.py                # Training script for control model
+│   ├── cp.py                   # Conformal prediction for uncertainty quantification
+│   └── scp.py                  # Sequential convex programming optimizer
+├── tools/                       # Utilities and evaluation tools
+│   ├── collect_control_sequences.py  # Collect training data from simulator
+│   └── eval_runs_scp.py        # Closed-loop MPC evaluation with SCP
+├── models/                      # Original prediction models
+│   ├── model_def.py            # Model definitions
+│   ├── predictor.py            # Predictor implementation
+│   └── conformal_grid.py       # Conformal prediction grid
+├── envs/                       # Environment simulation
 │   ├── dynamics_social_force.py # Social force dynamics model
-│   ├── dynamics.py              # Basic dynamics model
-│   └── simulator.py             # Simulator
-├── training/                    # Model training
+│   ├── dynamics.py             # Basic dynamics model
+│   └── simulator.py            # Simulator with single/multi-pedestrian support
+├── training/                   # Model training
 │   └── train_walker_predictor.py
-├── visualization/               # Visualization tools
-│   ├── carla_demo_region.py     # CARLA demo visualization
-│   ├── multi_ped_results.csv    # Multi-pedestrian results
+├── visualization/              # Visualization tools
+│   ├── carla_demo_region.py   # CARLA demo visualization
 │   └── visualize_model_performance.py
-├── assets/                      # Pre-trained models and resources
-│   └── best_model.pth          # Best prediction model
-└── results/                     # Experimental results
+├── assets/                     # Pre-trained models and data
+│   ├── control_ped_model.pth  # Trained causal predictor
+│   ├── cp_eta.csv             # Conformal prediction error bounds
+│   └── control_sequences.csv  # Training sequences
+├── logs/                       # Experiment logs
+│   └── scp_eval.log           # SCP evaluation logs
+└── results/                    # Experimental results
 ```
 
 ## Core Components
 
-### 🚗 CBF Controller (`cbf/current_cbf_controller.py`)
+### 🚗 SCP Controller (`models_control/scp.py`)
 
-This is the core controller of the project, implementing safety control based on Control Barrier Functions:
+This is the core controller of the project, implementing optimal control based on Sequential Convex Programming with conformal prediction safety guarantees:
 
 #### Main Functions
-- **Single Pedestrian Control**: `cbf_controller()` - Handles safety control for a single pedestrian
-- **Multi-Pedestrian Control**: `cbf_controller_multi_pedestrian()` - Handles safety control for multiple pedestrians
-- **Uncertainty Handling**: Supports conformal prediction uncertainty quantification
-- **Real-time Optimization**: Uses SLSQP and OSQP solvers for real-time optimization
+- **`scp_optimize()`**: Main optimization function that computes optimal control sequence
+  - **Outer Loop**: Updates conformal safety regions based on current control
+  - **Inner Loop**: Iteratively linearizes constraints and solves QP subproblems with trust region
+  - **Verification**: Validates solution against its own safety region
+  - **Multi-Pedestrian Support**: Handles M×T inequality constraints simultaneously
 
- 
+#### Key Features
+- **Trust Region Method**: Exponentially decaying step size (`R_k = R_0 × decay^k`) prevents large jumps
+- **Binning Strategy**: Partitions control space (e.g., [0,5), [5,10), [10,15]) for adaptive safety bounds
+- **Finite Difference Gradients**: Computes Jacobian of collision constraints w.r.t. control inputs
+- **OSQP Solver**: Efficient convex quadratic programming for real-time performance
+- **Reject Statistics**: Tracks bin transition failures for analysis
 
-
-### Neural Network Predictor
+### 🧠 Causal Pedestrian Predictor (`models_control/model_def.py`)
 
 #### Model Architecture
-- **Basic Network**: Multi-layer perceptron with batch normalization and dropout
-- **Residual Network**: Uses residual connections to improve training stability
-- **Attention Mechanism**: Multi-head self-attention mechanism for enhanced feature extraction
+- **GRU-based Sequence Model**: Processes control sequence `u[0:T-1]` causally
+- **Causality Constraint**: `p_ped[t]` depends only on `u[0:t-1]`, not future controls
+- **Input**: 
+  - Initial states: `p_veh_0` (2D), `p_ped_0` (2D)
+  - Control sequence: `u[0:T-1]` (scalar per timestep)
+- **Output**: Pedestrian position sequence `p_ped[1:T]` (2D per timestep)
 
-#### Input/Output
-- **Input**: 7-dimensional vector `[car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy]`
-- **Output**: 2-dimensional vector `[next_walker_vx, next_walker_vy]`
+#### Training
+```bash
+# Collect training data from Social Force simulator
+python tools/collect_control_sequences.py --episodes 20000 --T 10
+
+# Train the causal predictor
+python models_control/train.py --data assets/control_sequences.csv --epochs 100
+```
+
+### 📊 Conformal Prediction (`models_control/cp.py`)
+
+Provides statistically valid uncertainty bounds for safe control:
+
+#### Process
+1. **Calibration Data**: Collect sequences from simulator with the trained model
+2. **Error Computation**: Calculate L2 prediction errors `||y_true - y_pred||` for each timestep
+3. **Binning**: Partition by vehicle speed into bins (e.g., 3 bins: low/mid/high speed)
+4. **Quantile Calculation**: Compute α-quantile (e.g., 95%) for each (timestep, bin) pair
+5. **Output**: `eta[t, bin]` matrix used as safety radii in SCP
+
+```bash
+# Generate conformal prediction bounds
+python models_control/cp.py --alpha 0.95 --num_bins 3 --calib_episodes 1000
+```
+
+### 🎯 Closed-Loop Evaluation (`tools/eval_runs_scp.py`)
+
+Model Predictive Control (MPC) evaluation in closed-loop with the simulator:
+
+#### Features
+- **Receding Horizon**: Re-plans control every T steps based on current state
+- **Multi-Episode Testing**: Runs 200+ full trajectories with random initializations
+- **Multi-Pedestrian Support**: Configurable number of pedestrians (1 real + N-1 virtual)
+- **Comprehensive Metrics**:
+  - Average vehicle speed
+  - Collision rate
+  - Avg outer-loop iterations per plan
+  - Avg inner SCP steps per outer iteration
+  - Planning computation time
+  - Bin transition statistics (accepted/rejected)
+
+```bash
+# Run evaluation with default settings (200 episodes, 1 pedestrian)
+python tools/eval_runs_scp.py
+
+# Multi-pedestrian scenario (3 pedestrians)
+python tools/eval_runs_scp.py --num_pedestrians 3 --episodes 100
+
+# Adjust trust region parameters
+python tools/eval_runs_scp.py --trust_region_initial 3.0 --trust_region_decay 0.6
+```
 
 ### Social Force Model
 
 Based on Helbing and Molnár's social force model, simulates realistic pedestrian behavior:
 - **Goal-directed force**: Guides pedestrians toward their destination
-- **Social force**: Avoids collisions with other pedestrians
-- **Physical force**: Handles physical contacts
+- **Vehicle repulsion force**: Avoids collisions with vehicles (situation-dependent)
+- **Stochastic perturbations**: Models natural human motion variability
 
 ## ⚙️ Installation
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Running Simulations
+Required packages:
+- PyTorch (neural network)
+- NumPy, Pandas (data handling)
+- CVXPY with OSQP (convex optimization)
+- tqdm (progress bars)
 
+## 🚀 Quick Start
 
-#### Multi-Pedestrian Scenario Testing
+### 1. Data Collection
 ```bash
-python evalcbf_multi.py --sample_num 500 --max_steps 10000
+python tools/collect_control_sequences.py --episodes 20000 --T 10
 ```
 
-### Model Training
-
-Train pedestrian behavior prediction model:
+### 2. Train Causal Predictor
 ```bash
-python training/train_walker_predictor.py
+python models_control/train.py --data assets/control_sequences.csv
 ```
 
-### video demo
+### 3. Generate Conformal Bounds
 ```bash
-python visualization/carla_demo_region.py
+python models_control/cp.py --alpha 0.95 --num_bins 3
 ```
 
+### 4. Evaluate SCP Controller
+```bash
+python tools/eval_runs_scp.py --episodes 200 --num_pedestrians 1
+```
 
-## Technical Features
+## 📈 Technical Features
 
 ### 1. Real-time Performance
-- Optimization solver time limit (0.1 seconds)
-- Efficient neural network inference
-- Parallel processing support
+- Efficient QP solving with OSQP (typically <1 second per T-step plan)
+- Fast neural network inference with PyTorch
+- Parallel inner SCP iterations converge rapidly (avg 1-4 steps)
 
-### 2. Safety
-- Strict mathematical safety guarantees
-- Multiple safety check mechanisms
-- Conservative control strategies
+### 2. Safety Guarantees
+- **Probabilistic Safety**: (1-α) coverage guarantee from conformal prediction
+- **Constraint Verification**: Solutions validated against their own safety regions
+- **Conservative Rejection**: Returns safe fallback control if verification fails
 
 ### 3. Robustness
-- Uncertainty quantification and handling
-- Multiple solver support
-- Exception handling
+- **Trust Region**: Prevents optimizer from making unrealistic jumps
+- **Adaptive Binning**: Safety bounds adapt to vehicle speed regime
+- **Multi-Pedestrian**: Handles multiple concurrent constraints (M×T total)
 
 ### 4. Scalability
-- Modular design
-- Support for multi-pedestrian scenarios
-- Easy integration of new prediction models
+- Modular design: predictor, conformal prediction, and SCP are independent
+- Supports 1 to N pedestrians (computational cost scales linearly)
+- Flexible horizon length T (default: 10 steps)
 
+## 📝 Key Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `T` | 10 | Planning horizon (time steps) |
+| `outer_iters` | 5 | Max outer-loop iterations (C updates) |
+| `trust_region_initial` | 5.0 | Initial trust region radius |
+| `trust_region_decay` | 0.5 | Trust region decay rate per inner iteration |
+| `alpha` | 0.95 | Conformal prediction confidence level |
+| `num_bins` | 3 | Number of speed bins for conformal prediction |
+| `d_safe` | 1.0 | Safety distance margin (meters) |
+| `u_min` / `u_max` | 0.0 / 15.0 | Control input bounds (m/s) |
+| `num_pedestrians` | 1 | Number of pedestrians in constraints |
+
+## 📊 Experiment Logs
+
+All experiments are automatically logged to `logs/scp_eval.log` with:
+- Experiment start/end timestamps
+- All parameter values
+- Reject messages with violated timestep details
+- CVXPY warnings (if any)
+- Final statistics (collision rate, speed, etc.)
+
+## 🎓 Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@inproceedings{sparc2026,
+  title={SPARC: Safe Prediction-based Autonomous Robust Control with Conformal Prediction},
+  author={[Authors]},
+  booktitle={IFAC Conference},
+  year={2026}
+}
+```
+
+## 📄 License
+
+[License information]
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit issues or pull requests.

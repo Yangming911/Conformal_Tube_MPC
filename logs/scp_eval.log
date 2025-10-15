@@ -1,0 +1,267 @@
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-15 19:46:13
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model.pth
+  eta_csv: assets/cp_eta.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 1.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 3
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.80 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.56 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.92 (bin2)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=13.97 (bin2), opt_u[9]=13.98 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.47 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.00 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.75 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.42 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.56 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.69 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.60 (bin0), opt_u[9]=3.61 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.88 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.56 (bin0), opt_u[9]=3.49 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.05 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=1.19 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=14.19 (bin2), opt_u[9]=14.18 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.73 (bin2), opt_u[9]=13.73 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=3: last_u[3]=0.10 (bin0), opt_u[3]=0.03 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.77 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.99 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.71 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=13.66 (bin2), opt_u[9]=13.66 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.07 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.27 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.08 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.23 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.60 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.76 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.50 (bin0)
+reject at outerloop iteration 1, violated_t=6: last_u[6]=6.03 (bin1), opt_u[6]=6.03 (bin1)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.59 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.51 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.73 (bin0), opt_u[9]=3.71 (bin0)
+reject at outerloop iteration 0, violated_t=1: last_u[1]=0.10 (bin0), opt_u[1]=0.66 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.15 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=3: last_u[3]=0.10 (bin0), opt_u[3]=0.48 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.79 (bin2), opt_u[9]=13.80 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.60 (bin2), opt_u[9]=13.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.00 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=0.31 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=1.53 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.79 (bin2), opt_u[9]=13.79 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.70 (bin2), opt_u[9]=13.71 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=1.14 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=1.89 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.67 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.50 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.66 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.23 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.79 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.51 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.33 (bin0)
+reject at outerloop iteration 1, violated_t=7: last_u[7]=5.30 (bin1), opt_u[7]=5.24 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.85 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.58 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.43 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.97 (bin2), opt_u[9]=13.97 (bin2)
+reject at outerloop iteration 0, violated_t=3: last_u[3]=0.10 (bin0), opt_u[3]=0.73 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=1.21 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.96 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.70 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.72 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.72 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.23 (bin2)
+reject at outerloop iteration 0, violated_t=8: last_u[8]=0.10 (bin0), opt_u[8]=4.82 (bin0)
+reject at outerloop iteration 2, violated_t=4: last_u[4]=9.02 (bin1), opt_u[4]=8.94 (bin1)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.68 (bin2), opt_u[9]=13.68 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.25 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=3.17 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.59 (bin2), opt_u[9]=13.59 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=1.30 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=0.88 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.77 (bin2)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.81 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.75 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.87 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.58 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.43 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.71 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.49 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.43 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.76 (bin2)
+reject at outerloop iteration 0, violated_t=8: last_u[8]=0.10 (bin0), opt_u[8]=4.99 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=13.63 (bin2), opt_u[9]=13.62 (bin2)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=0.05 (bin0), opt_u[9]=0.06 (bin0)
+[WARNING] UserWarning: Solution may be inaccurate. Try another solver, adjusting the solver settings, or solve with verbose=True for more information.
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.61 (bin2)
+
+======================================================================
+Experiment Results
+======================================================================
+End Time: 2025-10-15 20:02:16
+
+Episodes: 200
+Avg vehicle speed over all steps: 12.6138 m/s
+Episodes with collision: 29 / 200 (ratio=0.145)
+Avg outer-loop iterations per plan: 4.30
+Avg inner SCP steps per outer step: 4.48
+Avg solve time per T-step plan: 1118.99 ms
+
+============================================================
+Total outer iterations: 3699
+============================================================
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0       56        17       733  
+Bin1        0         3        15  
+Bin2        0         0      2875  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0       50         0         0  
+Bin1        0         3         0  
+Bin2        0         0        38  
