@@ -23,7 +23,7 @@ def _initial_state(car_v: float, rng: np.random.RandomState) -> Dict[str, float]
         "car_y": float(C.CAR_LANE_Y),
         "car_v": float(car_v),
         "walker_x": float(C.WALKER_START_X),
-        "walker_y": float(rng.uniform(C.WALKER_START_Y, C.WALKER_DESTINATION_Y)),
+        "walker_y": float(rng.uniform(C.WALKER_START_Y, C.CAR_LANE_Y)),
         "walker_vx": float(C.WALKER_START_V_X),
         "walker_vy": float(C.WALKER_START_V_Y),
     }
