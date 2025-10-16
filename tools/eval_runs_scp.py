@@ -23,6 +23,7 @@ from datetime import datetime
 from envs import simulator as sim
 from models_control.scp import scp_optimize
 import time
+import json
 
 def plot_trajectory(states: list[dict], collide_state: dict, filename: str) -> None:
     """
@@ -116,10 +117,17 @@ def run_episodes_scp(
             f.write("Execution Log:\n")
             f.write("="*70 + "\n\n")
 
+    # Initial state from file
+    with open(f"assets/initial_state.json", "r") as f:
+        initial_states = json.load(f)
+
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
-        # Initial state from simulator
-        car_speed = float(rng.uniform(1.0, 15.0))
-        state = sim._initial_state(car_speed, rng)
+        # # Initial state from simulator
+        # car_speed = float(rng.uniform(1.0, 15.0))
+        # state = sim._initial_state(car_speed, rng)
+
+        # Initial state from file
+        state = initial_states[episode_idx]
         collided = False
 
         u_opt = None
@@ -252,7 +260,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200)
+    parser.add_argument('--episodes', type=int, default=20)
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
@@ -263,11 +271,11 @@ def main():
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)
     parser.add_argument('--u_max', type=float, default=15.0)
-    parser.add_argument('--d_safe', type=float, default=1.0)
+    parser.add_argument('--d_safe', type=float, default=2.0)
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
-    parser.add_argument('--log_file', type=str, default='logs/scp_eval.log', help='Log file path')
+    parser.add_argument('--log_file', type=str, default='logs/scp_eval_real_sim.log', help='Log file path')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
 
     args = parser.parse_args()

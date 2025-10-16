@@ -1,0 +1,713 @@
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-16 13:28:27
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.20 (bin2), opt_u[9]=13.20 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 3: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.47 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.29 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=5.45 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.12 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.31 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=2.71 (bin0), opt_u[9]=2.63 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.78 (bin2), opt_u[9]=12.78 (bin2)
+reject at outerloop iteration 1, violated_t=7: last_u[7]=0.00 (bin0), opt_u[7]=-0.00 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.33 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.73 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.33 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.20 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.13 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.54 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.49 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.95 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.21 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.12 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.09 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.56 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.24 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.20 (bin0), opt_u[9]=0.18 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.38 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.75 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.20 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.76 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.26 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.17 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.28 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.29 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.54 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.45 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.00 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.46 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.70 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.24 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.52 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.05 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.53 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.91 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.57 (bin2), opt_u[9]=12.57 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.54 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.83 (bin2), opt_u[9]=12.83 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 4: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.08 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.78 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.71 (bin0), opt_u[9]=3.53 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.26 (bin0)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=13.12 (bin2), opt_u[9]=13.12 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.64 (bin0)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=-0.00 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=1.85 (bin0), opt_u[9]=0.84 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.03 (bin2), opt_u[9]=13.03 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.04 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.19 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.10 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.44 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.99 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 2: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.16 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.67 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.93 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.95 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.27 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.89 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.73 (bin2), opt_u[9]=12.73 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.07 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.38 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.81 (bin2), opt_u[9]=12.81 (bin2)
+reject at outerloop iteration 1, violated_t=2: last_u[2]=0.11 (bin0), opt_u[2]=-0.00 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.89 (bin0), opt_u[9]=1.06 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.54 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.20 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.59 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.57 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.81 (bin0)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=12.81 (bin2), opt_u[9]=12.80 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.41 (bin0), opt_u[9]=0.62 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.93 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=14.13 (bin2), opt_u[9]=14.12 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.67 (bin2), opt_u[9]=12.67 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.06 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=5.66 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.61 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.40 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.28 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.65 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.37 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.83 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.63 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.39 (bin0), opt_u[9]=3.43 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.43 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.29 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.10 (bin1)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=12.85 (bin2), opt_u[9]=12.85 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.11 (bin0), opt_u[9]=0.20 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.06 (bin0), opt_u[9]=0.05 (bin0)
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.40 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.68 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.99 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.97 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.74 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.14 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.30 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.06 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.78 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.52 (bin2), opt_u[9]=12.52 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.96 (bin0)
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.83 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.47 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.32 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.31 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.73 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.73 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.62 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.54 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.02 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.14 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.94 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.87 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.82 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.66 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.52 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.91 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.70 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.53 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.81 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.67 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.58 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.28 (bin0)
+reject at outerloop iteration 0, violated_t=8: last_u[8]=0.10 (bin0), opt_u[8]=6.45 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.82 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.42 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.98 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.21 (bin1)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=12.61 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.18 (bin0), opt_u[9]=0.46 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.99 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.13 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.33 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.79 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.92 (bin2), opt_u[9]=12.94 (bin2)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=5.77 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.36 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.73 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.60 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.43 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.50 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.58 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.40 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.61 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.34 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.48 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.45 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.16 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.28 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.60 (bin2), opt_u[9]=12.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.07 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 3: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=3: last_u[3]=0.10 (bin0), opt_u[3]=1.01 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.02 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.90 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.65 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.35 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.51 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.94 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.77 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.11 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.98 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.18 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.26 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.93 (bin0)
+reject at outerloop iteration 0, violated_t=0: last_u[0]=0.10 (bin0), opt_u[0]=1.61 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.99 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.76 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.28 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.14 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.10 (bin2), opt_u[9]=13.10 (bin2)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=-0.00 (bin2)
+reject at outerloop iteration 0, violated_t=8: last_u[8]=0.10 (bin0), opt_u[8]=0.00 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.69 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.04 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.32 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.04 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.49 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.72 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.62 (bin0), opt_u[9]=3.96 (bin0)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=5.57 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.75 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.06 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.58 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=6.97 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.02 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.40 (bin0)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=4.80 (bin0), opt_u[9]=4.47 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.66 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.67 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.69 (bin2), opt_u[9]=12.69 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.78 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.24 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=2.65 (bin0), opt_u[9]=2.16 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=1.98 (bin0), opt_u[9]=1.99 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.80 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 2: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.34 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.87 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.31 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.76 (bin2), opt_u[9]=12.77 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.51 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.08 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.19 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.01 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.01 (bin0), opt_u[9]=3.03 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.03 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.99 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.50 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.82 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.85 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.64 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.16 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.91 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.63 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.73 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.44 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=6.80 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.51 (bin2), opt_u[9]=13.50 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.20 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.88 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.95 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.39 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.76 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.25 (bin0), opt_u[9]=3.23 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.72 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.94 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.18 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.30 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.38 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.84 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.28 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.79 (bin0), opt_u[9]=3.61 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=4.93 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.87 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.95 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.29 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.02 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.93 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.55 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.27 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.55 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.35 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.55 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.44 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.38 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.29 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.89 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.63 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.15 (bin1)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.64 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.04 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.69 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.89 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.24 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.65 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.33 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.47 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.58 (bin1)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.78 (bin2), opt_u[9]=12.78 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.06 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.81 (bin2), opt_u[9]=13.81 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.61 (bin2), opt_u[9]=12.61 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.08 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=5.66 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.38 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.84 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.51 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.33 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.72 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.62 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.94 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.46 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.10 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.59 (bin2)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=3.87 (bin0), opt_u[9]=3.85 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 5: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.20 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.65 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.57 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.49 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.75 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.41 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.29 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=4.59 (bin0), opt_u[9]=5.47 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.53 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.37 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.30 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.58 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.25 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.68 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.46 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.25 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.61 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.23 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.57 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.66 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.33 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.01 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.66 (bin1)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=12.78 (bin2), opt_u[9]=12.78 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.08 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.55 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.76 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.79 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.56 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.12 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.29 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.21 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.88 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.66 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.40 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.77 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.75 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.55 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.67 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.31 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.14 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.07 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.75 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.23 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.64 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.61 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.39 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.82 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.83 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.24 (bin2), opt_u[9]=13.25 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.27 (bin0), opt_u[9]=0.26 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.76 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.20 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.30 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.35 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.78 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.36 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.54 (bin2), opt_u[9]=12.54 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.15 (bin0), opt_u[9]=0.08 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.23 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.65 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.91 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.18 (bin1)
+reject at outerloop iteration 4, violated_t=9: last_u[9]=13.84 (bin2), opt_u[9]=13.82 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.51 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.56 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.72 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.21 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.32 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.39 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.52 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.97 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.14 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.53 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.28 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.48 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.20 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.66 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.59 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.94 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.52 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.63 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.05 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.09 (bin2), opt_u[9]=13.09 (bin2)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=6.19 (bin1)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=12.93 (bin2), opt_u[9]=12.93 (bin2)
+reject at outerloop iteration 1, violated_t=2: last_u[2]=0.00 (bin0), opt_u[2]=-0.00 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.15 (bin0), opt_u[9]=0.16 (bin0)
+reject at outerloop iteration 0, violated_t=2: last_u[2]=0.10 (bin0), opt_u[2]=5.31 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.62 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.10 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.46 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=5.42 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.30 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.14 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.71 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=6.86 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.26 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.87 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.21 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.41 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 5: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 3, violated_t=9: last_u[9]=13.55 (bin2), opt_u[9]=13.55 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 2: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.62 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.43 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=7.05 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.68 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.37 (bin0), opt_u[9]=3.34 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.88 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.13 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.20 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.37 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.75 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.85 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=7.83 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.91 (bin2)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.48 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.60 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.32 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.68 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.29 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.52 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.52 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.42 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.58 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.55 (bin0), opt_u[9]=3.56 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=5.60 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.48 (bin2), opt_u[9]=12.47 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.25 (bin0), opt_u[9]=0.48 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.20 (bin0)
+reject at outerloop iteration 0, violated_t=4: last_u[4]=0.10 (bin0), opt_u[4]=5.84 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.84 (bin2), opt_u[9]=13.84 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=2: last_u[2]=0.10 (bin0), opt_u[2]=6.10 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.75 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.02 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.41 (bin0), opt_u[9]=3.23 (bin0)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=5.09 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.56 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.54 (bin0), opt_u[9]=3.45 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.17 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.56 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.57 (bin0)
+reject at outerloop iteration 0, violated_t=8: last_u[8]=0.10 (bin0), opt_u[8]=6.39 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.50 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.81 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=5.40 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.54 (bin2), opt_u[9]=12.54 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=0.73 (bin0), opt_u[9]=0.82 (bin0)
+reject at outerloop iteration 0, violated_t=2: last_u[2]=0.10 (bin0), opt_u[2]=7.14 (bin1)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=14.63 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.41 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.37 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.91 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=8.13 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.37 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.56 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 2: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.62 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.77 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=6.76 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.55 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.39 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.79 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.62 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.35 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.94 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.02 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.66 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.12 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.79 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.44 (bin1)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=13.00 (bin2), opt_u[9]=13.01 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.48 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=0.07 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.71 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.63 (bin2), opt_u[9]=12.63 (bin2)
+reject at outerloop iteration 0, violated_t=5: last_u[5]=0.10 (bin0), opt_u[5]=5.03 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.67 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.37 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.55 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.85 (bin0)
+reject at outerloop iteration 0, violated_t=6: last_u[6]=0.10 (bin0), opt_u[6]=7.70 (bin1)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=13.16 (bin2), opt_u[9]=13.17 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.71 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=3.42 (bin0), opt_u[9]=3.39 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.67 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.34 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=2.22 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.52 (bin0)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.00 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.41 (bin2)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=13.10 (bin2)
+reject at outerloop iteration 0, violated_t=7: last_u[7]=0.10 (bin0), opt_u[7]=8.02 (bin1)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.85 (bin2)
+reject at outerloop iteration 3, violated_t=9: last_u[9]=3.77 (bin0), opt_u[9]=3.73 (bin0)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed
+reject at outerloop iteration 2, violated_t=9: last_u[9]=12.57 (bin2), opt_u[9]=12.57 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=0.14 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=1.15 (bin0)
+reject at outerloop iteration 1, violated_t=9: last_u[9]=10.10 (bin2), opt_u[9]=12.79 (bin2)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=3.38 (bin0)
+reject at outerloop iteration 0, violated_t=9: last_u[9]=0.10 (bin0), opt_u[9]=4.08 (bin0)
+reject at outerloop iteration 2, violated_t=9: last_u[9]=14.12 (bin2), opt_u[9]=14.13 (bin2)
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed
+
+======================================================================
+Experiment Results
+======================================================================
+End Time: 2025-10-16 15:54:26
+
+Episodes: 200
+Avg vehicle speed over all steps: 8.8433 m/s
+Episodes with collision: 27 / 200 (ratio=0.135)
+Avg outer-loop iterations per plan: 3.20
+Avg inner SCP steps per outer step: 6.33
+Avg solve time per T-step plan: 7080.23 ms
+
+============================================================
+Total outer iterations: 3941
+============================================================
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      295       192       690  
+Bin1        0         0       115  
+Bin2        0         0      2649  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      254        75         5  
+Bin1        0         0         0  
+Bin2        0         0       167  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-16 15:58:13
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model.pth
+  eta_csv: assets/cp_eta.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-16 15:59:25
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model.pth
+  eta_csv: assets/cp_eta.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
