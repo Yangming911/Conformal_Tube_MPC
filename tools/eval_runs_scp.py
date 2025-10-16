@@ -214,6 +214,8 @@ def run_episodes_scp(
     # Prepare results string
     results_lines = []
     results_lines.append(f"Episodes: {num_episodes}")
+    results_lines.append(f"Method: {method}")
+    results_lines.append(f"Total Steps: {total_steps/num_episodes:.2f}")
     results_lines.append(f"Avg vehicle speed over all steps: {avg_speed:.4f} m/s")
     results_lines.append(f"Episodes with collision: {episodes_with_collision} / {num_episodes} (ratio={episodes_with_collision/num_episodes:.3f})")
     results_lines.append(f"Avg outer-loop iterations per plan: {avg_iters:.2f}")
