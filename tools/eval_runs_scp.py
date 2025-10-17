@@ -19,17 +19,23 @@ import numpy as np
 from tqdm import tqdm
 import warnings
 from datetime import datetime
+from typing import List, Dict
 
 from envs import simulator as sim
 from models_control.scp import scp_optimize
 import time
 import json
 
-def plot_trajectory(states: list[dict], collide_state: dict, filename: str) -> None:
+def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> None:
     """
     Plot the trajectory of the vehicle and pedestrians.
     """
     import matplotlib.pyplot as plt
+    import os
+    
+    # Create directory if it doesn't exist
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
     # 散点图，且点的颜色随时间变化
@@ -62,8 +68,10 @@ def run_episodes_scp(
     d_safe: float = 1.0,
     trust_region_initial: float = 10.0,
     trust_region_decay: float = 0.8,
+    rho_ref: float = 2.0,
     num_pedestrians: int = 1,
     log_file: str = None,
+    explicit_log: str = None,
     method: str = "scp",
 ) -> None:
     rng = np.random.RandomState(seed)
@@ -82,6 +90,11 @@ def run_episodes_scp(
     if log_file:
         import os
         os.makedirs(os.path.dirname(log_file), exist_ok=True)
+    
+    # Setup explicit log (parameters and results only)
+    if explicit_log:
+        import os
+        os.makedirs(os.path.dirname(explicit_log), exist_ok=True)
         
         # Redirect warnings to log file
         def warning_to_log(message, category, filename, lineno, file=None, line=None):
@@ -173,6 +186,7 @@ def run_episodes_scp(
                         u_min=u_min,
                         u_max=u_max,
                         d_safe=d_safe,
+                        rho_ref=rho_ref,
                         trust_region_initial=trust_region_initial,
                         trust_region_decay=trust_region_decay,
                         log_file=log_file,
@@ -201,7 +215,12 @@ def run_episodes_scp(
 
         if collided:
             episodes_with_collision += 1
-        plot_trajectory(states, collide_state, f"trajectories/episode_{episode_idx}.png")
+        
+        # Only save the first episode as an example
+        if episode_idx == 0:
+            # Generate timestamp for filename (MMDDHHMM format)
+            timestamp = datetime.now().strftime("%m%d%H%M")
+            plot_trajectory(states, collide_state, f"trajectories/episode_0_{timestamp}.png")
 
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
@@ -258,17 +277,48 @@ def run_episodes_scp(
             f.write(f"End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
             for line in results_lines:
                 f.write(line + "\n")
+    
+    # Write explicit log (append mode - only parameters and results)
+    if explicit_log:
+        with open(explicit_log, 'a') as f:
+            # Add separator line before new experiment (except for first experiment)
+            f.write("="*70 + "\n")
+            f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+            
+            f.write("Parameters:\n")
+            f.write(f"  num_episodes: {num_episodes}\n")
+            f.write(f"  max_steps_per_episode: {max_steps_per_episode}\n")
+            f.write(f"  horizon_T: {horizon_T}\n")
+            f.write(f"  outer_iters: {outer_iters}\n")
+            f.write(f"  seed: {seed}\n")
+            f.write(f"  model_path: {model_path}\n")
+            f.write(f"  eta_csv: {eta_csv}\n")
+            f.write(f"  u_init: {u_init}\n")
+            f.write(f"  u_ref: {u_ref}\n")
+            f.write(f"  u_min: {u_min}\n")
+            f.write(f"  u_max: {u_max}\n")
+            f.write(f"  d_safe: {d_safe}\n")
+            f.write(f"  trust_region_initial: {trust_region_initial}\n")
+            f.write(f"  trust_region_decay: {trust_region_decay}\n")
+            f.write(f"  rho_ref: {rho_ref}\n")
+            f.write(f"  num_pedestrians: {num_pedestrians}\n")
+            f.write(f"  method: {method}\n\n")
+            
+            f.write("Results:\n")
+            for line in results_lines:
+                f.write(line + "\n")
+            f.write("\n")
 
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=20)
+    parser.add_argument('--episodes', type=int, default=200)
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth')
-    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta.csv')
+    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_real_sim.pth')
+    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta_real_sim.csv')
     parser.add_argument('--u_init', type=float, default=0.1)
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)
@@ -276,8 +326,10 @@ def main():
     parser.add_argument('--d_safe', type=float, default=2.0)
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
+    parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
     parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
-    parser.add_argument('--log_file', type=str, default='logs/scp_eval_real_sim.log', help='Log file path')
+    parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
+    parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
 
     args = parser.parse_args()
@@ -297,8 +349,10 @@ def main():
         d_safe=args.d_safe,
         trust_region_initial=args.trust_region_initial,
         trust_region_decay=args.trust_region_decay,
+        rho_ref=args.rho_ref,
         num_pedestrians=args.num_pedestrians,
         log_file=args.log_file,
+        explicit_log=args.explicit_log,
         method=args.method,
     )
 

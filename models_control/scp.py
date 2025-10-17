@@ -162,9 +162,9 @@ def solve_scp_subproblem(
     C_eta: np.ndarray, 
     u_min: float, 
     u_max: float, 
-    rho_ref: float = 1.0, 
+    rho_ref: float, 
+    d_safe: float,
     rho_trust: float = 1.0, 
-    d_safe: float = 1.0,
     trust_region_radius: float = None,
 ) -> np.ndarray:
     """Solve convex subproblem:
@@ -186,6 +186,7 @@ def solve_scp_subproblem(
 
     # objective function
     objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:])
+    # objective = cp.sum_squares(u - u_ref)
     constraints = []
     # Linearized constraints for all (m,t) flattened
     MT = g0.shape[0]
@@ -235,15 +236,15 @@ def scp_optimize(
     eta_csv_path: str,
     p_veh_0: np.ndarray,
     p_ped_0_multi: np.ndarray,
+    rho_ref: float,
+    d_safe: float,
     T: int = 10,
     outer_iters: int = 5,
     u_init: float = 0.1,
     u_ref: float = 15.0,
     u_min: float = 0.1,
     u_max: float = 15.0,
-    rho_ref: float = 1.0,
     rho_trust: float = 1.0,
-    d_safe: float = 1.0,
     reject_stats_path: str = None,
     trust_region_initial: float = 10.0,
     trust_region_decay: float = 0.8,
@@ -288,7 +289,7 @@ def scp_optimize(
         inner_steps = 0
         for _inner in range(max_inner_steps):
             # Compute trust region radius for this inner iteration
-            trust_radius = trust_region_initial * (trust_region_decay ** _inner) # * last_u[-1] *10 * (0.1 ** _inner)
+            trust_radius = trust_region_initial * (trust_region_decay ** _inner)  *  last_u[-1] *10 * (0.1 ** _inner)
             
             g0, J = finite_diff_grad_multi(
                 model,
@@ -301,7 +302,7 @@ def scp_optimize(
             try:
                 u_new = solve_scp_subproblem(
                     ref_u, u_curr, g0, J, C_eta, u_min, u_max, 
-                    rho_ref=rho_ref, rho_trust=rho_trust, d_safe=d_safe,
+                    rho_ref=rho_ref, d_safe=d_safe, rho_trust=rho_trust,
                     trust_region_radius=trust_radius
                 )
             except Exception as e:
@@ -311,6 +312,20 @@ def scp_optimize(
                         f.write(msg + '\n')
                 # print(msg)
                 return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix
+            # Log objective component magnitudes
+            # if log_file:
+            #     try:
+            #         ref_term = float(np.sum((u_new - ref_u) ** 2))
+            #         diff = u_new[1:] - u_new[:-1]
+            #         smooth_term = float(np.sum(diff ** 2))
+            #         with open(log_file, 'a') as f:
+            #             f.write(
+            #                 f"OBJ (outer={it}, inner={_inner}): ref={ref_term:.3e}, "
+            #                 f"smooth={smooth_term:.3e}, rho_ref={rho_ref:g}, "
+            #                 f"rho*smooth={(rho_ref*smooth_term):.3e}\n"
+            #             )
+            #     except Exception:
+            #         pass
             inner_steps += 1
             if np.linalg.norm(u_new - u_curr, ord=2) <= tol:
                 u_curr = u_new
