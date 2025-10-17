@@ -180,8 +180,12 @@ def solve_scp_subproblem(
     """
     T = u0.shape[0]
     u = cp.Variable(T)
+    # diff matrix
+    D = np.eye(T) - np.roll(np.eye(T), 1, axis=0)
+    diff_u = D @ u
+
     # objective function
-    objective = cp.sum_squares(u - u_ref)
+    objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:])
     constraints = []
     # Linearized constraints for all (m,t) flattened
     MT = g0.shape[0]
@@ -284,7 +288,7 @@ def scp_optimize(
         inner_steps = 0
         for _inner in range(max_inner_steps):
             # Compute trust region radius for this inner iteration
-            trust_radius = trust_region_initial * (trust_region_decay ** _inner)
+            trust_radius = trust_region_initial * (trust_region_decay ** _inner) # * last_u[-1] *10 * (0.1 ** _inner)
             
             g0, J = finite_diff_grad_multi(
                 model,

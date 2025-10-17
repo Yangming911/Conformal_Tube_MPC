@@ -26,6 +26,7 @@ if PROJECT_ROOT not in sys.path:
 
 from models_control.model_def import CausalPedestrianPredictor
 from tools.collect_control_sequences import collect_dataset as collect_constant_speed_dataset
+from models_control.train import load_from_csv
 
 
 class SequenceDataset(Dataset):
@@ -118,6 +119,17 @@ def main():
     # Collect constant-speed calibration dataset
     print(f"Collecting calibration dataset: episodes={args.episodes}, T={args.T}")
     u, p_veh0, p_ped0, p_seq = collect_constant_speed_dataset(args.episodes, args.T, seed=2025)
+
+    # DataLoader
+    ds = SequenceDataset(u, p_veh0, p_ped0, p_seq)
+    # load real data
+    real_u, real_p_veh0, real_p_ped0, real_p_seq = load_from_csv('assets/citr_data/citr_conformal_grid.csv', args.T)
+    
+    # merge data
+    u = np.concatenate([u, real_u], axis=0)
+    p_veh0 = np.concatenate([p_veh0, real_p_veh0], axis=0)
+    p_ped0 = np.concatenate([p_ped0, real_p_ped0], axis=0)
+    p_seq = np.concatenate([p_seq, real_p_seq], axis=0)
 
     # DataLoader
     ds = SequenceDataset(u, p_veh0, p_ped0, p_seq)

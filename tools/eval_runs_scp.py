@@ -23,6 +23,28 @@ from datetime import datetime
 from envs import simulator as sim
 from models_control.scp import scp_optimize
 import time
+import json
+
+def plot_trajectory(states: list[dict], collide_state: dict, filename: str) -> None:
+    """
+    Plot the trajectory of the vehicle and pedestrians.
+    """
+    import matplotlib.pyplot as plt
+    ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
+    veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
+    # 散点图，且点的颜色随时间变化
+    colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
+    plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
+    plt.scatter(ped_traj[:, 0], ped_traj[:, 1], label=f"Pedestrian {1}",marker="^", color=colors)
+    # 若发生碰撞，将碰撞点标红
+    if collide_state:
+        plt.scatter(collide_state["car_x"], collide_state["car_y"], label="Collision", color="red", s=100)
+    plt.legend()
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.title("Trajectory")
+    plt.savefig(filename)
+    plt.close()
 
 
 def run_episodes_scp(
@@ -42,6 +64,7 @@ def run_episodes_scp(
     trust_region_decay: float = 0.8,
     num_pedestrians: int = 1,
     log_file: str = None,
+    method: str = "scp",
 ) -> None:
     rng = np.random.RandomState(seed)
     episodes_with_collision = 0
@@ -94,16 +117,27 @@ def run_episodes_scp(
             f.write("Execution Log:\n")
             f.write("="*70 + "\n\n")
 
-    for _ in tqdm(range(num_episodes), desc="Running episodes"):
-        # Initial state from simulator
-        car_speed = float(rng.uniform(1.0, 15.0))
-        state = sim._initial_state(car_speed, rng)
+    # Initial state from file
+    with open(f"assets/initial_state.json", "r") as f:
+        initial_states = json.load(f)
+
+    for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
+        # # Initial state from simulator
+        # car_speed = float(rng.uniform(1.0, 15.0))
+        # state = sim._initial_state(car_speed, rng)
+
+        # Initial state from file
+        state = initial_states[episode_idx]
         collided = False
 
         u_opt = None
         step_idx = 0
+        states = []
+        collide_state = None
         while step_idx < max_steps_per_episode:
+            states.append(state.copy())
             if sim._is_collision(state):
+                collide_state = state.copy()
                 collided = True
             if sim._done(state):
                 break
@@ -125,32 +159,36 @@ def run_episodes_scp(
                                                                   C.WALKER_START_Y, C.WALKER_DESTINATION_Y)]
                 else:
                     p_ped_0_multi = p_ped_0.reshape(1, 2)
-                
-                t0 = time.perf_counter()
-                u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix = scp_optimize(
-                    model_path=model_path,
-                    eta_csv_path=eta_csv,
-                    p_veh_0=p_veh_0,
-                    p_ped_0_multi=p_ped_0_multi,
-                    T=horizon_T,
-                    outer_iters=outer_iters,
-                    u_init=u_init,
-                    u_ref=u_ref,
-                    u_min=u_min,
-                    u_max=u_max,
-                    d_safe=d_safe,
-                    trust_region_initial=trust_region_initial,
-                    trust_region_decay=trust_region_decay,
-                    log_file=log_file,
-                )
-                t1 = time.perf_counter()
-                # metrics accumulation
-                total_plan_time.append(t1 - t0)
-                total_plan_iters.append(iters_used)
-                total_plan_inner_iters.extend(inner_scp_steps_list)
-                # Accumulate statistics
-                cumulative_reject_matrix += reject_matrix
-                cumulative_transition_matrix += transition_matrix
+                if method == "scp":
+                    t0 = time.perf_counter()
+                    u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix = scp_optimize(
+                        model_path=model_path,
+                        eta_csv_path=eta_csv,
+                        p_veh_0=p_veh_0,
+                        p_ped_0_multi=p_ped_0_multi,
+                        T=horizon_T,
+                        outer_iters=outer_iters,
+                        u_init=u_init,
+                        u_ref=u_ref,
+                        u_min=u_min,
+                        u_max=u_max,
+                        d_safe=d_safe,
+                        trust_region_initial=trust_region_initial,
+                        trust_region_decay=trust_region_decay,
+                        log_file=log_file,
+                    )
+                    t1 = time.perf_counter()
+                    # metrics accumulation
+                    total_plan_time.append(t1 - t0)
+                    total_plan_iters.append(iters_used)
+                    total_plan_inner_iters.extend(inner_scp_steps_list)
+                    # Accumulate statistics
+                    cumulative_reject_matrix += reject_matrix
+                    cumulative_transition_matrix += transition_matrix
+                elif method == "constant_speed":
+                    u_opt = np.full(horizon_T, u_ref)
+                else:
+                    raise ValueError(f"Unknown method: {method}")
 
             # Apply control corresponding to position inside current horizon
             u_t = float(u_opt[step_idx % horizon_T])
@@ -163,6 +201,8 @@ def run_episodes_scp(
 
         if collided:
             episodes_with_collision += 1
+        plot_trajectory(states, collide_state, f"trajectories/episode_{episode_idx}.png")
+
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
     avg_iters = (np.mean(total_plan_iters) if total_plan_iters else 0.0)
@@ -174,6 +214,8 @@ def run_episodes_scp(
     # Prepare results string
     results_lines = []
     results_lines.append(f"Episodes: {num_episodes}")
+    results_lines.append(f"Method: {method}")
+    results_lines.append(f"Total Steps: {total_steps/num_episodes:.2f}")
     results_lines.append(f"Avg vehicle speed over all steps: {avg_speed:.4f} m/s")
     results_lines.append(f"Episodes with collision: {episodes_with_collision} / {num_episodes} (ratio={episodes_with_collision/num_episodes:.3f})")
     results_lines.append(f"Avg outer-loop iterations per plan: {avg_iters:.2f}")
@@ -220,7 +262,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200)
+    parser.add_argument('--episodes', type=int, default=20)
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
@@ -231,11 +273,13 @@ def main():
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)
     parser.add_argument('--u_max', type=float, default=15.0)
-    parser.add_argument('--d_safe', type=float, default=1.0)
+    parser.add_argument('--d_safe', type=float, default=2.0)
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
-    parser.add_argument('--log_file', type=str, default='logs/scp_eval.log', help='Log file path')
+    parser.add_argument('--log_file', type=str, default='logs/scp_eval_real_sim.log', help='Log file path')
+    parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
+
     args = parser.parse_args()
 
     run_episodes_scp(
@@ -255,6 +299,7 @@ def main():
         trust_region_decay=args.trust_region_decay,
         num_pedestrians=args.num_pedestrians,
         log_file=args.log_file,
+        method=args.method,
     )
 
 
