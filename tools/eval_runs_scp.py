@@ -240,9 +240,9 @@ def run_episodes_scp(
     results_lines.append(f"Avg outer-loop iterations per plan: {avg_iters:.2f}")
     results_lines.append(f"Avg inner SCP steps per outer step: {avg_inner_iters:.2f}")
     results_lines.append(f"Avg solve time per T-step plan: {avg_plan_time_ms:.2f} ms")
-    results_lines.append(f"\n{'='*60}")
+    results_lines.append("")
     results_lines.append(f"Total outer iterations: {total_outer_iters}")
-    results_lines.append(f"{'='*60}")
+    results_lines.append("")
     results_lines.append(f"\nAll Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):")
     results_lines.append("Values show total counts")
     results_lines.append("       Bin0      Bin1      Bin2")
@@ -271,9 +271,7 @@ def run_episodes_scp(
             warnings.showwarning = old_warn_handler
         
         with open(log_file, 'a') as f:
-            f.write("\n" + "="*70 + "\n")
-            f.write("Experiment Results\n")
-            f.write("="*70 + "\n")
+            f.write("\nExperiment Results\n")
             f.write(f"End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
             for line in results_lines:
                 f.write(line + "\n")
@@ -281,7 +279,7 @@ def run_episodes_scp(
     # Write explicit log (append mode - only parameters and results)
     if explicit_log:
         with open(explicit_log, 'a') as f:
-            # Add separator line before new experiment (except for first experiment)
+            # Separator between experiments (only here as requested)
             f.write("="*70 + "\n")
             f.write(f"Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
             

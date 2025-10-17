@@ -777,3 +777,153 @@ Bin0        3         0         0
 Bin1        0         5        24  
 Bin2        0         0         0  
 
+======================================================================
+Adaptive trust region radius - objective function with diff_u + 0.5*||u-5||_2^2
+======================================================================
+Timestamp: 2025-10-17 20:24:55
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 65.20
+Avg vehicle speed over all steps: 7.7514 m/s
+Episodes with collision: 14 / 200 (ratio=0.070)
+Avg outer-loop iterations per plan: 3.69
+Avg inner SCP steps per outer step: 2.39
+Avg solve time per T-step plan: 379.74 ms
+Total outer iterations: 5198
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      303      1081         9  
+Bin1        0        94       934  
+Bin2        0         0      2777  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      286        93         0  
+Bin1        0        43         1  
+Bin2        0         0         0  
+
+======================================================================
+Adaptive trust region radius - objective function with diff_u + 0.3*||u-5||_2^2
+======================================================================
+Timestamp: 2025-10-17 20:36:36
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 59.72
+Avg vehicle speed over all steps: 8.4887 m/s
+Episodes with collision: 13 / 200 (ratio=0.065)
+Avg outer-loop iterations per plan: 3.64
+Avg inner SCP steps per outer step: 2.44
+Avg solve time per T-step plan: 412.02 ms
+
+============================================================
+Total outer iterations: 4510
+============================================================
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      552       768        77  
+Bin1        0         3       730  
+Bin2        0         0      2380  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      228        33         7  
+Bin1        0         3         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-17 20:48:29
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 56.49
+Avg vehicle speed over all steps: 8.9785 m/s
+Episodes with collision: 44 / 200 (ratio=0.220)
+Avg outer-loop iterations per plan: 3.43
+Avg inner SCP steps per outer step: 2.73
+Avg solve time per T-step plan: 420.82 ms
+
+Total outer iterations: 4167
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      325       855       105  
+Bin1        0       146       707  
+Bin2        0         0      2029  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0       76        20         6  
+Bin1        0       121       127  
+Bin2        0         0         0  
+

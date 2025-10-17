@@ -185,7 +185,7 @@ def solve_scp_subproblem(
     diff_u = D @ u
 
     # objective function
-    objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:])
+    objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:]) #+ 0.1*cp.sum_squares(u - 5)
     # objective = cp.sum_squares(u - u_ref)
     constraints = []
     # Linearized constraints for all (m,t) flattened
