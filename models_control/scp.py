@@ -204,7 +204,8 @@ def solve_scp_subproblem(
     
     constraints += [u >= u_min, u <= u_max]
     prob = cp.Problem(cp.Minimize(objective), constraints)
-    prob.solve(solver=cp.OSQP, eps_abs=1e-5, eps_rel=1e-5, max_iter=20000, warm_start=True, verbose=False)
+    # prob.solve(solver=cp.OSQP, eps_abs=1e-4, eps_rel=1e-4, max_iter=20000, warm_start=True, verbose=False)
+    prob.solve(solver=cp.GUROBI)
     if u.value is None:
         raise RuntimeError("SCP subproblem infeasible or solver failed")
     return np.asarray(u.value, dtype=np.float64)
