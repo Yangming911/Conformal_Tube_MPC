@@ -105,10 +105,10 @@ def main():
     parser.add_argument('--episodes', type=int, default=20000, help='Number of sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--seed', type=int, default=42, help='Random seed')
-    parser.add_argument('--save_path', type=str, default='assets/control_sequences.csv', help='Save path for dataset (CSV)')
+    parser.add_argument('--save_path', type=str, default='assets/control_sequences_ACP.csv', help='Save path for dataset (CSV)')
     args = parser.parse_args()
 
-    print(f"Generating dataset: episodes={args.episodes}, T={args.T}, format={args.format}")
+    print(f"Generating dataset: episodes={args.episodes}, T={args.T}")
     u, p_veh0, p_ped0, p_seq = collect_dataset(args.episodes, args.T, seed=args.seed)
     print(f"Shapes: u={u.shape}, p_veh0={p_veh0.shape}, p_ped0={p_ped0.shape}, p_seq={p_seq.shape}")
 
