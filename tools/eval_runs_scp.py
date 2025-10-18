@@ -35,13 +35,14 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    
+    num_pedestrians = len(states[0]["walker_x"])
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
     # 散点图，且点的颜色随时间变化
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
-    plt.scatter(ped_traj[:, 0], ped_traj[:, 1], label=f"Pedestrian {1}",marker="^", color=colors)
+    for i in range(num_pedestrians):
+        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
     # 若发生碰撞，将碰撞点标红
     if collide_state:
         plt.scatter(collide_state["car_x"], collide_state["car_y"], label="Collision", color="red", s=100)
@@ -135,12 +136,13 @@ def run_episodes_scp(
         initial_states = json.load(f)
 
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
-        # # Initial state from simulator
-        # car_speed = float(rng.uniform(1.0, 15.0))
+        # Initial state from simulator
+        car_speed = float(rng.uniform(1.0, 15.0))
         # state = sim._initial_state(car_speed, rng)
+        state = sim._initial_state_multi_pedestrian(car_speed, rng, num_pedestrians)
 
         # Initial state from file
-        state = initial_states[episode_idx]
+        # state = initial_states[episode_idx]
         collided = False
 
         u_opt = None
@@ -149,29 +151,28 @@ def run_episodes_scp(
         collide_state = None
         while step_idx < max_steps_per_episode:
             states.append(state.copy())
-            if sim._is_collision(state):
+            if sim._is_collision_multi_pedestrian(state):
                 collide_state = state.copy()
                 collided = True
-            if sim._done(state):
+            if sim._done_multi_pedestrian(state):
                 break
 
             # Receding horizon: re-plan every horizon_T steps
             if (step_idx % horizon_T) == 0 or u_opt is None:
                 p_veh_0 = np.array([state["car_x"], state["car_y"]], dtype=np.float32)
-                p_ped_0 = np.array([state["walker_x"], state["walker_y"]], dtype=np.float32)
-                
-                # For multiple pedestrians: replicate current pedestrian with random Y offsets
-                if num_pedestrians > 1:
-                    import utils.constants as C
-                    # Generate random Y positions around current pedestrian
-                    y_offsets = rng.uniform(-2.0, 2.0, size=num_pedestrians - 1)
-                    p_ped_0_multi = np.zeros((num_pedestrians, 2), dtype=np.float32)
-                    p_ped_0_multi[0] = p_ped_0  # First pedestrian is the actual one
-                    for i in range(1, num_pedestrians):
-                        p_ped_0_multi[i] = [p_ped_0[0], np.clip(p_ped_0[1] + y_offsets[i-1], 
-                                                                  C.WALKER_START_Y, C.WALKER_DESTINATION_Y)]
-                else:
-                    p_ped_0_multi = p_ped_0.reshape(1, 2)
+                p_ped_0_multi = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)], dtype=np.float32)
+                # # For multiple pedestrians: replicate current pedestrian with random Y offsets
+                # if num_pedestrians > 1:
+                #     import utils.constants as C
+                #     # Generate random Y positions around current pedestrian
+                #     y_offsets = rng.uniform(-2.0, 2.0, size=num_pedestrians - 1)
+                #     p_ped_0_multi = np.zeros((num_pedestrians, 2), dtype=np.float32)
+                #     p_ped_0_multi[0] = p_ped_0  # First pedestrian is the actual one
+                #     for i in range(1, num_pedestrians):
+                #         p_ped_0_multi[i] = [p_ped_0[0], np.clip(p_ped_0[1] + y_offsets[i-1], 
+                #                                                   C.WALKER_START_Y, C.WALKER_DESTINATION_Y)]
+                # else:
+                #     p_ped_0_multi = p_ped_0.reshape(1, 2)
                 if method == "scp":
                     t0 = time.perf_counter()
                     u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix = scp_optimize(
@@ -207,7 +208,7 @@ def run_episodes_scp(
             # Apply control corresponding to position inside current horizon
             u_t = float(u_opt[step_idx % horizon_T])
             state["car_v"] = u_t
-            next_state, _ = sim._step(state, rng)
+            next_state, _ = sim._step_multi_pedestrian(state, rng)
             speed_sum += float(state["car_v"])  # accumulate speed
             total_steps += 1
             state = next_state
@@ -325,7 +326,7 @@ def main():
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
-    parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
+    parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
     parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
