@@ -63,20 +63,6 @@ def compute_errors_per_step(model: ACPCausalPedestrianPredictor, loader: DataLoa
     errors = np.concatenate(all_errors, axis=0)
     return errors, T_len
 
-
-def bin_indices_for_speed(speeds: np.ndarray) -> np.ndarray:
-    """
-    3 speed bins across [0, 15]: [0,5), [5,10), [10,15+]
-    Returns integer indices in {0,1,2} per sample
-    """
-    edges = np.array([0.0, 5.0, 10.0, 15.0], dtype=np.float32)
-    # clip speeds into range for safety
-    s = np.clip(speeds, 0.0, 15.0 - 1e-6)
-    idx = np.digitize(s, edges) - 1
-    idx = np.clip(idx, 0, 2)
-    return idx
-
-
 def main():
     parser = argparse.ArgumentParser(description="Compute per-step conformal eta with 3 car_v bins")
     parser.add_argument('--model_path', type=str, default='assets/control_ped_model_ACP.pth', help='Trained model checkpoint')
@@ -94,7 +80,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # load data
-    past_p_seq, p_seq = load_from_csv('./assets/control_sequences_ACP.csv', args.T)
+    past_p_seq, p_seq = load_from_csv('./assets/control_sequences_ACP_cp.csv', args.T)
     ds = SequenceDataset(past_p_seq, p_seq)
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
      # load model

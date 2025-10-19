@@ -44,13 +44,26 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     
     # Create directory if it doesn't exist
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    
+    num_pedestrians = len(states[0]["walker_x"])
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
+    veh_speed = np.array([state["car_v"] for state in states])
+    
+    # 绘制速度图
+    plt.figure(figsize=(10, 4))
+    plt.plot(veh_speed, label="Vehicle Speed")
+    plt.legend()
+    plt.xlabel("Time Step")
+    plt.ylabel("Speed")
+    plt.title("Vehicle Speed Over Time")
+    plt.savefig(filename.replace(".png", "_speed.png"))
+    plt.close()
+
     # 散点图，且点的颜色随时间变化
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
-    plt.scatter(ped_traj[:, 0], ped_traj[:, 1], label=f"Pedestrian {1}",marker="^", color=colors)
+    for i in range(num_pedestrians):
+        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
     # 若发生碰撞，将碰撞点标红
     if collide_state:
         plt.scatter(collide_state["car_x"], collide_state["car_y"], label="Collision", color="red", s=100)
@@ -89,35 +102,29 @@ def solve_ack_problem(
     Returns optimal u (numpy [T]).
     
     """
-    T = u0.shape[0]
-    u = cp.Variable(T)
-    # diff matrix
-    D = np.eye(T) - np.roll(np.eye(T), 1, axis=0)
-    diff_u = D @ u
+    constraints = []
 
+    T = 10
+    u = cp.Variable(T)
+    L = np.tril(np.ones((T, T)))
+    diff_u = L @ u
     # objective function
     # objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:]) #+ 0.1*cp.sum_squares(u - 5)
     objective = cp.sum_squares(u - u_ref)
-    constraints = []
     # Linearized constraints for all (m,t) flattened
     # For each ped, p_veh-p_ped >= C_eta[t]
-    L = np.tril(np.ones((T, T)))
-    p_veh_x = np.eye(T) @ np.array([p_veh_0[0]]*T) + L @ u  # [T,2]
-    p_veh_y = np.ones(T) * p_veh_0[1]
+    p_veh_x = (diff_u + p_veh_0[0])
+    p_veh_y = np.array([p_veh_0[1]] * T).reshape(-1, 1)
     M = p_ped.shape[0]
-    # Remove the pdb debug statement if not needed
-    # import pdb; pdb.set_trace()
-    # 将所有的约束集中在一起，避免 t 的循环
-    for m in range(M):
-        # 计算 p_veh_x 和 p_veh_y 与 p_ped 的差异
-        dx = p_veh_x - p_ped[m, :, 0]  # p_veh_x 和 p_ped_x 之间的差异
-        dy = p_veh_y - p_ped[m, :, 1]  # p_veh_y 和 p_ped_y 之间的差异
 
-        # 使用 vstack 合并 dx 和 dy，并计算其 Frobenius 范数
-        norm_diff = cp.norm(cp.vstack([dx, dy]), 'fro', axis=0)
-        
-        # 添加约束：确保每个时间步的差异满足 ||(p_veh - p_ped)|| >= C_eta[t]
-        constraints.append(norm_diff >= C_eta)
+    for m in range(M):
+        p_ped_x = p_ped[m, :, 0].reshape(-1, 1)
+        p_ped_y = p_ped[m, :, 1].reshape(-1, 1)
+        dis_y = p_veh_y - p_ped_y
+        dis_x = u + p_veh_0[0] - p_ped_x
+        print("dis_y:", dis_y)
+        print("dis_x:", dis_x)
+        constraints.append((dis_x**2 + dis_y**2) >= (C_eta.reshape(-1, 1) + d_safe)**2)
     constraints.append(u >= u_min)
     constraints.append(u <= u_max)
     prob = cp.Problem(cp.Minimize(objective), constraints)
@@ -127,10 +134,53 @@ def solve_ack_problem(
         raise RuntimeError("SCP subproblem infeasible or solver failed")
     return np.asarray(u.value, dtype=np.float64)
 
+def monte_carlo_sampling(
+    u_ref: np.ndarray, 
+    u0: np.ndarray, 
+    C_eta: np.ndarray, 
+    u_min: float, 
+    u_max: float, 
+    rho_ref: float, 
+    d_safe: float,
+    p_veh_0: np.ndarray,
+    p_ped: np.ndarray,
+    max_iter: int = 1000,
+) -> np.ndarray:
+    """Monte Carlo sampling for ACP problem.
+    """
+    T = 10
+    M = p_ped.shape[0]
+    def is_feasible(u_sample: np.ndarray) -> bool:
+        """Check if the sample is feasible."""
+        L = np.tril(np.ones((T, T)))
+        diff_u = L @ u_sample
+        p_veh_x = (diff_u + p_veh_0[0])
+        p_veh_y = np.array([p_veh_0[1]] * T).reshape(-1, 1)
+        for m in range(M):
+            p_ped_x = p_ped[m, :, 0].reshape(-1, 1)
+            p_ped_y = p_ped[m, :, 1].reshape(-1, 1)
+            dis_y = p_veh_y - p_ped_y
+            dis_x = p_veh_x - p_ped_x
+            if np.any((dis_x**2 + dis_y**2) <= (C_eta.reshape(-1, 1) + d_safe)**2):
+                return False
+        return True
+    if is_feasible(u_ref):
+        return u_ref
+    u_samples = []
+    for _ in range(max_iter):
+        u_sample = np.random.uniform(u_min, u_max, T)
+        if is_feasible(u_sample):
+            u_samples.append(u_sample)
+    u_samples = np.array(u_samples)
+    if u_samples.shape[0] == 0:
+        return None
+    u_opt = u_samples[np.argmin(np.linalg.norm(u_samples - u_ref, axis=1))]
+    return u_opt
+
+
 def acp_optimize(
     model_path: str,
     error_npy_path: str,
-    p_ped_0_multi: np.ndarray,
     past_p_ped_multi: np.ndarray,
     p_veh_0: np.ndarray,
     u_0: np.ndarray,
@@ -138,16 +188,10 @@ def acp_optimize(
     rho_ref: float,
     d_safe: float,
     T: int = 10,
-    outer_iters: int = 5,
     u_init: float = 0.1,
     u_ref: float = 15.0,
     u_min: float = 0.1,
     u_max: float = 15.0,
-    rho_trust: float = 1.0,
-    reject_stats_path: str = None,
-    trust_region_initial: float = 10.0,
-    trust_region_decay: float = 0.8,
-    log_file: str = None,
 ) -> Tuple[np.ndarray, int, List[int], np.ndarray, np.ndarray]:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Load model
@@ -167,11 +211,22 @@ def acp_optimize(
     ref_u = np.full((T,), float(u_ref), dtype=np.float64)
     
     # Freeze eta based on last_u
-    C_eta = [np.quantile(error_npy[:,i], eta) for i in range(error_npy.shape[1])]
-
+    C_eta = np.array([np.quantile(error_npy[:,i], eta) for i in range(error_npy.shape[1])])
     p_ped = nn_predict_positions_multi(model, device, past_p_ped_multi)  # [M,T,2]
 
-    u_new = solve_ack_problem(
+    # u_new = solve_ack_problem( # error!
+    #     u_ref=ref_u, 
+    #     u0=u_0, 
+    #     C_eta=C_eta, 
+    #     u_min=u_min, 
+    #     u_max=u_max, 
+    #     rho_ref=rho_ref, 
+    #     d_safe=d_safe,
+    #     p_veh_0=p_veh_0,
+    #     p_ped=p_ped,
+    # )
+
+    u_new = monte_carlo_sampling(
         u_ref=ref_u, 
         u0=u_0, 
         C_eta=C_eta, 
@@ -182,6 +237,7 @@ def acp_optimize(
         p_veh_0=p_veh_0,
         p_ped=p_ped,
     )
+
     if u_new is None:
         print("ACP problem infeasible or solver failed")
         return last_u
@@ -196,7 +252,6 @@ def run_episodes_acp(
     outer_iters: int,
     seed: int,
     model_path: str,
-    eta_csv: str,
     error_npy_path: str,
     u_init: float = 0.1,
     u_ref: float = 15.0,
@@ -254,7 +309,6 @@ def run_episodes_acp(
             f.write(f"  outer_iters: {outer_iters}\n")
             f.write(f"  seed: {seed}\n")
             f.write(f"  model_path: {model_path}\n")
-            f.write(f"  eta_csv: {eta_csv}\n")
             f.write(f"  u_init: {u_init}\n")
             f.write(f"  u_ref: {u_ref}\n")
             f.write(f"  u_min: {u_min}\n")
@@ -312,32 +366,28 @@ def run_episodes_acp(
             # [T,2,M] --> [M,T,2]
             past_p_ped_multi = past_p_ped_multi.transpose(2, 0, 1)
             t0 = time.perf_counter()
-            u_opt, res_pre_p_ped = acp_optimize(
+            u_opt = acp_optimize(
                 model_path=model_path,
                 error_npy_path=error_npy_path,
                 p_veh_0=p_veh_0,
-                p_ped_0_multi=p_ped_0_multi,
                 past_p_ped_multi=past_p_ped_multi,
                 u_0=u_0,
                 eta=initial_eta,
                 T=horizon_T,
-                outer_iters=outer_iters,
                 u_init=u_init,
                 u_ref=u_ref,
                 u_min=u_min,
                 u_max=u_max,
                 d_safe=d_safe,
                 rho_ref=rho_ref,
-                trust_region_initial=trust_region_initial,
-                trust_region_decay=trust_region_decay,
-                log_file=log_file,
+
             )
             t1 = time.perf_counter()
             # metrics accumulation
             total_plan_time.append(t1 - t0)
 
             # Apply control corresponding to position inside current horizon
-            u_t = float(u_opt[step_idx % horizon_T])
+            u_t = float(u_opt[0])
             state["car_v"] = u_t
             next_state, _ = sim._step_multi_pedestrian(state, rng)
             speed_sum += float(state["car_v"])  # accumulate speed
@@ -345,14 +395,14 @@ def run_episodes_acp(
             state = next_state
             step_idx += 1
 
-            if collided:
-                episodes_with_collision += 1
-            
-            # Only save the first episode as an example
-            if episode_idx == 0:
-                # Generate timestamp for filename (MMDDHHMM format)
-                timestamp = datetime.now().strftime("%m%d%H%M")
-                plot_trajectory(states, collide_state, f"trajectories/episode_0_{timestamp}.png")
+        if collided:
+            episodes_with_collision += 1
+        
+        # Only save the first episode as an example
+        if episode_idx == 0:
+            # Generate timestamp for filename (MMDDHHMM format)
+            timestamp = datetime.now().strftime("%m%d%H%M")
+            plot_trajectory(states, collide_state, f"trajectories/episode_0_{timestamp}.png")
 
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
@@ -422,7 +472,6 @@ def run_episodes_acp(
             f.write(f"  outer_iters: {outer_iters}\n")
             f.write(f"  seed: {seed}\n")
             f.write(f"  model_path: {model_path}\n")
-            f.write(f"  eta_csv: {eta_csv}\n")
             f.write(f"  u_init: {u_init}\n")
             f.write(f"  u_ref: {u_ref}\n")
             f.write(f"  u_min: {u_min}\n")
@@ -442,13 +491,12 @@ def run_episodes_acp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200)
+    parser.add_argument('--episodes', type=int, default=50)
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
     parser.add_argument('--model_path', type=str, default='assets/control_ped_model_ACP.pth')
-    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta_real_sim.csv')
     parser.add_argument('--u_init', type=float, default=0.1)
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)
@@ -457,7 +505,7 @@ def main():
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
-    parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
+    parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
     parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
@@ -472,7 +520,6 @@ def main():
         outer_iters=args.outer_iters,
         seed=args.seed,
         model_path=args.model_path,
-        eta_csv=args.eta_csv,
         error_npy_path=args.error_npy_path,
         u_init=args.u_init,
         u_ref=args.u_ref,

@@ -39381,3 +39381,1854 @@ Parameters:
 Execution Log:
 ======================================================================
 
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:00:58
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:03:21
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:06:11
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:06:44
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:07:11
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:07:26
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:10:49
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:11:11
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:11:33
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:12:02
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:12:29
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:13:13
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 15:13:48
+
+Episodes: 50
+Method: scp
+Total Steps: 34.00
+Avg vehicle speed over all steps: 10.5882 m/s
+Episodes with collision: 630 / 50 (ratio=12.600)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 28.48 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:18:38
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:19:19
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 15:19:51
+
+Episodes: 50
+Method: scp
+Total Steps: 34.00
+Avg vehicle speed over all steps: 10.5882 m/s
+Episodes with collision: 630 / 50 (ratio=12.600)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 26.66 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:20:09
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 15:20:47
+
+Episodes: 50
+Method: scp
+Total Steps: 34.00
+Avg vehicle speed over all steps: 10.5882 m/s
+Episodes with collision: 630 / 50 (ratio=12.600)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 31.70 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:20:54
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 15:21:32
+
+Episodes: 50
+Method: scp
+Total Steps: 34.00
+Avg vehicle speed over all steps: 10.5882 m/s
+Episodes with collision: 630 / 50 (ratio=12.600)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 31.51 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:22:27
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 15:23:11
+
+Episodes: 50
+Method: scp
+Total Steps: 34.00
+Avg vehicle speed over all steps: 10.5882 m/s
+Episodes with collision: 630 / 50 (ratio=12.600)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 36.07 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:25:08
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:28:27
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:32:41
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:36:53
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:37:20
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:40:57
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:41:35
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:42:59
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:43:24
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:43:55
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:44:42
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:45:11
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:45:56
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:47:23
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: The problem includes expressions that don't support CPP backend. Defaulting to the SCIPY backend for canonicalization.
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:48:23
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:48:43
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:49:46
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:50:35
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:50:57
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:51:29
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 1 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 2 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 3 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 4 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 5 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 6 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 7 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 8 times so far.
+
+[WARNING] UserWarning: 
+This use of ``*`` has resulted in matrix multiplication.
+Using ``*`` for matrix multiplication has been deprecated since CVXPY 1.1.
+    Use ``*`` for matrix-scalar and vector-scalar multiplication.
+    Use ``@`` for matrix-matrix and matrix-vector multiplication.
+    Use ``multiply`` for elementwise multiplication.
+This code path has been hit 9 times so far.
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:53:22
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:54:55
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 15:55:25
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:05:48
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:06:17
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 16:07:20
+
+Episodes: 50
+Method: scp
+Total Steps: 35.26
+Avg vehicle speed over all steps: 10.1560 m/s
+Episodes with collision: 713 / 50 (ratio=14.260)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 41.29 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:09:41
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 20.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:10:13
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 5.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:11:40
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 16:12:30
+
+Episodes: 50
+Method: scp
+Total Steps: 35.22
+Avg vehicle speed over all steps: 10.1703 m/s
+Episodes with collision: 47 / 50 (ratio=0.940)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 38.94 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:18:45
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:19:42
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:19:57
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 16:20:42
+
+Episodes: 50
+Method: scp
+Total Steps: 34.90
+Avg vehicle speed over all steps: 10.2553 m/s
+Episodes with collision: 46 / 50 (ratio=0.920)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 35.63 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:22:17
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 16:23:07
+
+Episodes: 50
+Method: scp
+Total Steps: 35.06
+Avg vehicle speed over all steps: 10.2307 m/s
+Episodes with collision: 44 / 50 (ratio=0.880)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 38.53 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:28:27
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:34:22
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:34:38
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-19 16:35:27
+
+Parameters:
+  num_episodes: 50
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_ACP.pth
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 1
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+Experiment Results
+End Time: 2025-10-19 16:35:50
+
+Episodes: 50
+Method: scp
+Total Steps: 31.40
+Avg vehicle speed over all steps: 10.1412 m/s
+Episodes with collision: 12 / 50 (ratio=0.240)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 20.73 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
