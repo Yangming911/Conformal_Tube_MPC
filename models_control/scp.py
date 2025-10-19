@@ -128,30 +128,39 @@ def vehicle_trajectory(p_veh0: np.ndarray, u: np.ndarray, dt: float) -> np.ndarr
 
 
 def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.device, u0: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, dt: float, eps: float = 1e-3) -> Tuple[np.ndarray, np.ndarray]:
-    """Compute g0 and grad for M pedestrians.
-    g_{m,t}(u) = ||p_veh_t(u) - p_ped_t^{(m)}(u)||
-    Returns:
-      g0_flat: [M*T]
-      J: [M*T, T]
+    """Compute dg/du and g(u0) for M pedestrians.
     """
     T = u0.shape[0]
     M = p_ped0_multi.shape[0]
+    p_veh = vehicle_trajectory(p_veh0, u0, dt) # [T,2]
     p_ped = nn_predict_positions_multi(model, device, u0, p_veh0, p_ped0_multi)  # [M,T,2]
-    p_veh = vehicle_trajectory(p_veh0, u0, dt)  # [T,2]
-    diff = p_veh.reshape(1, T, 2) - p_ped  # [M,T,2]
-    g0 = np.linalg.norm(diff, axis=2)  # [M,T]
+    # g = (p_veh - p_ped)^2
+    g = np.linalg.norm(p_veh[None,:,:] - p_ped, axis=2)**2  # [M,T]
+    L_x = np.tril(np.ones((T, T), dtype=np.float32))
+    L_y = np.zeros((T, T), dtype=np.float32)
+    L = np.stack([L_x, L_y], axis=2)  # [T,T,2]
+    # delta_omiga = d(p_ped)/d(u) with shape [M,T,T]
+    delta_omiga = np.zeros((M, T, T, 2), dtype=np.float32)
+    for t in range(T):
+        eps_u = u0
+        eps_ = eps+np.random.normal(0, 0.1*eps)
+        eps_u[t] += eps_
+        p_ped_eps = nn_predict_positions_multi(model, device, eps_u, p_veh0, p_ped0_multi)  # [M,T,2]
+        diff = p_ped_eps - p_ped  # [M,T,2]
 
-    J = np.zeros((M * T, T), dtype=np.float64)
-    for k in range(T):
-        u_pert = u0.copy()
-        u_pert[k] += eps
-        p_ped_p = nn_predict_positions_multi(model, device, u_pert, p_veh0, p_ped0_multi)  # [M,T,2]
-        p_veh_p = vehicle_trajectory(p_veh0, u_pert, dt)  # [T,2]
-        diff_p = p_veh_p.reshape(1, T, 2) - p_ped_p  # [M,T,2]
-        g_p = np.linalg.norm(diff_p, axis=2)  # [M,T]
-        grad_k = (g_p - g0) / eps  # [M,T]
-        J[:, k] = grad_k.reshape(M * T)
-    return g0.reshape(M * T).astype(np.float64), J
+        delta_omiga[:, t, :, :] = diff / eps_  # [M,T,2]
+
+    # dg/du=2(p_veh - p_ped)(L- delta_omiga)
+    J = np.zeros((M, T, 2), dtype=np.float32)
+    for m in range(M):
+        # x axis
+        J[m, :, 0] = 2 * (p_veh[:,0] - p_ped[m, :, 0]).reshape(-1,1).transpose() @ (L_x - delta_omiga[m, :, :, 0])  # [T]
+        # y axis
+        J[m, :, 1] = 2 * (p_veh[:,1] - p_ped[m, :, 1]).reshape(-1,1).transpose() @ (L_y - delta_omiga[m, :, :, 1])  # [T]
+
+    #
+    J = np.sum(J, axis=2)  # [M,T]
+    return g, J
 
 
 def solve_scp_subproblem(
@@ -178,23 +187,22 @@ def solve_scp_subproblem(
         trust_region_radius: If provided, limits ||u - u0||_inf <= trust_region_radius
                             (i.e., -R <= u_i - u0_i <= R for all i)
     """
-    T = u0.shape[0]
+    M,T = g0.shape
     u = cp.Variable(T)
     # diff matrix
     D = np.eye(T) - np.roll(np.eye(T), 1, axis=0)
     diff_u = D @ u
 
     # objective function
-    objective = cp.sum_squares(u - u_ref) + rho_ref * cp.sum_squares(diff_u[1:]) #+ 0.1*cp.sum_squares(u - 5)
+    objective = cp.sum_squares(u - u_ref) # + rho_ref * cp.sum_squares(diff_u[1:]) #+ 0.1*cp.sum_squares(u - 5)
     # objective = cp.sum_squares(u - u_ref)
     constraints = []
     # Linearized constraints for all (m,t) flattened
-    MT = g0.shape[0]
-    for r in range(MT):
-        # Map row r to its time index t to select C_eta[t]
-        t = r % T
-        # Linearized: (||p_veh - p_ped|| - d_safe) >= C_eta[t]
-        constraints.append(g0[r] - d_safe + J[r, :] @ (u - u0) >= C_eta[t])
+    for m in range(M):
+        # constraints.append(g0[m,-1] + J[m,-1] * (u[-1] - u0[-1]) >= (C_eta[-1] + d_safe)**2)
+        for t in range(T):
+            constraints.append(g0[m,t] + J[m,t] * (u[t] - u0[t]) >= (C_eta[t] + d_safe)**2)
+        # constraints.append(g0[m,:] + J[m,:] * (u - u0) >= (C_eta + d_safe)**2)
     
     # Trust region constraint (infinity norm, linear constraints)
     # ||u - u0||_inf <= trust_region_radius  =>  -R <= u - u0 <= R
@@ -290,7 +298,7 @@ def scp_optimize(
         inner_steps = 0
         for _inner in range(max_inner_steps):
             # Compute trust region radius for this inner iteration
-            trust_radius = trust_region_initial * (trust_region_decay ** _inner)  *  last_u[-1] *10 * (0.1 ** _inner)
+            trust_radius = trust_region_initial * (trust_region_decay ** _inner) *  last_u[-1] *10 * (0.1 ** _inner)
             
             g0, J = finite_diff_grad_multi(
                 model,
@@ -300,6 +308,7 @@ def scp_optimize(
                 p_ped_0_multi.astype(np.float32),
                 dt,
             )
+
             try:
                 u_new = solve_scp_subproblem(
                     ref_u, u_curr, g0, J, C_eta, u_min, u_max, 
@@ -307,7 +316,7 @@ def scp_optimize(
                     trust_region_radius=trust_radius
                 )
             except Exception as e:
-                msg = f"SCP subproblem failed at outer iter {it}, inner iter {_inner}: {e}"
+                msg = f"SCP subproblem failed at outer iter {it}, inner iter {_inner}: {e}, p_veh={p_veh_0}"
                 if log_file:
                     with open(log_file, 'a') as f:
                         f.write(msg + '\n')

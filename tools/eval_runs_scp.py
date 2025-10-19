@@ -38,6 +38,18 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     num_pedestrians = len(states[0]["walker_x"])
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
+    veh_speed = np.array([state["car_v"] for state in states])
+    
+    # 绘制速度图
+    plt.figure(figsize=(10, 4))
+    plt.plot(veh_speed, label="Vehicle Speed")
+    plt.legend()
+    plt.xlabel("Time Step")
+    plt.ylabel("Speed")
+    plt.title("Vehicle Speed Over Time")
+    plt.savefig(filename.replace(".png", "_speed.png"))
+    plt.close()
+
     # 散点图，且点的颜色随时间变化
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
@@ -204,7 +216,6 @@ def run_episodes_scp(
                     u_opt = np.full(horizon_T, u_ref)
                 else:
                     raise ValueError(f"Unknown method: {method}")
-
             # Apply control corresponding to position inside current horizon
             u_t = float(u_opt[step_idx % horizon_T])
             state["car_v"] = u_t
@@ -311,7 +322,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200)
+    parser.add_argument('--episodes', type=int, default=20) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
@@ -327,7 +338,7 @@ def main():
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
     parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
-    parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
+    parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated_1019.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
 
