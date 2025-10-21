@@ -1515,3 +1515,1669 @@ Bin0        0         0         0
 Bin1        0         0         0  
 Bin2        0         0         0  
 
+======================================================================
+Timestamp: 2025-10-20 17:11:22
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 17 / 20 (ratio=0.850)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:13:57
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 8 / 20 (ratio=0.400)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:14:42
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 8 / 20 (ratio=0.400)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:16:44
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 5 / 20 (ratio=0.250)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:18:19
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 5 / 20 (ratio=0.250)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:18:51
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 5 / 20 (ratio=0.250)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:19:22
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:32:44
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:33:30
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:33:43
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 2 / 20 (ratio=0.100)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:37:31
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 4 / 20 (ratio=0.200)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:37:51
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:38:21
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:40:51
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:41:52
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 7 / 20 (ratio=0.350)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:42:10
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:43:40
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:44:24
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:44:58
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:45:17
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:46:03
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:46:29
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:47:30
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:47:55
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 8 / 20 (ratio=0.400)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:48:14
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 7 / 20 (ratio=0.350)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:48:31
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 6 / 20 (ratio=0.300)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:48:49
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 4 / 20 (ratio=0.200)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:50:11
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 4 / 20 (ratio=0.200)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:50:39
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 4 / 20 (ratio=0.200)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:50:50
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: constant_speed
+
+Results:
+Episodes: 20
+Method: constant_speed
+Total Steps: 34.00
+Avg vehicle speed over all steps: 15.0000 m/s
+Episodes with collision: 4 / 20 (ratio=0.200)
+Avg outer-loop iterations per plan: 0.00
+Avg inner SCP steps per outer step: 0.00
+Avg solve time per T-step plan: 0.00 ms
+
+Total outer iterations: 0
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 17:53:38
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 1
+  method: scp
+
+Results:
+Episodes: 20
+Method: scp
+Total Steps: 39.85
+Avg vehicle speed over all steps: 12.7791 m/s
+Episodes with collision: 0 / 20 (ratio=0.000)
+Avg outer-loop iterations per plan: 4.43
+Avg inner SCP steps per outer step: 3.59
+Avg solve time per T-step plan: 621.71 ms
+
+Total outer iterations: 403
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0       60        57        24  
+Bin1        0         0        56  
+Bin2        0         0       206  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         1         0  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 18:55:24
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 83.82
+Avg vehicle speed over all steps: 6.0574 m/s
+Episodes with collision: 6 / 200 (ratio=0.030)
+Avg outer-loop iterations per plan: 2.79
+Avg inner SCP steps per outer step: 4.28
+Avg solve time per T-step plan: 1987.97 ms
+
+Total outer iterations: 4987
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0     2014       505       331  
+Bin1        0        57       435  
+Bin2        0         0      1645  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0        67        20  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-20 23:50:27
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_real_sim.pth
+  eta_csv: assets/cp_eta_real_sim.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 81.73
+Avg vehicle speed over all steps: 6.2165 m/s
+Episodes with collision: 6 / 200 (ratio=0.030)
+Avg outer-loop iterations per plan: 2.83
+Avg inner SCP steps per outer step: 4.27
+Avg solve time per T-step plan: 1979.20 ms
+
+Total outer iterations: 4939
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0     1976       505       314  
+Bin1        0        55       450  
+Bin2        0         0      1639  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0        52        18  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-21 08:47:59
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: scp
+
+Results:
+Episodes: 200
+Method: scp
+Total Steps: 73.02
+Avg vehicle speed over all steps: 6.9446 m/s
+Episodes with collision: 4 / 200 (ratio=0.020)
+Avg outer-loop iterations per plan: 2.91
+Avg inner SCP steps per outer step: 4.00
+Avg solve time per T-step plan: 1756.21 ms
+
+Total outer iterations: 4610
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0     1499       504       325  
+Bin1        0       189       481  
+Bin2        0         0      1612  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0        16        19  
+Bin1        0         0         0  
+Bin2        0         0         0  
+

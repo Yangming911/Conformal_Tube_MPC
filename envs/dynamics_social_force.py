@@ -167,7 +167,7 @@ def F_vehicle(car_x, car_y, car_v, walker_x, walker_y, walker_vx, walker_vy):
     return F_veh_x, F_veh_y, situation
 
 
-def F_destination(walker_y_position, destination_y, F_veh_x, F_veh_y, walker_vx, walker_vy):
+def F_destination(walker_x_position, destination_x, walker_y_position, destination_y, F_veh_x, F_veh_y, walker_vx, walker_vy):
     """
     Compute the attractive force of the destination (force acts only along the y-axis).
 
@@ -199,8 +199,10 @@ def F_destination(walker_y_position, destination_y, F_veh_x, F_veh_y, walker_vx,
     
     # Compute desired speed (v_d) pointing to the destination
     desired_velocity_y = v_0 * (destination_y - walker_y_position) / math.sqrt((destination_y - walker_y_position) ** 2 + sigma_des ** 2)
+    desired_velocity_x = v_0 * (destination_x - walker_x_position) / math.sqrt((destination_x - walker_x_position) ** 2 + sigma_des ** 2)
+    
     delta_v_y = desired_velocity_y - walker_vy
-    delta_v_x = 0 - walker_vx
+    delta_v_x = desired_velocity_x - walker_vx
     # Compute destination attraction force
     F_destination_y = beta_des * k_des * delta_v_y # adjust speed toward destination
     F_destination_x = beta_des * k_des * delta_v_x
@@ -209,7 +211,7 @@ def F_destination(walker_y_position, destination_y, F_veh_x, F_veh_y, walker_vx,
 
 
 def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, walker_y_position, 
-                    walker_v_x_past, walker_v_y_past, v_max=2.5, a_max=5, destination_y=C.WALKER_DESTINATION_Y, rng=None):
+                    walker_v_x_past, walker_v_y_past, v_max=2.5, a_max=5, destination_x=C.WALKER_DESTINATION_X, destination_y=C.WALKER_DESTINATION_Y, rng=None):
     """
     Update pedestrian velocity (x and y) based on destination attraction and vehicle influence.
 
@@ -231,12 +233,14 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
     
     # 1. Compute vehicle influence on pedestrian (returns force in x and y)
     F_vehicle_x, F_vehicle_y, _ = F_vehicle(car_x_position, car_y_position, car_v, walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past)
-    
+    F_vehicle_x = 100*F_vehicle_x
+    F_vehicle_y = 0.1*F_vehicle_y
     # 2. Compute destination attraction (returns only y-direction force)
-    F_destination_x, F_destination_y = F_destination(walker_y_position, destination_y, F_vehicle_x, F_vehicle_y, walker_v_x_past, walker_v_y_past)
+    F_destination_x, F_destination_y = F_destination(walker_x_position, destination_x, walker_y_position, destination_y, F_vehicle_x, F_vehicle_y, walker_v_x_past, walker_v_y_past)
     # 3. Compute total force components in x and y
+
     F_total_x = F_vehicle_x + F_destination_x # only vehicle affects x-direction here
-    F_total_y = F_vehicle_y + F_destination_y # destination and vehicle affect y-direction
+    F_total_y =  F_vehicle_y + F_destination_y # destination and vehicle affect y-direction
     
     # 4. Compute acceleration from force (F = m * a => a = F / m)
     a_x = F_total_x / C.mass_pedestrian
@@ -249,7 +253,6 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
         # Scale acceleration proportionally to keep direction but cap magnitude
         a_x = a_x / total_a * a_max
         a_y = a_y / total_a * a_max
-    
     # 6. Update pedestrian velocity (v = v_0 + a * dt)
     if rng is None:
         rng = np.random

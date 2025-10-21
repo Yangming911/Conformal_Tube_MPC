@@ -100,7 +100,7 @@ def bin_indices_for_speed(speeds: np.ndarray) -> np.ndarray:
 
 def main():
     parser = argparse.ArgumentParser(description="Compute per-step conformal eta with 3 car_v bins")
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth', help='Trained model checkpoint')
+    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_1021.pth', help='Trained model checkpoint')
     parser.add_argument('--episodes', type=int, default=20000, help='Number of calibration sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--alpha', type=float, default=0.85, help='Quantile level in (0,1)')
@@ -108,8 +108,8 @@ def main():
     parser.add_argument('--batch_size', type=int, default=1024, help='Batch size for inference')
     parser.add_argument('--min_count', type=int, default=20, help='Minimum samples per bin; fallback if fewer')
     parser.add_argument('--fallback_eta', type=float, default=0.5, help='Fallback eta when bin underpopulated')
-    parser.add_argument('--save_path', type=str, default='assets/cp_eta.csv', help='Where to save eta matrix as CSV')
-    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges.csv', help='Where to save bin edges as CSV')
+    parser.add_argument('--save_path', type=str, default='assets/cp_eta_1021.csv', help='Where to save eta matrix as CSV')
+    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges_1021.csv', help='Where to save bin edges as CSV')
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)

@@ -38,7 +38,7 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     num_pedestrians = len(states[0]["walker_x"])
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
-    veh_speed = np.array([state["car_v"] for state in states])
+    veh_speed = np.array([state["walker_vx"][0] for state in states])
     
     # 绘制速度图
     plt.figure(figsize=(10, 4))
@@ -58,6 +58,7 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     # 若发生碰撞，将碰撞点标红
     if collide_state:
         plt.scatter(collide_state["car_x"], collide_state["car_y"], label="Collision", color="red", s=100)
+    plt.axvline(x=30, color='r', linestyle='--')
     plt.legend()
     plt.xlabel("X")
     plt.ylabel("Y")
@@ -232,7 +233,7 @@ def run_episodes_scp(
         if episode_idx == 0:
             # Generate timestamp for filename (MMDDHHMM format)
             timestamp = datetime.now().strftime("%m%d%H%M")
-            plot_trajectory(states, collide_state, f"trajectories/episode_0_{timestamp}.png")
+            plot_trajectory(states, collide_state, f"trajectories_1020/episode_0_{timestamp}.png")
 
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
@@ -322,13 +323,13 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=20) 
+    parser.add_argument('--episodes', type=int, default=200) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_real_sim.pth')
-    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta_real_sim.csv')
+    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_1021.pth')
+    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta_1021.csv')
     parser.add_argument('--u_init', type=float, default=0.1)
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)

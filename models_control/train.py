@@ -204,7 +204,8 @@ def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device) -
 
 def main():
     parser = argparse.ArgumentParser(description="Train causal pedestrian position predictor")
-    parser.add_argument('--data', type=str, default='assets/control_sequences.csv', help='Path to CSV dataset')
+    parser.add_argument('--data', type=str, default='assets/control_sequences_1021.csv', help='Path to CSV dataset')
+    parser.add_argument('--citr_data', type=str, default='assets/citr_data/citr_train.csv')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--epochs', type=int, default=100, help='Training epochs')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size')
@@ -213,7 +214,7 @@ def main():
     parser.add_argument('--hidden_dim', type=int, default=128, help='Hidden dim')
     parser.add_argument('--layers', type=int, default=2, help='Number of GRU layers')
     parser.add_argument('--dropout', type=float, default=0.1, help='Dropout rate')
-    parser.add_argument('--save_path', type=str, default='assets/control_ped_model.pth', help='Checkpoint path')
+    parser.add_argument('--save_path', type=str, default='assets/control_ped_model_1021.pth', help='Checkpoint path')
     parser.add_argument('--patience', type=int, default=20, help='Early stopping patience')
     parser.add_argument('--from_sim', action='store_true', help='Collect training data from social force simulator (per-step random speed)')
     parser.add_argument('--episodes', type=int, default=20000, help='Number of simulated episodes/sequences when generating data')
@@ -236,6 +237,11 @@ def main():
         print(f"Sim data shapes: u={u.shape}, p_veh0={p_veh0.shape}, p_ped0={p_ped0.shape}, p_seq={p_seq.shape}")
     else:
         u, p_veh0, p_ped0, p_seq = load_from_csv(data_path, args.T)
+        u_real, p_veh0_real, p_ped0_real, p_seq_real = load_from_csv(args.citr_data, args.T)
+        u = np.concatenate([u, u_real], axis=0)
+        p_veh0 = np.concatenate([p_veh0, p_veh0_real], axis=0)
+        p_ped0 = np.concatenate([p_ped0, p_ped0_real], axis=0)
+        p_seq = np.concatenate([p_seq, p_seq_real], axis=0)
 
     N = u.shape[0]
     train_idx, val_idx, test_idx = split_train_val_test(N)
@@ -255,7 +261,7 @@ def main():
     model.to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10, verbose=True)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=10)
 
     best_val = float('inf')
     patience_counter = 0
