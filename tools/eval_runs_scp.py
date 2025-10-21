@@ -339,7 +339,7 @@ def main():
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
     parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
-    parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated_1019.log', help='Log file path')
+    parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
 

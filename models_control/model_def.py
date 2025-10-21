@@ -146,4 +146,107 @@ def compute_sequence_loss(
 
     return total_mse, per_step_mse
 
+class ACPCausalPedestrianPredictor(nn.Module):
+    """
+    Causal sequence-to-sequence model for pedestrian positions with past pedestrian positions.
+
+    Inputs:
+      - p_ped_seq: past pedestrian positions, shape [batch, T, 2]
+
+    Outputs:
+      - p_ped_seq: predicted pedestrian positions for steps 1..T, shape [batch, T, 2]
+
+    Causality:
+        Each p_ped_t depends only on p_ped_{0..t-1} and initial states via
+        a recurrent GRU, where the initial hidden state is a learned function of
+        p_ped0. The step input depends only on p_ped_t.
+    """
+
+    def __init__(
+        self,
+        p_dim: int = 2, # xy
+        hidden_dim: int = 128,
+        num_layers: int = 2,
+        dropout: float = 0.1,
+        use_layer_norm: bool = True,
+    ) -> None:
+        super().__init__()
+
+        self.p_dim = p_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+
+        # Project control input per time step
+        self.input_proj = nn.Sequential(
+            nn.Linear(p_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+        )
+
+        # Initialize recurrent core
+        self.rnn = nn.GRU(
+            input_size=hidden_dim,
+            hidden_size=hidden_dim,
+            num_layers=num_layers,
+            batch_first=True,
+        )
+
+        # Optional normalization on hidden before output
+        self.norm = nn.LayerNorm(hidden_dim) if use_layer_norm else nn.Identity()
+
+        # Map hidden state to delta position (residual over last ped position)
+        self.delta_head = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim // 2),
+            nn.ReLU(),
+            nn.Linear(hidden_dim // 2, 2),
+        )
+        self.h0_mlp = nn.Sequential(
+            nn.Linear(p_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, hidden_dim),
+        )
+
+        self._init_weights()
+
+    def _init_weights(self) -> None:
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                nn.init.xavier_uniform_(m.weight)
+                if m.bias is not None:
+                    nn.init.zeros_(m.bias)
+
+    def forward(
+        self,
+        p_ped_seq: torch.Tensor,
+    ) -> torch.Tensor:
+        """
+        Args:
+            p_ped_seq: [B, T, p_dim]
+
+        Returns:
+            p_ped_seq: [B, T, 2] positions for steps 1..T
+        """
+        B, T, _ = p_ped_seq.shape
+
+        # Project control input per time step
+        x = self.input_proj(p_ped_seq.contiguous().view(B * T, -1)).view(B, T, -1)
+
+        # Run GRU
+        rnn_out, _ = self.rnn(x)
+
+        # Output deltas and accumulate to absolute positions
+        rnn_out = self.norm(rnn_out)
+        deltas = self.delta_head(rnn_out)  # [B, T, 2]
+
+        # Cumulative sum of deltas starting from p_ped_seq[:, 0, :]
+        p_seq = []
+        prev = p_ped_seq[:, -1, :]
+        for t in range(T):
+            prev = prev + deltas[:, t, :]
+            p_seq.append(prev)
+        p_ped_seq = torch.stack(p_seq, dim=1)
+
+        return p_ped_seq
+
 
