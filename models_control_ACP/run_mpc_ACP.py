@@ -19,6 +19,7 @@ import cvxpy as cp
 
 import utils.constants as C
 from models_control.model_def import ACPCausalPedestrianPredictor
+from tools.eval_runs_scp import plot_trajectory
 
 import argparse
 import numpy as np
@@ -26,6 +27,7 @@ from tqdm import tqdm
 import warnings
 from datetime import datetime
 from typing import List, Dict
+import copy
 
 from envs import simulator as sim
 import time
@@ -34,45 +36,6 @@ import torch
 import matplotlib.pyplot as plt
 import os
 from typing import Tuple
-
-def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> None:
-    """
-    Plot the trajectory of the vehicle and pedestrians.
-    """
-    import matplotlib.pyplot as plt
-    import os
-    
-    # Create directory if it doesn't exist
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-    num_pedestrians = len(states[0]["walker_x"])
-    ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
-    veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
-    veh_speed = np.array([state["car_v"] for state in states])
-    
-    # 绘制速度图
-    plt.figure(figsize=(10, 4))
-    plt.plot(veh_speed, label="Vehicle Speed")
-    plt.legend()
-    plt.xlabel("Time Step")
-    plt.ylabel("Speed")
-    plt.title("Vehicle Speed Over Time")
-    plt.savefig(filename.replace(".png", "_speed.png"))
-    plt.close()
-
-    # 散点图，且点的颜色随时间变化
-    colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
-    plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
-    for i in range(num_pedestrians):
-        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
-    # 若发生碰撞，将碰撞点标红
-    if collide_state:
-        plt.scatter(collide_state["car_x"], collide_state["car_y"], label="Collision", color="red", s=100)
-    plt.legend()
-    plt.xlabel("X")
-    plt.ylabel("Y")
-    plt.title("Trajectory")
-    plt.savefig(filename)
-    plt.close()
 
 @torch.no_grad()
 def nn_predict_positions_multi(model: ACPCausalPedestrianPredictor, device: torch.device, past_p_ped0: np.ndarray) -> np.ndarray:
@@ -214,8 +177,8 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
     u_init = 0.1
     T = 10
     method ="opt" # "monte_carlo"
-    model_path = os.path.join("assets/control_ped_model_ACP.pth")
-    error_npy_path = os.path.join("assets/cp_errors_ACP.npy")
+    model_path = os.path.join("assets_ACP/control_ped_model_ACP.pth")
+    error_npy_path = os.path.join("assets_ACP/cp_errors_ACP.npy")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -243,13 +206,13 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
         step_idx = 0
         states = []
         collide_state = None
+        unsolver_count = 0
 
         initial_eta = 0.85
         error_npy = np.load(error_npy_path)
         C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
 
         while step_idx < max_steps_per_episode:
-            states.append(state.copy())
             if sim._is_collision_multi_pedestrian(state):
                 collide_state = state.copy()
                 collided = True
@@ -263,6 +226,9 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
                 state = next_state
                 total_steps += 1
                 step_idx += 1
+                states.append(copy.deepcopy(state))
+                states[-1]['eta'] = C_eta[0]
+                states[-1]['pre_p_ped'] = np.array([state['walker_x'],state['walker_y']]).T
                 continue
 
                 
@@ -282,14 +248,15 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
             past_pred_p_ped_multi = nn_predict_positions_multi(model, device, ppast_p_ped_multi) # [M, T, 2]
             pred_p_ped_multi = nn_predict_positions_multi(model, device, past_p_ped_multi) # [M, T, 2]
             if step_idx > 2 * horizon_T:
-                gamma = 8*1e-4
+                gamma = 0.08
                 eta_const = 0.1
                 if ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0).all():
                     initial_eta = initial_eta + gamma*eta_const
-                    # print("new eta:", initial_eta)
+                    print("new eta:", initial_eta)
                 else:
                     initial_eta = initial_eta + gamma*(eta_const - 1)
-                    # print("no satisfied. new eta:", initial_eta)
+                    initial_eta = min(max(0.05, initial_eta), 0.95)
+                    print("no satisfied. new eta:", initial_eta)
             C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
             if method == "monte_carlo":
                 u_opt = monte_carlo_sampling(
@@ -313,6 +280,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
                 )
             if u_opt is None:
                 print("No feasible solution found.")
+                unsolver_count += 1
                 u_opt = last_u
             last_u = u_opt
             t1 = time.perf_counter()
@@ -325,6 +293,9 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
             total_steps += 1
             state = next_state
             step_idx += 1
+            states.append(copy.deepcopy(state))
+            states[-1]['eta'] = C_eta[0]
+            states[-1]['pre_p_ped'] = pred_p_ped_multi[:,0,:]
 
         if collided:
             episodes_with_collision += 1
@@ -338,15 +309,17 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
     avg_plan_time_ms = (1000.0 * np.mean(total_plan_time) if total_plan_time else 0.0)
     
     print(f"Total episodes: {num_episodes}")
+    print(f"Total Steps: {total_steps/num_episodes:.2f}")
     print(f"Episodes with collision: {episodes_with_collision}/{num_episodes}({episodes_with_collision/num_episodes:.2%})")
     print(f"Average speed: {avg_speed:.2f} m/s")
     print(f"Average planning time: {avg_plan_time_ms:.2f} ms")
+    print(f"Unsuccessfully solved episodes: {unsolver_count} / {total_steps} (ratio={unsolver_count/total_steps:.2%})")
 
 if __name__ == "__main__":
-    num_episodes = 200
+    num_episodes = 20
     max_steps_per_episode = 10000
     horizon_T = 10
-    num_pedestrians = [1]
+    num_pedestrians = [9]
     for num_pedestrian in num_pedestrians:
         print(f"Running {num_episodes} episodes with {num_pedestrian} pedestrians")
         run_mpc(num_episodes, max_steps_per_episode, horizon_T, num_pedestrian)

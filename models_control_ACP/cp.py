@@ -65,14 +65,14 @@ def compute_errors_per_step(model: ACPCausalPedestrianPredictor, loader: DataLoa
 
 def main():
     parser = argparse.ArgumentParser(description="Compute per-step conformal eta with 3 car_v bins")
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_ACP.pth', help='Trained model checkpoint')
+    parser.add_argument('--model_path', type=str, default='assets_ACP/control_ped_model_ACP.pth', help='Trained model checkpoint')
     parser.add_argument('--episodes', type=int, default=20000, help='Number of calibration sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--alpha', type=float, default=0.85, help='Quantile level in (0,1)')
     parser.add_argument('--batch_size', type=int, default=1024, help='Batch size for inference')
-    parser.add_argument('--save_path', type=str, default='assets/cp_eta_ACP.csv', help='Where to save eta matrix as CSV')
-    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges_ACP.csv', help='Where to save bin edges as CSV')
-    parser.add_argument('--save_errors_path', type=str, default='assets/cp_errors_ACP.npy', help='Where to save errors as NPY')
+    parser.add_argument('--save_path', type=str, default='assets_ACP/cp_eta_ACP.csv', help='Where to save eta matrix as CSV')
+    parser.add_argument('--save_edges_path', type=str, default='assets_ACP/cp_eta_edges_ACP.csv', help='Where to save bin edges as CSV')
+    parser.add_argument('--save_errors_path', type=str, default='assets_ACP/cp_errors_ACP.npy', help='Where to save errors as NPY')
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
@@ -80,7 +80,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # load data
-    past_p_seq, p_seq = load_from_csv('./assets/control_sequences_ACP_cp.csv', args.T)
+    past_p_seq, p_seq = load_from_csv('./assets_ACP/control_sequences_ACP_cp.csv', args.T)
     ds = SequenceDataset(past_p_seq, p_seq)
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
      # load model

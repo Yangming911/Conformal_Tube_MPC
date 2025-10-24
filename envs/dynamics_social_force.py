@@ -18,7 +18,8 @@ l_f = 1.0      # front length
 l_w = 1.2      # width
 l_e = 0.2151011    # extension length
 d_ox = 0.510985    # extended length along vehicle orientation
-alpha_x = 1.394358 # proportional factor for speed extension
+# alpha_x = 1.394358 # proportional factor for speed extension
+alpha_x = 2.394358 # proportional factor for speed extension
 
 def point_to_line_segment_distance(px, py, x1, y1, x2, y2):
     """Calculate closest point on line segment to a given point"""
@@ -234,7 +235,7 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
     # 1. Compute vehicle influence on pedestrian (returns force in x and y)
     F_vehicle_x, F_vehicle_y, _ = F_vehicle(car_x_position, car_y_position, car_v, walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past)
     F_vehicle_x = 100*F_vehicle_x
-    F_vehicle_y = 0.1*F_vehicle_y
+    F_vehicle_y = 0.2*F_vehicle_y
     # 2. Compute destination attraction (returns only y-direction force)
     F_destination_x, F_destination_y = F_destination(walker_x_position, destination_x, walker_y_position, destination_y, F_vehicle_x, F_vehicle_y, walker_v_x_past, walker_v_y_past)
     # 3. Compute total force components in x and y

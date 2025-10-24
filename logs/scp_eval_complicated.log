@@ -19027,3 +19027,4151 @@ Values show total counts
 Bin0       76        20         6  
 Bin1        0       121       127  
 Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 15:00:49
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.763685 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[28.852222 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.991488 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.089994 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 3, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[33.552834 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[36.318066 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[38.82452 12.     ]
+reject at outerloop iteration 1, violated_t=9: last_u[9]=2.34 (bin0), opt_u[9]=8.95 (bin1)
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 15:03:51
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 15:05:08
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 15:05:42
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.551695 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.41968 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.256351 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 15:24:03
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.528818 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.405672 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.240282 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:18:33
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.518282 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.418764 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.2136 12.    ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:21:08
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.510637 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.406374 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.25606 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:23:27
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.545622 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.397259 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.231627 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:25:28
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.541952 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.412397 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.244804 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:33:52
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.51965 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.422743 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.244202 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:34:30
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.512894 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.387949 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.209692 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:35:42
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.540543 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.415749 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.264475 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:36:30
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.525936 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.399986 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.217373 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:37:34
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.529133 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.40437 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.244343 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:38:16
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.510574 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.40818 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.24746 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:39:43
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.548553 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.44102 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.27045 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:41:27
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.554646 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.415611 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.257622 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:43:16
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.564648 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.42819 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.252392 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:44:28
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.524214 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.413582 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.232443 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:45:51
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.49882 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.393686 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.243614 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.657192 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.023382 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.820751 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.628632 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:47:35
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.523088 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.40812 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.252766 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:50:11
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.533585 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.413364 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.240288 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:51:28
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.543402 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.431694 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.296093 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:52:29
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.568935 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.436987 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.29488 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:53:38
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.518475 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.418694 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.255497 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:54:34
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.52995 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.423414 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.242981 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.676834 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.03218 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.82116 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.626755 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:55:36
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.53582 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.420357 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.24828 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 16:58:25
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.521744 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.403166 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 17:02:15
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.536037 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.425043 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.253181 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 17:05:56
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 17:06:22
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 17:07:08
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.54476 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.430447 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.25092 12.     ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-21 17:08:30
+
+Parameters:
+  num_episodes: 200
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.536444 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.415182 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.255102 12.      ]
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-24 20:50:42
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.562525 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.343035 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.426723 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.343794 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 4: SCP subproblem infeasible or solver failed, p_veh=[31.505665 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.636063 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.131699 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.787504 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.756178 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.476862 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.070108 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.807005 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.852804 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.7186 12.    ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.05236 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.8706 12.    ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.675974 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.867577 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.946238 12.      ]
+reject at outerloop iteration 3, violated_t=9: last_u[9]=2.02 (bin0), opt_u[9]=8.28 (bin1)
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.536592 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.887966 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.727448 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.640713 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[30.237307 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.132767 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.594965 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.006435 12.      ]
+reject at outerloop iteration 1, violated_t=7: last_u[7]=1.02 (bin0), opt_u[7]=15.00 (bin2)
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.723564 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.106443 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.925653 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.740095 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.800781 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.98221 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.759571 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.14831 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.88028 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.72861 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.67388 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.054104 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.903221 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.7566 12.    ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.67882 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.732672 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.67494 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.974636 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.742474 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.598473 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 4: SCP subproblem infeasible or solver failed, p_veh=[30.699203 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.909033 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.651567 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.208792 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.943 12.   ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.985603 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.664694 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.06204 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.842695 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.735071 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.150728 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.943861 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.86317 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[30.991343 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 3, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.944103 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[34.538452 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[36.60652 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[38.836872 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[41.095997 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[43.227844 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[45.64879 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[47.660416 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[49.335308 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.720345 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.049305 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.841278 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.703022 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.971588 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.664137 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.451344 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[30.619207 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.605816 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.043571 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.806324 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.602333 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.042164 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[28.830847 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.835611 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[30.426746 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.371677 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[32.267216 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.713747 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.13881 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.943401 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.021437 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.63638 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.026445 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.814339 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.574839 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.986347 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.87525 12.     ]
+
+Experiment Results
+End Time: 2025-10-24 20:56:36
+
+Episodes: 20
+Method: scp
+Total Steps: 81.75
+Avg vehicle speed over all steps: 6.1746 m/s
+Episodes with collision: 0 / 20 (ratio=0.000)
+Avg outer-loop iterations per plan: 2.73
+Avg inner SCP steps per outer step: 4.21
+Avg solve time per T-step plan: 1983.63 ms
+
+Total outer iterations: 480
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      187        52        27  
+Bin1        0        22        50  
+Bin2        0         0       142  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         1         1  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+
+======================================================================
+SCP Evaluation Experiment Log
+======================================================================
+Start Time: 2025-10-24 21:17:42
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  num_pedestrians: 9
+
+======================================================================
+Execution Log:
+======================================================================
+
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.535942 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.323778 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.303833 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.201921 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.618364 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.013033 12.      ]
+reject at outerloop iteration 1, violated_t=7: last_u[7]=1.01 (bin0), opt_u[7]=15.00 (bin2)
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.701298 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.053577 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.800882 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.69042 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.574207 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.1745 12.    ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.198608 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.696821 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.0714 12.    ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.642672 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.206648 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.868118 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.811543 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.806902 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.13271 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[28.97996 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.097954 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.726734 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.345331 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.000153 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.08099 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.178173 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.693558 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.13629 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.823116 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.70469 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.73856 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.703608 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.081553 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed, p_veh=[29.764778 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed, p_veh=[29.864779 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 0, inner iter 0: SCP subproblem infeasible or solver failed, p_veh=[29.964779 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 0, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.06478 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.650972 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.058428 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.824398 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.589508 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.641638 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 3, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[31.816675 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.741167 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.045937 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.851131 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.576836 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.001497 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.84966 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.83168 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.814148 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.16855 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.940233 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.762589 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.656496 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.227867 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.001076 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.830317 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[30.736263 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.563194 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[27.998947 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.820728 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.769215 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[27.68536 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.191864 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[29.014692 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.659773 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.054718 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[28.807854 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[29.88111 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 4, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[15. 12.]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[27.741697 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.057854 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 1: SCP subproblem infeasible or solver failed, p_veh=[28.90517 12.     ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 2: SCP subproblem infeasible or solver failed, p_veh=[29.746054 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 1, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[30.728148 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 3: SCP subproblem infeasible or solver failed, p_veh=[31.897274 12.      ]
+[WARNING] UserWarning: 
+    The problem is either infeasible or unbounded, but the solver
+    cannot tell which. Disable any solver-specific presolve methods
+    and re-solve to determine the precise problem status.
+
+    For GUROBI and CPLEX you can automatically perform this re-solve
+    with the keyword argument prob.solve(reoptimize=True, ...).
+    
+SCP subproblem failed at outer iter 2, inner iter 4: SCP subproblem infeasible or solver failed, p_veh=[33.88126 12.     ]
+
+Experiment Results
+End Time: 2025-10-24 21:23:31
+
+Episodes: 20
+Method: scp
+Total Steps: 73.15
+Avg vehicle speed over all steps: 6.9352 m/s
+Episodes with collision: 1 / 20 (ratio=0.050)
+Unsuccessfully solved episodes: 8 / 146.30 (ratio=0.055)
+Avg outer-loop iterations per plan: 2.87
+Avg inner SCP steps per outer step: 4.06
+Avg solve time per T-step plan: 2176.44 ms
+
+Total outer iterations: 457
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      154        46        34  
+Bin1        0        17        46  
+Bin2        0         0       160  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         1  
+Bin1        0         0         0  
+Bin2        0         0         0  

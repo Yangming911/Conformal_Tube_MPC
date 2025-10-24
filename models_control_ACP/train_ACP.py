@@ -160,7 +160,7 @@ def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device) -
 
 def main():
     parser = argparse.ArgumentParser(description="Train causal pedestrian position predictor")
-    parser.add_argument('--data', type=str, default='assets/control_sequences_ACP.csv', help='Path to CSV dataset')
+    parser.add_argument('--data', type=str, default='assets_ACP/control_sequences_ACP.csv', help='Path to CSV dataset')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--epochs', type=int, default=100, help='Training epochs')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size')
@@ -169,7 +169,7 @@ def main():
     parser.add_argument('--hidden_dim', type=int, default=128, help='Hidden dim')
     parser.add_argument('--layers', type=int, default=2, help='Number of GRU layers')
     parser.add_argument('--dropout', type=float, default=0.1, help='Dropout rate')
-    parser.add_argument('--save_path', type=str, default='assets/control_ped_model_ACP.pth', help='Checkpoint path')
+    parser.add_argument('--save_path', type=str, default='assets_ACP/control_ped_model_ACP.pth', help='Checkpoint path')
     parser.add_argument('--patience', type=int, default=20, help='Early stopping patience')
     parser.add_argument('--from_sim', action='store_true', help='Collect training data from social force simulator (per-step random speed)')
     parser.add_argument('--episodes', type=int, default=20000, help='Number of simulated episodes/sequences when generating data')

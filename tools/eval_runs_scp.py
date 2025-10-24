@@ -20,9 +20,14 @@ from tqdm import tqdm
 import warnings
 from datetime import datetime
 from typing import List, Dict
+import copy
+import torch
+import os
 
 from envs import simulator as sim
-from models_control.scp import scp_optimize
+from models_control.scp import scp_optimize,load_eta_csv,eta_of_u
+from models_control.model_def import CausalPedestrianPredictor
+from models_control.scp import nn_predict_positions_multi
 import time
 import json
 
@@ -38,7 +43,28 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     num_pedestrians = len(states[0]["walker_x"])
     ped_traj = np.array([[state["walker_x"], state["walker_y"]] for state in states])
     veh_traj = np.array([[state["car_x"], state["car_y"]] for state in states])
-    veh_speed = np.array([state["walker_vx"][0] for state in states])
+    veh_speed = np.array([state["car_v"] for state in states])
+    pre_ped_traj = np.array([state["pre_p_ped"] for state in states])
+    eta0 = np.array([state["eta"] for state in states])
+    
+    smoothness_metrics = calculate_smoothness_metrics(veh_speed)
+    print(smoothness_metrics)
+
+    colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
+    plt.figure(figsize=(3, 4))
+    for i in range(1):
+        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
+        plt.scatter(pre_ped_traj[:, i, 0], pre_ped_traj[:, i, 1], label=f"Predicted Pedestrian {i+1}", color=colors)
+        # 以当前点为中心，绘制以eta为半径的圆
+        for t in range(len(states)):
+            circle = plt.Circle((pre_ped_traj[t, i, 0], pre_ped_traj[t, i, 1]), eta0[t], color=colors[t], alpha=0.2)
+            plt.gca().add_patch(circle)
+    plt.xlabel("X")
+    plt.ylabel("Y")
+    plt.title("Trajectory with Predicted Pedestrians")
+    plt.legend()
+    plt.savefig(filename.replace(".png", "_trajectory.png"))
+    plt.close()
     
     # 绘制速度图
     plt.figure(figsize=(10, 4))
@@ -51,7 +77,7 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     plt.close()
 
     # 散点图，且点的颜色随时间变化
-    colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
+
     plt.scatter(veh_traj[:, 0], veh_traj[:, 1], label="Vehicle", color=colors)
     for i in range(num_pedestrians):
         plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
@@ -66,6 +92,40 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     plt.savefig(filename)
     plt.close()
 
+def calculate_smoothness_metrics(velocity_list):
+    """
+    计算速度变化的平稳程度指标，只统计变化不为0的速度变化
+    """
+    v = np.array(velocity_list)
+    # 1. 加速度标准差
+    acceleration = np.diff(v)  # 计算加速度
+    acceleration = acceleration[acceleration!=0]
+    acc_std = np.std(acceleration)  # 加速度标准差越小越平稳
+    
+    # 2. 加速度绝对值均值
+    acc_mean_abs = np.mean(np.abs(acceleration))
+    
+    # 3. 急动度（加速度变化率）
+    jerk = np.diff(acceleration)  # 急动度
+    jerk_std = np.std(jerk) if len(jerk) > 0 else 0
+    
+    return {
+        'acceleration_std': acc_std,
+        'acceleration_mean_abs': acc_mean_abs,
+        'jerk_std': jerk_std
+    }
+
+def get_eta_ped(u_opt,state,eta_csv,model,device):
+    """
+    Get the eta value for pedestrians from the csv file.
+    """
+    eta_table, edges = load_eta_csv(eta_csv)
+    eta = eta_of_u(eta_table, u_opt.astype(np.float32), edges)
+    num_pedestrians = len(state["walker_x"])
+    p_veh0 = np.array([state["car_x"], state["car_y"]])
+    p_ped0 = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)])
+    pre_p_ped = nn_predict_positions_multi(model,device,u_opt, p_veh0, p_ped0)
+    return eta,pre_p_ped
 
 def run_episodes_scp(
     num_episodes: int,
@@ -148,6 +208,18 @@ def run_episodes_scp(
     with open(f"assets/initial_state.json", "r") as f:
         initial_states = json.load(f)
 
+        # load our model
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # Load model
+    checkpoint = torch.load(model_path, map_location=device)
+    hidden_dim = int(checkpoint.get('config', {}).get('hidden_dim', 128))
+    num_layers = int(checkpoint.get('config', {}).get('num_layers', 2))
+    dropout = float(checkpoint.get('config', {}).get('dropout', 0.1))
+    model = CausalPedestrianPredictor(u_dim=1, hidden_dim=hidden_dim, num_layers=num_layers, dropout=dropout)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    model.to(device)
+    model.eval()
+
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
         # Initial state from simulator
         car_speed = float(rng.uniform(1.0, 15.0))
@@ -162,8 +234,10 @@ def run_episodes_scp(
         step_idx = 0
         states = []
         collide_state = None
+        eta = None
+        pre_p_ped = None
+        unsolver_count = 0
         while step_idx < max_steps_per_episode:
-            states.append(state.copy())
             if sim._is_collision_multi_pedestrian(state):
                 collide_state = state.copy()
                 collided = True
@@ -188,7 +262,7 @@ def run_episodes_scp(
                 #     p_ped_0_multi = p_ped_0.reshape(1, 2)
                 if method == "scp":
                     t0 = time.perf_counter()
-                    u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix = scp_optimize(
+                    u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, solver_state = scp_optimize(
                         model_path=model_path,
                         eta_csv_path=eta_csv,
                         p_veh_0=p_veh_0,
@@ -206,6 +280,7 @@ def run_episodes_scp(
                         log_file=log_file,
                     )
                     t1 = time.perf_counter()
+                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device)
                     # metrics accumulation
                     total_plan_time.append(t1 - t0)
                     total_plan_iters.append(iters_used)
@@ -213,6 +288,9 @@ def run_episodes_scp(
                     # Accumulate statistics
                     cumulative_reject_matrix += reject_matrix
                     cumulative_transition_matrix += transition_matrix
+                    if solver_state != "success":
+                        unsolver_count += 1
+                        
                 elif method == "constant_speed":
                     u_opt = np.full(horizon_T, u_ref)
                 else:
@@ -225,6 +303,9 @@ def run_episodes_scp(
             total_steps += 1
             state = next_state
             step_idx += 1
+            states.append(copy.deepcopy(state))
+            states[-1]['eta'] = eta[step_idx % horizon_T]
+            states[-1]['pre_p_ped'] = pre_p_ped[:,step_idx % horizon_T,:]
 
         if collided:
             episodes_with_collision += 1
@@ -237,6 +318,8 @@ def run_episodes_scp(
 
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
+    unsolver_ratio = unsolver_count / (total_steps / horizon_T)
+
     avg_iters = (np.mean(total_plan_iters) if total_plan_iters else 0.0)
     avg_inner_iters = (np.mean(total_plan_inner_iters) if total_plan_inner_iters else 0.0)
     avg_plan_time_ms = (1000.0 * np.mean(total_plan_time) if total_plan_time else 0.0)
@@ -250,6 +333,7 @@ def run_episodes_scp(
     results_lines.append(f"Total Steps: {total_steps/num_episodes:.2f}")
     results_lines.append(f"Avg vehicle speed over all steps: {avg_speed:.4f} m/s")
     results_lines.append(f"Episodes with collision: {episodes_with_collision} / {num_episodes} (ratio={episodes_with_collision/num_episodes:.3f})")
+    results_lines.append(f"Unsuccessfully solved episodes: {unsolver_count} / {total_steps/horizon_T:.2f} (ratio={unsolver_ratio:.3f})")
     results_lines.append(f"Avg outer-loop iterations per plan: {avg_iters:.2f}")
     results_lines.append(f"Avg inner SCP steps per outer step: {avg_inner_iters:.2f}")
     results_lines.append(f"Avg solve time per T-step plan: {avg_plan_time_ms:.2f} ms")
@@ -323,7 +407,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200) 
+    parser.add_argument('--episodes', type=int, default=20) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--outer_iters', type=int, default=5)

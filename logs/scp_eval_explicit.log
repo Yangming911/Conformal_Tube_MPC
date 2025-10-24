@@ -4895,3 +4895,102 @@ Bin0        0        16        19
 Bin1        0         0         0  
 Bin2        0         0         0  
 
+======================================================================
+Timestamp: 2025-10-24 20:56:36
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: scp
+
+Results:
+Episodes: 20
+Method: scp
+Total Steps: 81.75
+Avg vehicle speed over all steps: 6.1746 m/s
+Episodes with collision: 0 / 20 (ratio=0.000)
+Avg outer-loop iterations per plan: 2.73
+Avg inner SCP steps per outer step: 4.21
+Avg solve time per T-step plan: 1983.63 ms
+
+Total outer iterations: 480
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      187        52        27  
+Bin1        0        22        50  
+Bin2        0         0       142  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         1         1  
+Bin1        0         0         0  
+Bin2        0         0         0  
+
+======================================================================
+Timestamp: 2025-10-24 21:23:31
+
+Parameters:
+  num_episodes: 20
+  max_steps_per_episode: 10000
+  horizon_T: 10
+  outer_iters: 5
+  seed: 123
+  model_path: assets/control_ped_model_1021.pth
+  eta_csv: assets/cp_eta_1021.csv
+  u_init: 0.1
+  u_ref: 15.0
+  u_min: 0.0
+  u_max: 15.0
+  d_safe: 2.0
+  trust_region_initial: 5.0
+  trust_region_decay: 0.5
+  rho_ref: 15000000.0
+  num_pedestrians: 9
+  method: scp
+
+Results:
+Episodes: 20
+Method: scp
+Total Steps: 73.15
+Avg vehicle speed over all steps: 6.9352 m/s
+Episodes with collision: 1 / 20 (ratio=0.050)
+Unsuccessfully solved episodes: 8 / 146.30 (ratio=0.055)
+Avg outer-loop iterations per plan: 2.87
+Avg inner SCP steps per outer step: 4.06
+Avg solve time per T-step plan: 2176.44 ms
+
+Total outer iterations: 457
+
+
+All Transitions Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0      154        46        34  
+Bin1        0        17        46  
+Bin2        0         0       160  
+
+Reject Count Matrix (Row: last_u bin, Col: opt_u bin):
+Values show total counts
+       Bin0      Bin1      Bin2
+Bin0        0         0         1  
+Bin1        0         0         0  
+Bin2        0         0         0  
+

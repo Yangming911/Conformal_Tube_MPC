@@ -321,7 +321,7 @@ def scp_optimize(
                     with open(log_file, 'a') as f:
                         f.write(msg + '\n')
                 # print(msg)
-                return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix
+                return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, msg
             # Log objective component magnitudes
             # if log_file:
             #     try:
@@ -370,7 +370,7 @@ def scp_optimize(
                 with open(log_file, 'a') as f:
                     f.write(msg + '\n')
             # print(msg)
-            return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix
+            return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, msg
 
     # Save reject statistics if path provided
     if reject_stats_path is not None:
@@ -380,6 +380,6 @@ def scp_optimize(
         df_reject.to_csv(reject_stats_path)
         # print(f"Reject statistics saved to {reject_stats_path}")
 
-    return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix
+    return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, "success"
 
 
