@@ -97,17 +97,28 @@ def nn_predict_positions(model: CausalPedestrianPredictor, device: torch.device,
 
 
 @torch.no_grad()
-def nn_predict_positions_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray) -> np.ndarray:
+def nn_predict_positions_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, scaler=None) -> np.ndarray:
     """Predict for M pedestrians in batch.
     u: [T], p_veh0: [2], p_ped0_multi: [M,2]
     Returns: [M,T,2]
     """
     T = u.shape[0]
     M = p_ped0_multi.shape[0]
+    # scaler
+    if scaler is not None:
+        u = scaler['u_scaler'].transform(u.reshape(-1, 1)).reshape(u.shape)
+        p_veh0 = scaler['p_veh0_scaler'].transform(p_veh0.reshape(-1, 2)).reshape(p_veh0.shape)
+        p_ped0_multi = scaler['p_ped0_scaler'].transform(p_ped0_multi.reshape(-1, 2)).reshape(p_ped0_multi.shape)
     u_tensor = torch.from_numpy(u.reshape(1, T, 1).astype(np.float32)).repeat(M, 1, 1).to(device)
     pveh0_tensor = torch.from_numpy(p_veh0.reshape(1, 2).astype(np.float32)).repeat(M, 1).to(device)
     pped0_tensor = torch.from_numpy(p_ped0_multi.astype(np.float32)).to(device)
     pred = model(u_tensor, pveh0_tensor, pped0_tensor)  # [M,T,2]
+    # inverse scaler
+    if scaler is not None:
+        pred_reshape = pred.reshape(-1, 2).detach().cpu().numpy()
+        pred_reshape = scaler['p_seq_scaler'].inverse_transform(pred_reshape)
+        pred = pred_reshape.reshape(pred.shape)
+        return pred
     return pred.cpu().numpy()
 
 
@@ -127,13 +138,13 @@ def vehicle_trajectory(p_veh0: np.ndarray, u: np.ndarray, dt: float) -> np.ndarr
     return p
 
 
-def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.device, u0: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, dt: float, eps: float = 1e-3) -> Tuple[np.ndarray, np.ndarray]:
+def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.device, u0: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, dt: float,scaler=None, eps: float = 1e-3) -> Tuple[np.ndarray, np.ndarray]:
     """Compute dg/du and g(u0) for M pedestrians.
     """
     T = u0.shape[0]
     M = p_ped0_multi.shape[0]
     p_veh = vehicle_trajectory(p_veh0, u0, dt) # [T,2]
-    p_ped = nn_predict_positions_multi(model, device, u0, p_veh0, p_ped0_multi)  # [M,T,2]
+    p_ped = nn_predict_positions_multi(model, device, u0, p_veh0, p_ped0_multi, scaler)  # [M,T,2]
     # g = (p_veh - p_ped)^2
     g = np.linalg.norm(p_veh[None,:,:] - p_ped, axis=2)**2  # [M,T]
     L_x = np.tril(np.ones((T, T), dtype=np.float32))
@@ -145,7 +156,7 @@ def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.devic
         eps_u = u0
         eps_ = eps+np.random.normal(0, 0.1*eps)
         eps_u[t] += eps_
-        p_ped_eps = nn_predict_positions_multi(model, device, eps_u, p_veh0, p_ped0_multi)  # [M,T,2]
+        p_ped_eps = nn_predict_positions_multi(model, device, eps_u, p_veh0, p_ped0_multi, scaler)  # [M,T,2]
         diff = p_ped_eps - p_ped  # [M,T,2]
 
         delta_omiga[:, t, :, :] = diff / eps_  # [M,T,2]
@@ -219,12 +230,12 @@ def solve_scp_subproblem(
     return np.asarray(u.value, dtype=np.float64)
 
 
-def verify_constraints_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, C_eta: np.ndarray, dt: float, d_safe: float = 1.0) -> Tuple[bool, int]:
+def verify_constraints_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, C_eta: np.ndarray, dt: float,scaler=None, d_safe: float = 1.0) -> Tuple[bool, int]:
     """
     Verify constraints and return (ok, violated_t).
     violated_t = -1 if all satisfied, else first time step index where constraint violated.
     """
-    p_ped = nn_predict_positions_multi(model, device, u, p_veh0, p_ped0_multi)  # [M,T,2]
+    p_ped = nn_predict_positions_multi(model, device, u, p_veh0, p_ped0_multi,scaler)  # [M,T,2]
     p_veh = vehicle_trajectory(p_veh0, u, dt)  # [T,2]
     diff = p_veh.reshape(1, -1, 2) - p_ped
     norms = np.linalg.norm(diff, axis=2)  # [M,T]
@@ -269,6 +280,14 @@ def scp_optimize(
     model.load_state_dict(checkpoint['model_state_dict'])
     model.to(device)
     model.eval()
+    scaler = None
+    if 'u_scaler' in checkpoint.keys():
+        scaler = {
+            'u_scaler': checkpoint['u_scaler'],
+            'p_veh0_scaler': checkpoint['p_veh0_scaler'],
+            'p_ped0_scaler': checkpoint['p_ped0_scaler'],
+            'p_seq_scaler': checkpoint['p_seq_scaler'],
+        }
 
     # Load eta table
     eta_table, edges = load_eta_csv(eta_csv_path)  # [T,B] and edges
@@ -307,6 +326,7 @@ def scp_optimize(
                 p_veh_0.astype(np.float32),
                 p_ped_0_multi.astype(np.float32),
                 dt,
+                scaler
             )
 
             try:
@@ -345,7 +365,7 @@ def scp_optimize(
 
         # Verify with its own eta
         C_eta_new = eta_of_u(eta_table, opt_u.astype(np.float32), edges)
-        ok, violated_t = verify_constraints_multi(model, device, opt_u.astype(np.float32), p_veh_0.astype(np.float32), p_ped_0_multi.astype(np.float32), C_eta_new, dt, d_safe=d_safe)
+        ok, violated_t = verify_constraints_multi(model, device, opt_u.astype(np.float32), p_veh_0.astype(np.float32), p_ped_0_multi.astype(np.float32), C_eta_new, dt,scaler, d_safe=d_safe)
         iters_used += 1
         # store average OSQP iters across inner steps for this outer iteration
         inner_scp_steps_list.append(inner_steps)

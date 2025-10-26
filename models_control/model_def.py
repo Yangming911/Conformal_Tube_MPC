@@ -118,6 +118,7 @@ class CausalPedestrianPredictor(nn.Module):
         p_ped_seq = torch.stack(p_seq, dim=1)
 
         return p_ped_seq
+        # return deltas
 
 
 def compute_sequence_loss(
@@ -139,6 +140,7 @@ def compute_sequence_loss(
     B, T, D = pred_positions.shape
 
     mse_all = (pred_positions - target_positions) ** 2  # [B, T, 2]
+    # mse_all = torch.abs(pred_positions - target_positions)  # [B, T, 2]
     total_mse = mse_all.mean()
 
     with torch.no_grad():

@@ -73,6 +73,7 @@ def main():
     parser.add_argument('--save_path', type=str, default='assets_ACP/cp_eta_ACP.csv', help='Where to save eta matrix as CSV')
     parser.add_argument('--save_edges_path', type=str, default='assets_ACP/cp_eta_edges_ACP.csv', help='Where to save bin edges as CSV')
     parser.add_argument('--save_errors_path', type=str, default='assets_ACP/cp_errors_ACP.npy', help='Where to save errors as NPY')
+    parser.add_argument('--data_path', type=str, default='./assets_ACP/control_sequences_1025_cp.csv', help='Path to calibration data CSV')
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
@@ -80,7 +81,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # load data
-    past_p_seq, p_seq = load_from_csv('./assets_ACP/control_sequences_ACP_cp.csv', args.T)
+    past_p_seq, p_seq = load_from_csv(args.data_path, args.T)
     ds = SequenceDataset(past_p_seq, p_seq)
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
      # load model

@@ -160,9 +160,9 @@ def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device) -
 
 def main():
     parser = argparse.ArgumentParser(description="Train causal pedestrian position predictor")
-    parser.add_argument('--data', type=str, default='assets_ACP/control_sequences_ACP.csv', help='Path to CSV dataset')
+    parser.add_argument('--data', type=str, default='assets/control_sequences_1024.csv', help='Path to CSV dataset')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
-    parser.add_argument('--epochs', type=int, default=100, help='Training epochs')
+    parser.add_argument('--epochs', type=int, default=2000, help='Training epochs')
     parser.add_argument('--batch_size', type=int, default=256, help='Batch size')
     parser.add_argument('--lr', type=float, default=1e-3, help='Learning rate')
     parser.add_argument('--weight_decay', type=float, default=1e-5, help='Weight decay')

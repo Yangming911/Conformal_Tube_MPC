@@ -18,8 +18,8 @@ l_f = 1.0      # front length
 l_w = 1.2      # width
 l_e = 0.2151011    # extension length
 d_ox = 0.510985    # extended length along vehicle orientation
-# alpha_x = 1.394358 # proportional factor for speed extension
-alpha_x = 2.394358 # proportional factor for speed extension
+alpha_x = 1.394358 # proportional factor for speed extension
+# alpha_x = 1.8 # proportional factor for speed extension
 
 def point_to_line_segment_distance(px, py, x1, y1, x2, y2):
     """Calculate closest point on line segment to a given point"""
@@ -257,8 +257,8 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
     # 6. Update pedestrian velocity (v = v_0 + a * dt)
     if rng is None:
         rng = np.random
-    walker_v_x = walker_v_x_past + a_x * C.dt + rng.normal(0, C.walker_noise_x_sigma) # update x-velocity
-    walker_v_y = walker_v_y_past + a_y * C.dt + rng.normal(0, C.walker_noise_y_sigma) # update y-velocity
+    walker_v_x = walker_v_x_past + a_x * C.dt # + rng.normal(0, C.walker_noise_x_sigma) # update x-velocity
+    walker_v_y = walker_v_y_past + a_y * C.dt # + rng.normal(0, C.walker_noise_y_sigma) # update y-velocity
     
     # 7. Limit speed to not exceed v_max
     total_v = math.sqrt(walker_v_x**2 + walker_v_y**2)

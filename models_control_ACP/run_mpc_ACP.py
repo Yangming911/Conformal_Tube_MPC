@@ -168,14 +168,13 @@ def optimize_u(u_ref: np.ndarray,
 
     
 
-def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_pedestrians: int):
+def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, control_T: int, num_pedestrians: int):
     rng = np.random.RandomState(123)
     u_ref = 15.0
     u_min = 0.0
     u_max = 15.0
     d_safe = 2.0
     u_init = 0.1
-    T = 10
     method ="opt" # "monte_carlo"
     model_path = os.path.join("assets_ACP/control_ped_model_ACP.pth")
     error_npy_path = os.path.join("assets_ACP/cp_errors_ACP.npy")
@@ -233,7 +232,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
 
                 
 
-            last_u = np.full((T,), float(u_init), dtype=np.float64)
+            last_u = np.full((horizon_T,), float(u_init), dtype=np.float64)
             p_veh_0 = np.array([state["car_x"], state["car_y"]], dtype=np.float32)
             u_0 = np.array([state["car_v"]], dtype=np.float32)
 
@@ -251,26 +250,31 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
                 gamma = 0.08
                 eta_const = 0.1
                 if ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0).all():
-                    initial_eta = initial_eta + gamma*eta_const
+                    one_minus_eta = 1 - initial_eta
+                    one_minus_eta = one_minus_eta + gamma*eta_const
+                    initial_eta = 1 - one_minus_eta
+                    initial_eta = min(max(0.05, initial_eta), 0.95)
                     print("new eta:", initial_eta)
                 else:
-                    initial_eta = initial_eta + gamma*(eta_const - 1)
+                    one_minus_eta = 1 - initial_eta
+                    one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
+                    initial_eta = 1 - one_minus_eta
                     initial_eta = min(max(0.05, initial_eta), 0.95)
                     print("no satisfied. new eta:", initial_eta)
             C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
             if method == "monte_carlo":
                 u_opt = monte_carlo_sampling(
-                    u_ref=np.array([u_ref] * T, dtype=np.float32), 
-                    C_eta=C_eta, 
-                    u_min=u_min, 
-                    u_max=u_max, 
+                    u_ref=np.array([u_ref] * horizon_T, dtype=np.float32), 
+                    C_eta=C_eta,
+                    u_min=u_min,
+                    u_max=u_max,
                     d_safe=d_safe,
                     p_veh_0=p_veh_0,
                     p_ped=pred_p_ped_multi,
                 )
             elif method == "opt":
                 u_opt = optimize_u(
-                    u_ref=np.array([u_ref] * T, dtype=np.float32), 
+                    u_ref=np.array([u_ref] * horizon_T, dtype=np.float32), 
                     C_eta=C_eta, 
                     u_min=u_min, 
                     u_max=u_max, 
@@ -286,16 +290,17 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, num_p
             t1 = time.perf_counter()
             # metrics accumulation
             total_plan_time.append(t1 - t0)
-            u_t = float(u_opt[0])
-            state["car_v"] = u_t
-            next_state, _ = sim._step_multi_pedestrian(state, rng)
-            speed_sum += float(state["car_v"])  # accumulate speed
-            total_steps += 1
-            state = next_state
-            step_idx += 1
-            states.append(copy.deepcopy(state))
-            states[-1]['eta'] = C_eta[0]
-            states[-1]['pre_p_ped'] = pred_p_ped_multi[:,0,:]
+            for i in range(control_T):
+                u_t = float(u_opt[i])
+                state["car_v"] = u_t
+                next_state, _ = sim._step_multi_pedestrian(state, rng)
+                speed_sum += float(state["car_v"])  # accumulate speed
+                total_steps += 1
+                state = next_state
+                step_idx += 1
+                states.append(copy.deepcopy(state))
+                states[-1]['eta'] = C_eta[i]
+                states[-1]['pre_p_ped'] = pred_p_ped_multi[:,i,:]
 
         if collided:
             episodes_with_collision += 1
@@ -319,7 +324,8 @@ if __name__ == "__main__":
     num_episodes = 20
     max_steps_per_episode = 10000
     horizon_T = 10
+    control_T = 3
     num_pedestrians = [9]
     for num_pedestrian in num_pedestrians:
         print(f"Running {num_episodes} episodes with {num_pedestrian} pedestrians")
-        run_mpc(num_episodes, max_steps_per_episode, horizon_T, num_pedestrian)
+        run_mpc(num_episodes, max_steps_per_episode, horizon_T, control_T, num_pedestrian)

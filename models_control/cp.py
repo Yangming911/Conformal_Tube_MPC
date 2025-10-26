@@ -49,10 +49,18 @@ def load_model(model_path: str, device: torch.device, T: int, hidden_dim: int = 
     model.load_state_dict(checkpoint['model_state_dict'])
     model.to(device)
     model.eval()
-    return model
+    scaler = None
+    if 'u_scaler' in checkpoint.keys():
+        scaler = {
+            'u_scaler': checkpoint['u_scaler'],
+            'p_veh0_scaler': checkpoint['p_veh0_scaler'],
+            'p_ped0_scaler': checkpoint['p_ped0_scaler'],
+            'p_seq_scaler': checkpoint['p_seq_scaler'],
+        }
+    return model, scaler
 
 
-def compute_errors_per_step(model: CausalPedestrianPredictor, loader: DataLoader, device: torch.device) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def compute_errors_per_step(model: CausalPedestrianPredictor, loader: DataLoader, device: torch.device, scaler=None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
     Returns:
         errors: [N, T] L2 errors per sample per step
@@ -70,6 +78,18 @@ def compute_errors_per_step(model: CausalPedestrianPredictor, loader: DataLoader
             p_seq = p_seq.to(device)
 
             pred = model(u, p_veh0, p_ped0)  # [B,T,2]
+            if scaler is not None:
+                # Inverse transform predictions and ground truth
+                p_seq_reshape = p_seq.reshape(-1, 2).detach().cpu().numpy()
+                pred_reshape = pred.reshape(-1, 2).detach().cpu().numpy()
+                p_seq_reshape = scaler['p_seq_scaler'].inverse_transform(p_seq_reshape)
+                pred_reshape = scaler['p_seq_scaler'].inverse_transform(pred_reshape)
+                p_seq = p_seq_reshape.reshape(p_seq.shape)
+                pred = pred_reshape.reshape(pred.shape)
+                u_reshape = u.reshape(-1, 1).detach().cpu().numpy()
+                u_reshape = scaler['u_scaler'].inverse_transform(u_reshape)
+                u = u_reshape.reshape(u.shape)
+                u = torch.from_numpy(u).to(device)
             err = torch.linalg.norm(pred - p_seq, dim=2)  # [B,T]
 
             batch_errors = err.cpu().numpy()  # [B,T]
@@ -100,7 +120,7 @@ def bin_indices_for_speed(speeds: np.ndarray) -> np.ndarray:
 
 def main():
     parser = argparse.ArgumentParser(description="Compute per-step conformal eta with 3 car_v bins")
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_1021.pth', help='Trained model checkpoint')
+    parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth', help='Trained model checkpoint')
     parser.add_argument('--episodes', type=int, default=20000, help='Number of calibration sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--alpha', type=float, default=0.85, help='Quantile level in (0,1)')
@@ -108,8 +128,8 @@ def main():
     parser.add_argument('--batch_size', type=int, default=1024, help='Batch size for inference')
     parser.add_argument('--min_count', type=int, default=20, help='Minimum samples per bin; fallback if fewer')
     parser.add_argument('--fallback_eta', type=float, default=0.5, help='Fallback eta when bin underpopulated')
-    parser.add_argument('--save_path', type=str, default='assets/cp_eta_1021.csv', help='Where to save eta matrix as CSV')
-    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges_1021.csv', help='Where to save bin edges as CSV')
+    parser.add_argument('--save_path', type=str, default='assets/cp_eta.csv', help='Where to save eta matrix as CSV')
+    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges.csv', help='Where to save bin edges as CSV')
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
@@ -120,28 +140,33 @@ def main():
     print(f"Collecting calibration dataset: episodes={args.episodes}, T={args.T}")
     u, p_veh0, p_ped0, p_seq = collect_constant_speed_dataset(args.episodes, args.T, seed=2025)
 
-    # DataLoader
-    ds = SequenceDataset(u, p_veh0, p_ped0, p_seq)
-    # load real data
-    real_u, real_p_veh0, real_p_ped0, real_p_seq = load_from_csv('assets/citr_data/citr_conformal_grid.csv', args.T)
+    # # load real data
+    # real_u, real_p_veh0, real_p_ped0, real_p_seq = load_from_csv('assets/citr_data/citr_conformal_grid.csv', args.T)
     
-    # merge data
-    u = np.concatenate([u, real_u], axis=0)
-    p_veh0 = np.concatenate([p_veh0, real_p_veh0], axis=0)
-    p_ped0 = np.concatenate([p_ped0, real_p_ped0], axis=0)
-    p_seq = np.concatenate([p_seq, real_p_seq], axis=0)
+    # # merge data
+    # u = np.concatenate([u, real_u], axis=0)
+    # p_veh0 = np.concatenate([p_veh0, real_p_veh0], axis=0)
+    # p_ped0 = np.concatenate([p_ped0, real_p_ped0], axis=0)
+    # p_seq = np.concatenate([p_seq, real_p_seq], axis=0)
+
+    # Load model
+    print(f"Loading model from {args.model_path}")
+    model, scaler = load_model(args.model_path, device=device, T=args.T)
+
+    # scaler data
+    if scaler is not None:
+        u = scaler['u_scaler'].transform(u.reshape(-1, 1)).reshape(u.shape)
+        p_veh0 = scaler['p_veh0_scaler'].transform(p_veh0)
+        p_ped0 = scaler['p_ped0_scaler'].transform(p_ped0)
+        p_seq = scaler['p_seq_scaler'].transform(p_seq.reshape(-1, 2)).reshape(p_seq.shape)
 
     # DataLoader
     ds = SequenceDataset(u, p_veh0, p_ped0, p_seq)
     loader = DataLoader(ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
 
-    # Load model
-    print(f"Loading model from {args.model_path}")
-    model = load_model(args.model_path, device=device, T=args.T)
-
     # Compute errors and speed bins
     print("Running model to compute per-step errors...")
-    errors, speeds, T_len = compute_errors_per_step(model, loader, device)
+    errors, speeds, T_len = compute_errors_per_step(model, loader, device, scaler)
     assert T_len == args.T, f"Sequence length mismatch: got {T_len}, expected {args.T}"
     # Build dynamic speed bins
     num_bins = max(1, int(args.num_bins))

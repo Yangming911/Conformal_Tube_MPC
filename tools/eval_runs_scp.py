@@ -53,8 +53,8 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.figure(figsize=(3, 4))
     for i in range(1):
-        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", color=colors)
-        plt.scatter(pre_ped_traj[:, i, 0], pre_ped_traj[:, i, 1], label=f"Predicted Pedestrian {i+1}", color=colors)
+        plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", s=1, color=colors)
+        plt.scatter(pre_ped_traj[:, i, 0], pre_ped_traj[:, i, 1], label=f"Predicted Pedestrian {i+1}", s=1, color=colors)
         # 以当前点为中心，绘制以eta为半径的圆
         for t in range(len(states)):
             circle = plt.Circle((pre_ped_traj[t, i, 0], pre_ped_traj[t, i, 1]), eta0[t], color=colors[t], alpha=0.2)
@@ -115,7 +115,7 @@ def calculate_smoothness_metrics(velocity_list):
         'jerk_std': jerk_std
     }
 
-def get_eta_ped(u_opt,state,eta_csv,model,device):
+def get_eta_ped(u_opt,state,eta_csv,model,device, scaler=None):
     """
     Get the eta value for pedestrians from the csv file.
     """
@@ -124,13 +124,14 @@ def get_eta_ped(u_opt,state,eta_csv,model,device):
     num_pedestrians = len(state["walker_x"])
     p_veh0 = np.array([state["car_x"], state["car_y"]])
     p_ped0 = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)])
-    pre_p_ped = nn_predict_positions_multi(model,device,u_opt, p_veh0, p_ped0)
+    pre_p_ped = nn_predict_positions_multi(model,device,u_opt, p_veh0, p_ped0, scaler)
     return eta,pre_p_ped
 
 def run_episodes_scp(
     num_episodes: int,
     max_steps_per_episode: int,
     horizon_T: int,
+    control_T: int,
     outer_iters: int,
     seed: int,
     model_path: str,
@@ -219,6 +220,14 @@ def run_episodes_scp(
     model.load_state_dict(checkpoint['model_state_dict'])
     model.to(device)
     model.eval()
+    scaler = None
+    if 'u_scaler' in checkpoint.keys():
+        scaler = {
+            'u_scaler': checkpoint['u_scaler'],
+            'p_veh0_scaler': checkpoint['p_veh0_scaler'],
+            'p_ped0_scaler': checkpoint['p_ped0_scaler'],
+            'p_seq_scaler': checkpoint['p_seq_scaler'],
+        }
 
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
         # Initial state from simulator
@@ -245,7 +254,7 @@ def run_episodes_scp(
                 break
 
             # Receding horizon: re-plan every horizon_T steps
-            if (step_idx % horizon_T) == 0 or u_opt is None:
+            if (step_idx % control_T) == 0 or u_opt is None:
                 p_veh_0 = np.array([state["car_x"], state["car_y"]], dtype=np.float32)
                 p_ped_0_multi = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)], dtype=np.float32)
                 # # For multiple pedestrians: replicate current pedestrian with random Y offsets
@@ -280,7 +289,7 @@ def run_episodes_scp(
                         log_file=log_file,
                     )
                     t1 = time.perf_counter()
-                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device)
+                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device, scaler)
                     # metrics accumulation
                     total_plan_time.append(t1 - t0)
                     total_plan_iters.append(iters_used)
@@ -293,10 +302,11 @@ def run_episodes_scp(
                         
                 elif method == "constant_speed":
                     u_opt = np.full(horizon_T, u_ref)
+                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device)
                 else:
                     raise ValueError(f"Unknown method: {method}")
             # Apply control corresponding to position inside current horizon
-            u_t = float(u_opt[step_idx % horizon_T])
+            u_t = float(u_opt[step_idx % control_T])
             state["car_v"] = u_t
             next_state, _ = sim._step_multi_pedestrian(state, rng)
             speed_sum += float(state["car_v"])  # accumulate speed
@@ -304,8 +314,9 @@ def run_episodes_scp(
             state = next_state
             step_idx += 1
             states.append(copy.deepcopy(state))
-            states[-1]['eta'] = eta[step_idx % horizon_T]
-            states[-1]['pre_p_ped'] = pre_p_ped[:,step_idx % horizon_T,:]
+            states[-1]['eta'] = eta[step_idx % control_T]
+
+            states[-1]['pre_p_ped'] = pre_p_ped[:,step_idx % control_T,:]
 
         if collided:
             episodes_with_collision += 1
@@ -410,10 +421,11 @@ def main():
     parser.add_argument('--episodes', type=int, default=20) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
+    parser.add_argument('--control_T', type=int, default=10, help='Control time length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
-    parser.add_argument('--model_path', type=str, default='assets/control_ped_model_1021.pth')
-    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta_1021.csv')
+    parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth')
+    parser.add_argument('--eta_csv', type=str, default='assets/cp_eta.csv')
     parser.add_argument('--u_init', type=float, default=0.1)
     parser.add_argument('--u_ref', type=float, default=15.0)
     parser.add_argument('--u_min', type=float, default=0.0)
@@ -422,7 +434,7 @@ def main():
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
-    parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
+    parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
     parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
@@ -433,6 +445,7 @@ def main():
         num_episodes=args.episodes,
         max_steps_per_episode=args.steps,
         horizon_T=args.T,
+        control_T=args.control_T,
         outer_iters=args.outer_iters,
         seed=args.seed,
         model_path=args.model_path,
