@@ -146,9 +146,9 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
     for i in range(num_pedestrians):
         # Temporarily use simplified pedestrian dynamics model to avoid neural network loading issues
         # Use social force model to predict next velocity for each pedestrian
-        from envs.dynamics_social_force import walker_logic_SF
+        from envs.dynamics_social_force import walker_logic_SF, walker_logic_SF_multi_ped
         
-        next_walker_vx, next_walker_vy = walker_logic_SF(
+        next_walker_vx, next_walker_vy = walker_logic_SF_multi_ped(
             car_v,
             car_x,
             car_y,
@@ -156,6 +156,10 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
             walker_y_list[i],
             walker_vx_list[i],
             walker_vy_list[i],
+            walker_x_list,
+            walker_y_list,
+            walker_vx_list,
+            walker_vy_list,
             v_max=C.v_max,
             a_max=C.a_max,
             destination_y=C.WALKER_DESTINATION_Y,

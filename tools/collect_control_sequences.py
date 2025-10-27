@@ -57,6 +57,7 @@ def simulate_one_sequence(u_seq: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndar
         state = next_state
     return out
 
+
 def simulate_one_case(u_0: float, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: np.random.RandomState, method='random') -> Tuple[np.ndarray, np.ndarray]:
     state = {
         "car_x": float(p_veh0[0]),
@@ -128,6 +129,54 @@ def simulate_one_case(u_0: float, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: n
         #     }
         if flag:
             break
+    p_seq = np.expand_dims(np.array(p_seq, dtype=np.float32), axis=-1)
+    return np.array(u_seq, dtype=np.float32), p_seq
+
+def simulate_multi_ped(u_0: float, num_pedestrians: int, rng: np.random.RandomState, method='random') -> np.ndarray:
+    from envs.simulator import _initial_state_multi_pedestrian as initial_state_multi_pedestrian
+    from envs.simulator import _step_multi_pedestrian as sim_step_multi_pedestrian
+    from envs.simulator import _done_multi_pedestrian as is_done_multi_pedestrian
+    state = initial_state_multi_pedestrian(car_v=u_0, rng=rng, num_pedestrians=num_pedestrians)
+    u_seq = []
+    p_seq = []
+    u = u_0
+    while True:
+        # Ensure car_v equals the constant episode speed (u_seq[t,0] is same for all t)
+        state["car_v"] = float(u)
+        next_state, _ = sim_step_multi_pedestrian(state, rng=rng)
+        u_seq.append([state["car_v"]])
+        p_seq.append([next_state["walker_x"], next_state["walker_y"]])
+        state = next_state
+
+        # randomly change u
+        if method == 'random':
+            u = np.random.uniform(1.0, 15.0)
+
+        # increase u
+        elif method == 'increase':
+            u += np.random.uniform(0.0, 1.0)
+            u = min(u,15.0) if u<15.0 else 1.0
+
+        # decrease u
+        elif method == 'decrease':
+            u -= np.random.uniform(0.0, 1.0)
+            u = max(u,1.0) if u>1.0 else 15.0
+
+        # APF u
+        elif method == 'apf':
+            from evalAPF_multi import apf_controller_multi_pedestrian
+            import copy
+            multi_state = copy.deepcopy(state)
+            u = apf_controller_multi_pedestrian(multi_state, goal_x=C.CAR_RIGHT_LIMIT+1)
+        
+        # full speed u
+        elif method == 'full_speed':
+            u = np.random.uniform(13.0, 15.0)
+
+        flag = is_done_multi_pedestrian(state)
+        if flag:
+            break
+
     return np.array(u_seq, dtype=np.float32), np.array(p_seq, dtype=np.float32)
 
 def visual_data(u: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, p_seq: np.ndarray, num_samples: int = 5) -> None:
@@ -164,7 +213,7 @@ def visual_data(u: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, p_seq: np
     plt.savefig('sample_trajectories.png')
     plt.close()
 
-def visual_sequence(u_seq: np.ndarray, p_seq: np.ndarray) -> None:
+def visual_sequence(u_seq: np.ndarray, p_seq: np.ndarray, index: int) -> None:
     import matplotlib.pyplot as plt
 
     T = u_seq.shape[0]
@@ -177,15 +226,16 @@ def visual_sequence(u_seq: np.ndarray, p_seq: np.ndarray) -> None:
     # Plot
     plt.figure(figsize=(6, 6))
     plt.plot(p_veh[:, 0], p_veh[:, 1], label='Vehicle Trajectory', color='blue')
-    plt.plot(p_seq[:, 0], p_seq[:, 1], label='Pedestrian Trajectory', color='orange')
     plt.scatter(p_veh[0, 0], p_veh[0, 1], color='blue', marker='o', label='Vehicle Start')
-    plt.scatter(p_seq[0, 0], p_seq[0, 1], color='orange', marker='x', label='Pedestrian Start')
+    for i in range(p_seq.shape[-1]):
+        plt.plot(p_seq[:, 0,i], p_seq[:, 1,i], label='Pedestrian Trajectory', color='orange')
+        plt.scatter(p_seq[0, 0,i], p_seq[0, 1,i], color='orange', marker='x', label='Pedestrian Start')
     plt.title(f'Sequence Visualization')
     plt.xlabel('X Position (m)')
     plt.ylabel('Y Position (m)')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('one_sequence_trajectory.png')
+    plt.savefig(f'trajectories_1027/trajectory_{index}.png')
     plt.close()
 
 def collect_dataset(num_episodes: int, T: int, seed: int = 42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -219,17 +269,21 @@ def collect_dataset(num_episodes: int, T: int, seed: int = 42) -> Tuple[np.ndarr
         # pseq_all[i] = p_seq
 
         # simulate until done
-        methods = {'random':0.0,'increase':0.0,'decrease':0.0,'apf':0.0,'full_speed':1.0}
+        methods = {'random':0.2,'increase':0.0,'decrease':0.0,'apf':0.1,'full_speed':0.7}
         method = rng.choice(list(methods.keys()), p=list(methods.values()))
         u_seq,p_seq = simulate_one_case(u_0,p_veh0,p_ped0,rng,method=method)
-        visual_sequence(u_seq,p_seq)
-        for j in range(1,len(u_seq)-T):
-            u_all[cnt] = np.array(u_seq[j:j+T], dtype=np.float32)
+        # u_seq, p_seq = simulate_multi_ped(u_0, num_pedestrians=rng.randint(1,9), rng=rng, method=method)
+        visual_sequence(u_seq,p_seq,i) # visualize
+        for p in range(p_seq.shape[-1]):
+            for j in range(1,len(u_seq)-T):
+                u_all[cnt] = np.array(u_seq[j:j+T], dtype=np.float32)
 
-            pveh0_all[cnt] = p_veh0 + np.array([np.cumsum(u_seq[:j+1], axis=0)[-1][-1]*C.dt,0.0])
-            pped0_all[cnt] = p_seq[j-1]
-            pseq_all[cnt] = np.array(p_seq[j:j+T], dtype=np.float32)
-            cnt += 1
+                pveh0_all[cnt] = p_veh0 + np.array([np.cumsum(u_seq[:j+1], axis=0)[-1][-1]*C.dt,0.0])
+                pped0_all[cnt] = p_seq[j-1,:,p]
+                pseq_all[cnt] = np.array(p_seq[j:j+T,:,p], dtype=np.float32)
+                cnt += 1
+                if cnt >= num_episodes:
+                    break
             if cnt >= num_episodes:
                 break
         if cnt >= num_episodes:
@@ -259,10 +313,10 @@ def save_csv(path: str, u: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, p
 
 def main():
     parser = argparse.ArgumentParser(description="Collect control sequences with constant speed per episode")
-    parser.add_argument('--episodes', type=int, default=200000, help='Number of sequences to generate')
+    parser.add_argument('--episodes', type=int, default=20000, help='Number of sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--seed', type=int, default=42, help='Random seed')
-    parser.add_argument('--save_path', type=str, default='assets/control_sequences.csv', help='Save path for dataset (CSV)')
+    parser.add_argument('--save_path', type=str, default='assets/control_sequences_cp.csv', help='Save path for dataset (CSV)')
     args = parser.parse_args()
 
     print(f"Generating dataset: episodes={args.episodes}, T={args.T}")

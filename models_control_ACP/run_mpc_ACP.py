@@ -19,7 +19,7 @@ import cvxpy as cp
 
 import utils.constants as C
 from models_control.model_def import ACPCausalPedestrianPredictor
-from tools.eval_runs_scp import plot_trajectory
+from tools.eval_runs_scp import plot_trajectory, calculate_smoothness_metrics
 
 import argparse
 import numpy as np
@@ -176,8 +176,8 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
     d_safe = 2.0
     u_init = 0.1
     method ="opt" # "monte_carlo"
-    model_path = os.path.join("assets_ACP/control_ped_model_ACP.pth")
-    error_npy_path = os.path.join("assets_ACP/cp_errors_ACP.npy")
+    model_path = os.path.join("assets_ACP/control_ped_model.pth")
+    error_npy_path = os.path.join("assets_ACP/cp_errors.npy")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -192,6 +192,8 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
     total_plan_time = []
     speed_sum = 0.0
     episodes_with_collision = 0
+    unsolver_count = 0
+    acceleration_dict = {}
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
         # # Initial state from simulator
         car_speed = float(rng.uniform(1.0, 15.0))
@@ -205,7 +207,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
         step_idx = 0
         states = []
         collide_state = None
-        unsolver_count = 0
+
 
         initial_eta = 0.85
         error_npy = np.load(error_npy_path)
@@ -305,6 +307,9 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
         if collided:
             episodes_with_collision += 1
         
+        veh_speed = np.array([state["car_v"] for state in states])
+        smoothness_metrics = calculate_smoothness_metrics(veh_speed)
+        acceleration_dict[episode_idx] = smoothness_metrics
         # Only save the first episode as an example
         if episode_idx == 0:
             # Generate timestamp for filename (MMDDHHMM format)
@@ -312,19 +317,28 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
             plot_trajectory(states, collide_state, f"trajectories/episode_0_{timestamp}.png")
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
     avg_plan_time_ms = (1000.0 * np.mean(total_plan_time) if total_plan_time else 0.0)
-    
+    acceleration_std_list = [metrics['acceleration_std'] for metrics in acceleration_dict.values()]
+    acceleration_mean_abs_list = [metrics['acceleration_mean_abs'] for metrics in acceleration_dict.values()]
+    jerk_std_list = [metrics['jerk_std'] for metrics in acceleration_dict.values()]
+    avg_acceleration_std = np.mean(acceleration_std_list) if acceleration_std_list else 0.0
+    avg_acceleration_mean_abs = np.mean(acceleration_mean_abs_list) if acceleration_mean_abs_list else 0.0
+    avg_jerk_std = np.mean(jerk_std_list) if jerk_std_list else 0.0
+
     print(f"Total episodes: {num_episodes}")
     print(f"Total Steps: {total_steps/num_episodes:.2f}")
     print(f"Episodes with collision: {episodes_with_collision}/{num_episodes}({episodes_with_collision/num_episodes:.2%})")
     print(f"Average speed: {avg_speed:.2f} m/s")
     print(f"Average planning time: {avg_plan_time_ms:.2f} ms")
     print(f"Unsuccessfully solved episodes: {unsolver_count} / {total_steps} (ratio={unsolver_count/total_steps:.2%})")
+    print(f"Average acceleration std dev: {avg_acceleration_std:.4f}")
+    print(f"Average acceleration mean abs: {avg_acceleration_mean_abs:.4f}")
+    print(f"Average jerk std dev: {avg_jerk_std:.4f}")
 
 if __name__ == "__main__":
-    num_episodes = 20
+    num_episodes = 200
     max_steps_per_episode = 10000
     horizon_T = 10
-    control_T = 3
+    control_T = 10
     num_pedestrians = [9]
     for num_pedestrian in num_pedestrians:
         print(f"Running {num_episodes} episodes with {num_pedestrian} pedestrians")

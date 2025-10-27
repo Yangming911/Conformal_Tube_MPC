@@ -61,10 +61,22 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
             plt.gca().add_patch(circle)
     plt.xlabel("X")
     plt.ylabel("Y")
-    plt.title("Trajectory with Predicted Pedestrians")
     plt.legend()
     plt.savefig(filename.replace(".png", "_trajectory.png"))
     plt.close()
+    print("Trajectory with eta saved to:", filename.replace(".png", "_trajectory.png"))
+
+    # 画error图，并用eta bound住
+    plt.figure(figsize=(10,4))
+    for i in range(1):
+        error = np.linalg.norm(pre_ped_traj[:, i, :2] - ped_traj[:, :2, i], axis=1)
+        plt.plot(error, label=f"Error Pedestrian {i+1}", color=colors[i])
+        plt.fill_between(range(len(states)), 0, eta0, color=colors[i], alpha=0.2)
+    plt.xlabel("Time Step")
+    plt.ylabel("Error")
+    plt.savefig(filename.replace(".png", "_error.png"))
+    plt.close()
+    print("Error with eta saved to:", filename.replace(".png", "_error.png"))
     
     # 绘制速度图
     plt.figure(figsize=(10, 4))
@@ -100,10 +112,10 @@ def calculate_smoothness_metrics(velocity_list):
     # 1. 加速度标准差
     acceleration = np.diff(v)  # 计算加速度
     acceleration = acceleration[acceleration!=0]
-    acc_std = np.std(acceleration)  # 加速度标准差越小越平稳
+    acc_std = np.std(acceleration) if len(acceleration) > 0 else 0  # 加速度标准差越小越平稳
     
     # 2. 加速度绝对值均值
-    acc_mean_abs = np.mean(np.abs(acceleration))
+    acc_mean_abs = np.mean(np.abs(acceleration)) if len(acceleration) > 0 else 0  # 加速度绝对值均值越小越平稳
     
     # 3. 急动度（加速度变化率）
     jerk = np.diff(acceleration)  # 急动度
@@ -156,6 +168,8 @@ def run_episodes_scp(
     total_plan_time = []
     total_plan_iters = []
     total_plan_inner_iters = []
+    unsolver_count = 0
+    acceleration_dict = {}
     # Cumulative statistics matrices (3x3 for 3 bins)
     cumulative_reject_matrix = np.zeros((3, 3), dtype=np.int64)
     cumulative_transition_matrix = np.zeros((3, 3), dtype=np.int64)
@@ -245,7 +259,7 @@ def run_episodes_scp(
         collide_state = None
         eta = None
         pre_p_ped = None
-        unsolver_count = 0
+
         while step_idx < max_steps_per_episode:
             if sim._is_collision_multi_pedestrian(state):
                 collide_state = state.copy()
@@ -315,12 +329,14 @@ def run_episodes_scp(
             step_idx += 1
             states.append(copy.deepcopy(state))
             states[-1]['eta'] = eta[step_idx % control_T]
-
             states[-1]['pre_p_ped'] = pre_p_ped[:,step_idx % control_T,:]
 
         if collided:
             episodes_with_collision += 1
         
+        veh_speed = np.array([state["car_v"] for state in states])
+        smoothness_metrics = calculate_smoothness_metrics(veh_speed)
+        acceleration_dict[episode_idx] = smoothness_metrics
         # Only save the first episode as an example
         if episode_idx == 0:
             # Generate timestamp for filename (MMDDHHMM format)
@@ -329,13 +345,21 @@ def run_episodes_scp(
 
 
     avg_speed = (speed_sum / total_steps) if total_steps > 0 else 0.0
-    unsolver_ratio = unsolver_count / (total_steps / horizon_T)
+    unsolver_ratio = unsolver_count / (total_steps)
 
     avg_iters = (np.mean(total_plan_iters) if total_plan_iters else 0.0)
     avg_inner_iters = (np.mean(total_plan_inner_iters) if total_plan_inner_iters else 0.0)
     avg_plan_time_ms = (1000.0 * np.mean(total_plan_time) if total_plan_time else 0.0)
     
     total_outer_iters = sum(total_plan_iters)
+
+    # compute average acceleration metrics
+    acc_std_list = [metrics['acceleration_std'] for metrics in acceleration_dict.values()]
+    acc_mean_abs_list = [metrics['acceleration_mean_abs'] for metrics in acceleration_dict.values()]
+    jerk_std_list = [metrics['jerk_std'] for metrics in acceleration_dict.values()]
+    avg_acc_std = np.mean(acc_std_list) if acc_std_list else 0.0
+    avg_acc_mean_abs = np.mean(acc_mean_abs_list) if acc_mean_abs_list else 0.0
+    avg_jerk_std = np.mean(jerk_std_list) if jerk_std_list else 0.0
     
     # Prepare results string
     results_lines = []
@@ -344,7 +368,10 @@ def run_episodes_scp(
     results_lines.append(f"Total Steps: {total_steps/num_episodes:.2f}")
     results_lines.append(f"Avg vehicle speed over all steps: {avg_speed:.4f} m/s")
     results_lines.append(f"Episodes with collision: {episodes_with_collision} / {num_episodes} (ratio={episodes_with_collision/num_episodes:.3f})")
-    results_lines.append(f"Unsuccessfully solved episodes: {unsolver_count} / {total_steps/horizon_T:.2f} (ratio={unsolver_ratio:.3f})")
+    results_lines.append(f"Unsuccessfully solved episodes: {unsolver_count} / {total_steps} (ratio={unsolver_ratio:.3f})")
+    results_lines.append(f"Avg acceleration std dev: {avg_acc_std:.4f}")
+    results_lines.append(f"Avg acceleration mean abs: {avg_acc_mean_abs:.4f}")
+    results_lines.append(f"Avg jerk std dev: {avg_jerk_std:.4f}")
     results_lines.append(f"Avg outer-loop iterations per plan: {avg_iters:.2f}")
     results_lines.append(f"Avg inner SCP steps per outer step: {avg_inner_iters:.2f}")
     results_lines.append(f"Avg solve time per T-step plan: {avg_plan_time_ms:.2f} ms")
@@ -418,7 +445,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=20) 
+    parser.add_argument('--episodes', type=int, default=200) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--control_T', type=int, default=10, help='Control time length')
@@ -434,7 +461,7 @@ def main():
     parser.add_argument('--trust_region_initial', type=float, default=5.0, help='Initial trust region radius')
     parser.add_argument('--trust_region_decay', type=float, default=0.5, help='Trust region decay rate per inner iteration')
     parser.add_argument('--rho_ref', type=float, default=1.5*1e7, help='Weight on control smoothness term')
-    parser.add_argument('--num_pedestrians', type=int, default=1, help='Number of pedestrians for constraints')
+    parser.add_argument('--num_pedestrians', type=int, default=9, help='Number of pedestrians for constraints')
     parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')

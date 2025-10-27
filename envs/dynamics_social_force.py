@@ -210,6 +210,147 @@ def F_destination(walker_x_position, destination_x, walker_y_position, destinati
     
     return F_destination_x, F_destination_y
 
+def F_pedestrian(walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past, other_ped_x_position, other_ped_y_position, other_ped_v_x_past, other_ped_v_y_past):
+    """
+    Compute the repulsive force between a pedestrian and other pedestrians.
+
+    Parameters:
+    - walker_x_position: current x-coordinate of the pedestrian
+    - walker_y_position: current y-coordinate of the pedestrian
+    - walker_v_x_past: past x-velocity of the pedestrian
+    - walker_v_y_past: past y-velocity of the pedestrian
+    - other_ped_x_position: x-coordinates of other pedestrians
+    - other_ped_y_position: y-coordinates of other pedestrians
+
+    Returns:
+    - F_pedestrian_x: repulsive force along the x-axis
+    - F_pedestrian_y: repulsive force along the y-axis
+    """
+    alpha = 982.125
+    repulsive_distance = 0.7801
+    F_pedestrian_x = 0
+    F_pedestrian_y = 0
+
+    
+    def flm(d_ij, d_ref, M, sigma):
+        """Linear decaying function with smoothing"""
+        if d_ij <= d_ref:
+            return M * (1 - (d_ij / d_ref))
+        else:
+            return M * sigma * math.exp(-(d_ij - d_ref) / sigma)
+
+
+    def Asin(phi_ij, lambda_param):
+        """Sine anisotropy function"""
+        return lambda_param + (1 - lambda_param) * (1 + math.cos(abs(phi_ij))) / 2
+
+
+    def Aexp(phi_ij_v, lambda_param):
+        """Exponential anisotropy function"""
+        return math.exp(-phi_ij_v**2 / (2 * lambda_param**2))
+
+    def virtual_interaction_force(walker_x, walker_y, walker_vx, walker_vy, 
+                                other_ped_x, other_ped_y, other_ped_vx, other_ped_vy):
+        """
+        Calculate virtual interaction force between two pedestrians based on the repulsion & navigation model
+        Formula: F_ij,vir = F_ij,rep + F_ij,nav
+        """
+        # Calculate distance between pedestrians
+        dx = walker_x - other_ped_x
+        dy = walker_y - other_ped_y
+        d_ij = math.sqrt(dx**2 + dy**2)
+        
+        if d_ij == 0:
+            return 0, 0  # No force if pedestrians are at the same position
+        
+        # Unit vector from other pedestrian to walker
+        n_ij_x = dx / d_ij
+        n_ij_y = dy / d_ij
+        
+        # Calculate relative velocity (from other pedestrian to walker in walker's coordinate)
+        v_ji_x = walker_vx - other_ped_vx
+        v_ji_y = walker_vy - other_ped_vy
+        
+        # Calculate phi_ij_v: angle between n_ij and v_ji
+        # First calculate the dot product
+        v_ji_mag = math.sqrt(v_ji_x**2 + v_ji_y**2)
+        if v_ji_mag == 0:
+            phi_ij_v = 0
+        else:
+            dot_product = (v_ji_x * n_ij_x + v_ji_y * n_ij_y) / v_ji_mag
+            # Clamp to avoid numerical errors
+            dot_product = max(-1, min(1, dot_product))
+            phi_ij_v = math.acos(dot_product)
+            
+            # Determine the sign of phi_ij_v using cross product
+            cross_product = v_ji_x * n_ij_y - v_ji_y * n_ij_x
+            if cross_product < 0:
+                phi_ij_v = -phi_ij_v
+        
+        # Parameters for repulsion force (you may need to adjust these based on your requirements)
+        d_rep = 0.7801  # Repulsion distance threshold
+        M_rep = 30.028  # Maximum repulsion force magnitude
+        sigma_rep = 0.45971243  # Smoothing parameter for repulsion force
+        lambda_rep = 0.1  # Anisotropy parameter for repulsion force
+        
+        # Calculate repulsion force
+        F_rep_mag = flm(d_ij, d_rep, M_rep, sigma_rep) * Asin(phi_ij_v, lambda_rep)
+        F_rep_x = F_rep_mag * n_ij_x
+        F_rep_y = F_rep_mag * n_ij_y
+        
+        # Parameters for navigation force
+        d_nav = 1.5892008  # Navigation distance threshold
+        M_nav = 41.875  # Maximum navigation force magnitude
+        sigma_nav = 0.41745  # Smoothing parameter for navigation force
+        lambda_nav = 1.0  # Anisotropy parameter for navigation force
+        
+        # Calculate navigation force
+        # First get perpendicular unit vector
+        n_ij_perp_x, n_ij_perp_y = get_perpendicular_vector(n_ij_x, n_ij_y, phi_ij_v)
+        
+        F_nav_mag = flm(d_ij, d_nav, M_nav, sigma_nav) * Aexp(phi_ij_v, lambda_nav)
+        F_nav_x = F_nav_mag * n_ij_perp_x
+        F_nav_y = F_nav_mag * n_ij_perp_y
+        
+        # Total virtual interaction force
+        F_vir_x = F_rep_x + F_nav_x
+        F_vir_y = F_rep_y + F_nav_y
+        
+        return F_vir_x, F_vir_y
+
+    def get_perpendicular_vector(n_ij_x, n_ij_y, phi_ij_v):
+        """Calculate perpendicular unit vector to n_ij, direction depends on phi_ij_v"""
+        # Left perpendicular vector (counterclockwise 90 degrees)
+        n_ij_perp_left_x = -n_ij_y
+        n_ij_perp_left_y = n_ij_x
+        # Right perpendicular vector (clockwise 90 degrees)
+        n_ij_perp_right_x = n_ij_y
+        n_ij_perp_right_y = -n_ij_x
+        
+        # Choose direction based on phi_ij_v
+        # If phi_ij_v is positive, the relative velocity is pointing to the left
+        # If phi_ij_v is negative, the relative velocity is pointing to the right
+        if phi_ij_v >= 0:
+            return n_ij_perp_left_x, n_ij_perp_left_y
+        else:
+            return n_ij_perp_right_x, n_ij_perp_right_y
+
+
+    for i in range(len(other_ped_x_position)):
+        d_ij = math.sqrt((walker_x_position - other_ped_x_position[i])**2 + (walker_y_position - other_ped_y_position[i])**2)
+        if d_ij == 0:
+            continue
+        n_ij_x = (walker_x_position - other_ped_x_position[i]) / d_ij
+        n_ij_y = (walker_y_position - other_ped_y_position[i]) / d_ij
+        F_col_x = alpha * min(d_ij-repulsive_distance, 0) * n_ij_x
+        F_col_y = alpha * min(d_ij-repulsive_distance, 0) * n_ij_y
+        F_vir_x, F_vir_y = virtual_interaction_force(walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past, 
+                                other_ped_x_position[i], other_ped_y_position[i], other_ped_v_x_past[i], other_ped_v_y_past[i])
+        F_pedestrian_x += F_col_x + F_vir_x
+        F_pedestrian_y += F_col_y + F_vir_y
+    
+    return F_pedestrian_x, F_pedestrian_y
+        
 
 def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, walker_y_position, 
                     walker_v_x_past, walker_v_y_past, v_max=2.5, a_max=5, destination_x=C.WALKER_DESTINATION_X, destination_y=C.WALKER_DESTINATION_Y, rng=None):
@@ -269,7 +410,68 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
     
     return walker_v_x, walker_v_y
 
+def walker_logic_SF_multi_ped(car_v, car_x_position, car_y_position, walker_x_position, walker_y_position, 
+                    walker_v_x_past, walker_v_y_past, other_ped_x_position, other_ped_y_position, other_ped_v_x_past, other_ped_v_y_past, v_max=2.5, a_max=5, destination_x=C.WALKER_DESTINATION_X, destination_y=C.WALKER_DESTINATION_Y, rng=None):
+    """
+    Update multiple pedestrian velocities (x and y) based on destination attraction, vehicle influence and pedestrian interaction.
+    Parameters:
+    - car_v: vehicle speed
+    - car_x_position: vehicle x-coordinate
+    - car_y_position: vehicle y-coordinate
+    - walker_x_position: pedestrian x-coordinate
+    - walker_y_position: pedestrian y-coordinate
+    - walker_v_x_past: pedestrian past x-velocity
+    - walker_v_y_past: pedestrian past y-velocity
+    - other_ped_x_position: list of other pedestrian x-coordinate
+    - other_ped_y_position: list of other pedestrian y-coordinate
+    - other_ped_v_x_past: list of other pedestrian past x-velocity
+    - other_ped_v_y_past: list of other pedestrian past y-velocity
+    - v_max: maximum speed (optional, default 2.5 m/s)
+    - a_max: maximum acceleration (optional, default 5 m/s^2)
 
+    Returns:
+    - walker_v_x: updated pedestrian x-velocity
+    - walker_v_y: updated pedestrian y-velocity
+    """
+    # 1. Compute vehicle influence on pedestrian (returns force in x and y)
+    F_vehicle_x, F_vehicle_y, _ = F_vehicle(car_x_position, car_y_position, car_v, walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past)
+    F_vehicle_x = 100*F_vehicle_x
+    F_vehicle_y = 0.2*F_vehicle_y
+    # 2. Compute destination attraction (returns only y-direction force)
+    F_destination_x, F_destination_y = F_destination(walker_x_position, destination_x, walker_y_position, destination_y, F_vehicle_x, F_vehicle_y, walker_v_x_past, walker_v_y_past)
+    # 3. Compute pedestrian interaction force (returns x and y-direction force)
+    F_pedestrian_x, F_pedestrian_y = F_pedestrian(walker_x_position, walker_y_position, walker_v_x_past, walker_v_y_past, other_ped_x_position, other_ped_y_position, other_ped_v_x_past, other_ped_v_y_past)
+
+    # 4. Compute total force components in x and y
+
+    F_total_x = F_vehicle_x + F_destination_x # + F_pedestrian_x # only vehicle affects x-direction here
+    F_total_y =  F_vehicle_y + F_destination_y # + F_pedestrian_y # destination and vehicle affect y-direction
+    
+    # 5. Compute acceleration from force (F = m * a => a = F / m)
+    a_x = F_total_x / C.mass_pedestrian
+    a_y = F_total_y / C.mass_pedestrian
+    
+    # 6. Limit acceleration to not exceed a_max
+    # Compute acceleration magnitude
+    total_a = math.sqrt(a_x**2 + a_y**2)
+    if total_a > a_max:
+        # Scale acceleration proportionally to keep direction but cap magnitude
+        a_x = a_x / total_a * a_max
+        a_y = a_y / total_a * a_max
+    # 7. Update pedestrian velocity (v = v_0 + a * dt)
+    if rng is None:
+        rng = np.random
+    walker_v_x = walker_v_x_past + a_x * C.dt # + rng.normal(0, C.walker_noise_x_sigma) # update x-velocity
+    walker_v_y = walker_v_y_past + a_y * C.dt # + rng.normal(0, C.walker_noise_y_sigma) # update y-velocity
+    
+    # 8. Limit speed to not exceed v_max
+    total_v = math.sqrt(walker_v_x**2 + walker_v_y**2)
+    if total_v > C.v_max:
+        # Scale speed proportionally to keep direction but cap magnitude
+        walker_v_x = walker_v_x / total_v * C.v_max
+        walker_v_y = walker_v_y / total_v * C.v_max
+    
+    return walker_v_x, walker_v_y
 
 #########################################################################################################################################
 # The following is visualization testing and unrelated to core functionality
