@@ -52,7 +52,8 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
 
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.figure(figsize=(3, 4))
-    for i in range(1):
+    ped_idx = 1
+    for i in range(ped_idx,ped_idx+1):
         plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", s=1, color=colors)
         plt.scatter(pre_ped_traj[:, i, 0], pre_ped_traj[:, i, 1], label=f"Predicted Pedestrian {i+1}", s=1, color=colors)
         # 以当前点为中心，绘制以eta为半径的圆
@@ -68,7 +69,7 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
 
     # 画error图，并用eta bound住
     plt.figure(figsize=(10,4))
-    for i in range(1):
+    for i in range(ped_idx,ped_idx+1):
         error = np.linalg.norm(pre_ped_traj[:, i, :2] - ped_traj[:, :2, i], axis=1)
         plt.plot(error, label=f"Error Pedestrian {i+1}", color=colors[i])
         plt.fill_between(range(len(states)), 0, eta0, color=colors[i], alpha=0.2)
