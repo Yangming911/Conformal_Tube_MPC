@@ -398,8 +398,8 @@ def walker_logic_SF(car_v, car_x_position, car_y_position, walker_x_position, wa
     # 6. Update pedestrian velocity (v = v_0 + a * dt)
     if rng is None:
         rng = np.random
-    walker_v_x = walker_v_x_past + a_x * C.dt # + rng.normal(0, C.walker_noise_x_sigma) # update x-velocity
-    walker_v_y = walker_v_y_past + a_y * C.dt # + rng.normal(0, C.walker_noise_y_sigma) # update y-velocity
+    walker_v_x = walker_v_x_past + a_x * C.dt #+ rng.normal(0, C.walker_noise_x_sigma)*car_v*0.3 # update x-velocity
+    walker_v_y = walker_v_y_past + a_y * C.dt #+ rng.normal(0, C.walker_noise_y_sigma)*car_v*0.3 # update y-velocity
     
     # 7. Limit speed to not exceed v_max
     total_v = math.sqrt(walker_v_x**2 + walker_v_y**2)
@@ -444,8 +444,8 @@ def walker_logic_SF_multi_ped(car_v, car_x_position, car_y_position, walker_x_po
 
     # 4. Compute total force components in x and y
 
-    F_total_x = F_vehicle_x + F_destination_x # + F_pedestrian_x # only vehicle affects x-direction here
-    F_total_y =  F_vehicle_y + F_destination_y # + F_pedestrian_y # destination and vehicle affect y-direction
+    F_total_x = F_vehicle_x + F_destination_x + F_pedestrian_x # only vehicle affects x-direction here
+    F_total_y =  F_vehicle_y + F_destination_y + F_pedestrian_y # destination and vehicle affect y-direction
     
     # 5. Compute acceleration from force (F = m * a => a = F / m)
     a_x = F_total_x / C.mass_pedestrian

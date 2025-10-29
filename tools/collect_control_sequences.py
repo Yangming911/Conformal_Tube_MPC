@@ -34,7 +34,7 @@ from envs.simulator import _done as is_done
 from tqdm import tqdm
 
 
-def simulate_one_sequence(u_seq: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: np.random.RandomState) -> np.ndarray:
+def simulate_one_sequence(u_seq: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: np.random.RandomState = None) -> np.ndarray:
     T = u_seq.shape[0]
     # Initialize full simulator state
     state = {
@@ -73,11 +73,14 @@ def simulate_one_case(u_0: float, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: n
     if method == 'random' or method == 'apf':
         u = u_0
     elif method == 'increase':
-        u = rng.uniform(1.0, 3.0)
+        u = rng.uniform(1.0, 2.0)
     elif method == 'decrease':
         u = rng.uniform(13.0, 15.0)
     elif method == 'full_speed':
         u = 15.0
+    elif method == 'half_speed':
+        u = rng.uniform(5.0, 10.0)
+        
     while True:
         # Ensure car_v equals the constant episode speed (u_seq[t,0] is same for all t)
         state["car_v"] = float(u)
@@ -113,6 +116,10 @@ def simulate_one_case(u_0: float, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: n
         elif method == 'full_speed':
             u = 15.0
 
+        # half speed u
+        elif method == 'half_speed':
+            u = rng.uniform(5.0, 10.0)
+
         flag = is_done(state)
         # if is_collision(state):
         #     u_seq = []
@@ -132,7 +139,7 @@ def simulate_one_case(u_0: float, p_veh0: np.ndarray, p_ped0: np.ndarray, rng: n
     p_seq = np.expand_dims(np.array(p_seq, dtype=np.float32), axis=-1)
     return np.array(u_seq, dtype=np.float32), p_seq
 
-def simulate_multi_ped(u_0: float, num_pedestrians: int, rng: np.random.RandomState, method='random') -> np.ndarray:
+def simulate_multi_ped(u_0: float, num_pedestrians: int, rng: np.random.RandomState, method='random', p2p=False) -> np.ndarray:
     from envs.simulator import _initial_state_multi_pedestrian as initial_state_multi_pedestrian
     from envs.simulator import _step_multi_pedestrian as sim_step_multi_pedestrian
     from envs.simulator import _done_multi_pedestrian as is_done_multi_pedestrian
@@ -143,7 +150,7 @@ def simulate_multi_ped(u_0: float, num_pedestrians: int, rng: np.random.RandomSt
     while True:
         # Ensure car_v equals the constant episode speed (u_seq[t,0] is same for all t)
         state["car_v"] = float(u)
-        next_state, _ = sim_step_multi_pedestrian(state, rng=rng)
+        next_state, _ = sim_step_multi_pedestrian(state, rng=rng, p2p=p2p)
         u_seq.append([state["car_v"]])
         p_seq.append([next_state["walker_x"], next_state["walker_y"]])
         state = next_state
@@ -172,6 +179,11 @@ def simulate_multi_ped(u_0: float, num_pedestrians: int, rng: np.random.RandomSt
         # full speed u
         elif method == 'full_speed':
             u = np.random.uniform(13.0, 15.0)
+        
+        # half speed u
+        elif method == 'half_speed':
+            u = np.random.uniform(5.0, 10.0)
+
 
         flag = is_done_multi_pedestrian(state)
         if flag:
@@ -215,6 +227,7 @@ def visual_data(u: np.ndarray, p_veh0: np.ndarray, p_ped0: np.ndarray, p_seq: np
 
 def visual_sequence(u_seq: np.ndarray, p_seq: np.ndarray, index: int) -> None:
     import matplotlib.pyplot as plt
+    os.makedirs('trajectories_1027', exist_ok=True)
 
     T = u_seq.shape[0]
     # Simulate vehicle trajectory
@@ -238,7 +251,7 @@ def visual_sequence(u_seq: np.ndarray, p_seq: np.ndarray, index: int) -> None:
     plt.savefig(f'trajectories_1027/trajectory_{index}.png')
     plt.close()
 
-def collect_dataset(num_episodes: int, T: int, seed: int = 42) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def collect_dataset(num_episodes: int, T: int, seed: int = 42, p2p: bool = False) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     rng = np.random.RandomState(seed)
     u_all = np.zeros((num_episodes, T, 1), dtype=np.float32)
     pveh0_all = np.zeros((num_episodes, 2), dtype=np.float32)
@@ -268,11 +281,11 @@ def collect_dataset(num_episodes: int, T: int, seed: int = 42) -> Tuple[np.ndarr
         # pped0_all[i] = p_ped0
         # pseq_all[i] = p_seq
 
-        # simulate until done
-        methods = {'random':0.2,'increase':0.0,'decrease':0.0,'apf':0.1,'full_speed':0.7}
+        # simulate until done # multi: 0.1, 0, 0, 0.7, 0.2, 0.0;   single: 0.2, 0.0, 0.0, 0.1, 0.7, 0.0;    multi p2p:
+        methods = {'random':0.3,'increase':0.0,'decrease':0.0,'apf':0.4,'full_speed':0.3, 'half_speed':0.0}
         method = rng.choice(list(methods.keys()), p=list(methods.values()))
         u_seq,p_seq = simulate_one_case(u_0,p_veh0,p_ped0,rng,method=method)
-        # u_seq, p_seq = simulate_multi_ped(u_0, num_pedestrians=rng.randint(1,9), rng=rng, method=method)
+        # u_seq, p_seq = simulate_multi_ped(u_0, num_pedestrians=rng.randint(1,9), rng=rng, method=method, p2p=p2p)
         visual_sequence(u_seq,p_seq,i) # visualize
         for p in range(p_seq.shape[-1]):
             for j in range(1,len(u_seq)-T):

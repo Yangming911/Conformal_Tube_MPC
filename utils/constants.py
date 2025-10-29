@@ -1,6 +1,6 @@
-CAR_LEFT_LIMIT = 0
-CAR_RIGHT_LIMIT = 50
-CAR_START_X = 0
+CAR_LEFT_LIMIT = 0 # 10
+CAR_RIGHT_LIMIT = 50 # 40
+CAR_START_X = 0 # 10
 CAR_LANE_Y = 12
 
 
@@ -15,7 +15,7 @@ WALKER_START_V_Y = 0
 a_max = 5
 v_max = 2.5
 dt = 0.1
-walker_noise_y_sigma = 0.5
+walker_noise_y_sigma = 0.1
 walker_noise_x_sigma = 0.1
 mass_pedestrian = 80
 num_pedestrians = 3  # Default to use 3 pedestrians for testing

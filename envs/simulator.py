@@ -119,7 +119,7 @@ def _step(state: Dict[str, float], rng: np.random.RandomState = None) -> Tuple[D
     return next_state, label
 
 
-def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = None) -> Tuple[Dict[str, any], Dict[str, any]]:
+def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = None, p2p: bool = False) -> Tuple[Dict[str, any], Dict[str, any]]:
     """
     Advance simulation by one time step C.dt for multiple pedestrians.
 
@@ -148,23 +148,38 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
         # Use social force model to predict next velocity for each pedestrian
         from envs.dynamics_social_force import walker_logic_SF, walker_logic_SF_multi_ped
         
-        next_walker_vx, next_walker_vy = walker_logic_SF_multi_ped(
-            car_v,
-            car_x,
-            car_y,
-            walker_x_list[i],
-            walker_y_list[i],
-            walker_vx_list[i],
-            walker_vy_list[i],
-            walker_x_list,
-            walker_y_list,
-            walker_vx_list,
-            walker_vy_list,
-            v_max=C.v_max,
-            a_max=C.a_max,
-            destination_y=C.WALKER_DESTINATION_Y,
-            rng=rng,
-        )
+        if p2p:
+            next_walker_vx, next_walker_vy = walker_logic_SF_multi_ped(
+                car_v,
+                car_x,
+                car_y,
+                walker_x_list[i],
+                walker_y_list[i],
+                walker_vx_list[i],
+                walker_vy_list[i],
+                walker_x_list,
+                walker_y_list,
+                walker_vx_list,
+                walker_vy_list,
+                v_max=C.v_max,
+                a_max=C.a_max,
+                destination_y=C.WALKER_DESTINATION_Y,
+                rng=rng,
+            )
+        else:
+            next_walker_vx, next_walker_vy = walker_logic_SF(
+                car_v,
+                car_x,
+                car_y,
+                walker_x_list[i],
+                walker_y_list[i],
+                walker_vx_list[i],
+                walker_vy_list[i],
+                v_max=C.v_max,
+                a_max=C.a_max,
+                destination_y=C.WALKER_DESTINATION_Y,
+                rng=rng,
+            )
         
         # Integrate position
         dt = float(C.dt)

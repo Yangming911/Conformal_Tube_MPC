@@ -124,12 +124,14 @@ def main():
     parser.add_argument('--episodes', type=int, default=20000, help='Number of calibration sequences to generate')
     parser.add_argument('--T', type=int, default=10, help='Sequence length')
     parser.add_argument('--alpha', type=float, default=0.85, help='Quantile level in (0,1)')
-    parser.add_argument('--num_bins', type=int, default=3, help='Number of speed bins over [0,15]')
+    parser.add_argument('--num_bins', type=int, default=5, help='Number of speed bins over [0,15]')
     parser.add_argument('--batch_size', type=int, default=1024, help='Batch size for inference')
     parser.add_argument('--min_count', type=int, default=20, help='Minimum samples per bin; fallback if fewer')
     parser.add_argument('--fallback_eta', type=float, default=0.5, help='Fallback eta when bin underpopulated')
-    parser.add_argument('--save_path', type=str, default='assets/cp_eta.csv', help='Where to save eta matrix as CSV')
-    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges.csv', help='Where to save bin edges as CSV')
+    parser.add_argument('--save_path', type=str, default='assets/cp_eta_test.csv', help='Where to save eta matrix as CSV')
+    parser.add_argument('--save_edges_path', type=str, default='assets/cp_eta_edges_test.csv', help='Where to save bin edges as CSV')
+    parser.add_argument('--p2p', type=bool, default=False, help='Whether to use p2p model')
+
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
@@ -138,7 +140,7 @@ def main():
 
     # Collect constant-speed calibration dataset
     print(f"Collecting calibration dataset: episodes={args.episodes}, T={args.T}")
-    u, p_veh0, p_ped0, p_seq = collect_constant_speed_dataset(args.episodes, args.T, seed=2025)
+    u, p_veh0, p_ped0, p_seq = collect_constant_speed_dataset(args.episodes, args.T, seed=2025, p2p=args.p2p)
 
     # # load real data
     # real_u, real_p_veh0, real_p_ped0, real_p_seq = load_from_csv('assets/citr_data/citr_conformal_grid.csv', args.T)

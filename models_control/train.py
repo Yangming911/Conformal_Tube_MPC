@@ -558,8 +558,14 @@ def main():
         else:
             patience_counter += 1
             if patience_counter >= args.patience:
-                print(f"Early stopping at epoch {epoch+1}")
-                break
+                # print(f"Early stopping at epoch {epoch+1}")
+                # break
+                print("update learning rate")
+                lr = args.lr * 0.1
+                for param_group in optimizer.param_groups:
+                    param_group['lr'] = lr
+                patience_counter = 0
+
 
     # 在测试评估后添加可视化
     # Load best and evaluate on test

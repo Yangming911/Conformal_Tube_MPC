@@ -248,6 +248,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
             ppast_p_ped_multi = ppast_p_ped_multi.transpose(2, 0, 1)
             past_pred_p_ped_multi = nn_predict_positions_multi(model, device, ppast_p_ped_multi) # [M, T, 2]
             pred_p_ped_multi = nn_predict_positions_multi(model, device, past_p_ped_multi) # [M, T, 2]
+            import pdb;pdb.set_trace()
             if step_idx > 2 * horizon_T:
                 gamma = 0.08
                 eta_const = 0.1

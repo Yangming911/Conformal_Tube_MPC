@@ -52,7 +52,7 @@ def plot_trajectory(states: List[Dict], collide_state: Dict, filename: str) -> N
 
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
     plt.figure(figsize=(3, 4))
-    ped_idx = 1
+    ped_idx = 0
     for i in range(ped_idx,ped_idx+1):
         plt.scatter(ped_traj[:, 0, i], ped_traj[:, 1, i], label=f"Pedestrian {i+1}",marker="^", s=1, color=colors)
         plt.scatter(pre_ped_traj[:, i, 0], pre_ped_traj[:, i, 1], label=f"Predicted Pedestrian {i+1}", s=1, color=colors)
@@ -161,6 +161,7 @@ def run_episodes_scp(
     log_file: str = None,
     explicit_log: str = None,
     method: str = "scp",
+    p2p: bool = False,
 ) -> None:
     rng = np.random.RandomState(seed)
     episodes_with_collision = 0
@@ -310,8 +311,8 @@ def run_episodes_scp(
                     total_plan_iters.append(iters_used)
                     total_plan_inner_iters.extend(inner_scp_steps_list)
                     # Accumulate statistics
-                    cumulative_reject_matrix += reject_matrix
-                    cumulative_transition_matrix += transition_matrix
+                    # cumulative_reject_matrix += reject_matrix
+                    # cumulative_transition_matrix += transition_matrix
                     if solver_state != "success":
                         unsolver_count += 1
                         
@@ -323,14 +324,14 @@ def run_episodes_scp(
             # Apply control corresponding to position inside current horizon
             u_t = float(u_opt[step_idx % control_T])
             state["car_v"] = u_t
-            next_state, _ = sim._step_multi_pedestrian(state, rng)
+            next_state, _ = sim._step_multi_pedestrian(state, rng, p2p=p2p)
             speed_sum += float(state["car_v"])  # accumulate speed
             total_steps += 1
             state = next_state
-            step_idx += 1
             states.append(copy.deepcopy(state))
             states[-1]['eta'] = eta[step_idx % control_T]
             states[-1]['pre_p_ped'] = pre_p_ped[:,step_idx % control_T,:]
+            step_idx += 1
 
         if collided:
             episodes_with_collision += 1
@@ -449,7 +450,7 @@ def main():
     parser.add_argument('--episodes', type=int, default=200) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
-    parser.add_argument('--control_T', type=int, default=10, help='Control time length')
+    parser.add_argument('--control_T', type=int, default=1, help='Control time length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
     parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth')
@@ -466,7 +467,8 @@ def main():
     parser.add_argument('--log_file', type=str, default='logs/scp_eval_complicated.log', help='Log file path')
     parser.add_argument('--explicit_log', type=str, default='logs/scp_eval_explicit.log', help='Explicit log file path (parameters and results only)')
     parser.add_argument('--method', type=str, default='scp', help='Method to use for control: scp or constant_speed')
-
+    parser.add_argument('--p2p', type=bool, default=False, help='Whether to use p2p model')
+        
     args = parser.parse_args()
 
     run_episodes_scp(
@@ -490,6 +492,7 @@ def main():
         log_file=args.log_file,
         explicit_log=args.explicit_log,
         method=args.method,
+        p2p=args.p2p,
     )
 
 
