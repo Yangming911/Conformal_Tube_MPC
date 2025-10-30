@@ -175,9 +175,10 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
     u_max = 15.0
     d_safe = 2.0
     u_init = 0.1
-    method ="opt" # "monte_carlo"
+    method ="monte_carlo" # "monte_carlo"
+    p2p = True
     model_path = os.path.join("assets_ACP/control_ped_model.pth")
-    error_npy_path = os.path.join("assets_ACP/cp_errors.npy")
+    error_npy_path = os.path.join("assets_ACP/cp_errors_test.npy")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -212,7 +213,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
         initial_eta = 0.85
         error_npy = np.load(error_npy_path)
         C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
-
+        eta = [initial_eta]*horizon_T
         while step_idx < max_steps_per_episode:
             if sim._is_collision_multi_pedestrian(state):
                 collide_state = state.copy()
@@ -223,13 +224,13 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
             if step_idx < horizon_T:
                 u_t = u_ref
                 state['car_v'] = u_t
-                next_state, _ = sim._step_multi_pedestrian(state, rng)
+                next_state, _ = sim._step_multi_pedestrian(state, rng, p2p=p2p)
                 state = next_state
                 total_steps += 1
                 step_idx += 1
                 states.append(copy.deepcopy(state))
-                states[-1]['eta'] = C_eta[0]
-                states[-1]['pre_p_ped'] = np.array([state['walker_x'],state['walker_y']]).T
+                states[-1]['eta'] = 0
+                states[-1]['pre_p_ped'] = np.array([[0]*num_pedestrians,[0]*num_pedestrians]).T
                 continue
 
                 
@@ -242,29 +243,58 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
 
             t0 = time.perf_counter()
             p_ped_0_multi = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)], dtype=np.float32)
-            past_p_ped_multi = np.array([[states[i]["walker_x"], states[i]["walker_y"]] for i in range(step_idx - horizon_T, step_idx)], dtype=np.float32) # [M, T, 2]
-            past_p_ped_multi = past_p_ped_multi.transpose(2, 0, 1)
-            ppast_p_ped_multi = np.array([[states[i]["walker_x"], states[i]["walker_y"]] for i in range(step_idx - 2*horizon_T, step_idx - horizon_T)], dtype=np.float32) # [M, T, 2]
-            ppast_p_ped_multi = ppast_p_ped_multi.transpose(2, 0, 1)
+            past_p_ped_multi = np.zeros((num_pedestrians, horizon_T, 2), dtype=np.float32)
+            ppast_p_ped_multi = np.zeros((num_pedestrians, horizon_T, 2), dtype=np.float32)
+            # 全用p_ped_0_multi初始化past_p_ped_multi和ppast_p_ped_multi
+            for j in range(num_pedestrians):
+                for t in range(horizon_T):
+                    past_p_ped_multi[j, t] = p_ped_0_multi[j]
+                    ppast_p_ped_multi[j, t] = p_ped_0_multi[j]
+            length = max(len(states)-1, 0)
+            for j in range(num_pedestrians):
+                for t in range(length, max(length - horizon_T, 0), -1):
+                    past_p_ped_multi[j, horizon_T - (length - t) - 1] = np.array([states[t]["walker_x"][j], states[t]["walker_y"][j]], dtype=np.float32)
+            for j in range(num_pedestrians):
+                for t in range(max(length-horizon_T,0), max(length - 2*horizon_T, 0), -1):
+                    ppast_p_ped_multi[j, horizon_T - (max(length - horizon_T, 0) - t)-1] = np.array([states[t]["walker_x"][j], states[t]["walker_y"][j]], dtype=np.float32)
             past_pred_p_ped_multi = nn_predict_positions_multi(model, device, ppast_p_ped_multi) # [M, T, 2]
             pred_p_ped_multi = nn_predict_positions_multi(model, device, past_p_ped_multi) # [M, T, 2]
-            import pdb;pdb.set_trace()
-            if step_idx > 2 * horizon_T:
-                gamma = 0.08
-                eta_const = 0.1
-                if ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0).all():
-                    one_minus_eta = 1 - initial_eta
-                    one_minus_eta = one_minus_eta + gamma*eta_const
-                    initial_eta = 1 - one_minus_eta
-                    initial_eta = min(max(0.05, initial_eta), 0.95)
-                    print("new eta:", initial_eta)
-                else:
-                    one_minus_eta = 1 - initial_eta
-                    one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
-                    initial_eta = 1 - one_minus_eta
-                    initial_eta = min(max(0.05, initial_eta), 0.95)
-                    print("no satisfied. new eta:", initial_eta)
-            C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
+            # if step_idx > 2 * horizon_T:
+            # update eta
+            gamma = 0.08
+            eta_const = 0.1
+            # if ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0).all():
+            #     one_minus_eta = 1 - initial_eta
+            #     one_minus_eta = one_minus_eta + gamma*eta_const
+            #     initial_eta = 1 - one_minus_eta
+            #     initial_eta = min(max(0.05, initial_eta), 0.95)
+            #     print("new eta:", initial_eta)
+            # else:
+            #     one_minus_eta = 1 - initial_eta
+            #     one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
+            #     initial_eta = 1 - one_minus_eta
+            #     initial_eta = min(max(0.05, initial_eta), 0.95)
+            #     print("no satisfied. new eta:", initial_eta)
+            # C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
+            if step_idx >= horizon_T:
+                mask = ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0)
+                for t in range(horizon_T):
+                    if mask[:,t].all():
+                        one_minus_eta = 1 - eta[t]
+                        one_minus_eta = one_minus_eta + gamma*eta_const
+                        eta[t] = 1 - one_minus_eta
+                        eta[t] = min(max(0.05, eta[t]), 0.99)
+                        # print("new eta:", eta[t])
+                    else:
+                        one_minus_eta = 1 - eta[t]
+                        one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
+                        eta[t] = 1 - one_minus_eta
+                        eta[t] = min(max(0.05, eta[t]), 0.99)
+                        # print("no satisfied. new eta:", eta[t])
+                C_eta = np.zeros(horizon_T)
+                for t in range(horizon_T):
+                    C_eta[t] = np.quantile(error_npy[:,t], eta[t])
+
             if method == "monte_carlo":
                 u_opt = monte_carlo_sampling(
                     u_ref=np.array([u_ref] * horizon_T, dtype=np.float32), 
@@ -286,7 +316,7 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
                     p_ped=pred_p_ped_multi,
                 )
             if u_opt is None:
-                print("No feasible solution found.")
+                # print("No feasible solution found.")
                 unsolver_count += 1
                 u_opt = last_u
             last_u = u_opt
@@ -340,7 +370,7 @@ if __name__ == "__main__":
     max_steps_per_episode = 10000
     horizon_T = 10
     control_T = 10
-    num_pedestrians = [9]
+    num_pedestrians = [1,5,9]
     for num_pedestrian in num_pedestrians:
         print(f"Running {num_episodes} episodes with {num_pedestrian} pedestrians")
         run_mpc(num_episodes, max_steps_per_episode, horizon_T, control_T, num_pedestrian)
