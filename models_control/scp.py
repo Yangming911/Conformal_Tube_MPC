@@ -22,7 +22,7 @@ Notes:
 import os
 import sys
 from pathlib import Path
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 
 # Ensure project root on path BEFORE importing project modules
 PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
@@ -33,10 +33,116 @@ import numpy as np
 import pandas as pd
 import torch
 import cvxpy as cp
+import time
 
 import utils.constants as C
 from models_control.model_def import CausalPedestrianPredictor
 
+
+class SCPSubproblemSolver:
+    """更紧凑的SCP求解器，使用完全矩阵形式"""
+    
+    def __init__(self, T: int, M: int, u_min: float, u_max: float, rho_ref: float, d_safe: float):
+        self.T = T
+        self.M = M
+        self.u_min = u_min
+        self.u_max = u_max
+        self.rho_ref = rho_ref
+        self.d_safe = d_safe
+        
+        # 定义所有参数
+        self.u_ref_param = cp.Parameter(T, nonneg=True)
+        self.u0_param = cp.Parameter(T, nonneg=True)
+        self.g0_param = cp.Parameter((M, T))
+        self.J_param = cp.Parameter((M, T))
+        self.C_eta_param = cp.Parameter(T, nonneg=True)
+        self.trust_region_radius_param = cp.Parameter(nonneg=True)
+        
+        # 构建优化变量
+        self.u = cp.Variable(T, nonneg=True)
+        
+        # 目标函数
+        objective = cp.sum_squares(self.u - self.u_ref_param)
+        
+        # 约束条件
+        self.constraints = []
+        
+        # 控制输入边界约束
+        self.constraints += [self.u >= u_min, self.u <= u_max]
+        
+        # 信任域约束
+        self.constraints += [
+            self.u - self.u0_param <= self.trust_region_radius_param,
+            self.u - self.u0_param >= -self.trust_region_radius_param
+        ]
+        
+        # 线性化安全约束 - 完全矩阵形式
+        # 将g0和J展平，创建一个大的向量约束
+        g0_flat = cp.vec(self.g0_param)  # 形状: (M*T,)
+        J_flat = cp.vec(self.J_param)    # 形状: (M*T,)
+        
+        # 创建重复的(u - u0)向量，形状: (M*T,)
+        u_diff_repeated = cp.vstack([self.u - self.u0_param for _ in range(M)])
+        u_diff_flat = cp.vec(u_diff_repeated)
+        
+        # 创建重复的(C_eta + d_safe)^2向量，形状: (M*T,)
+        C_eta_safe_sq = cp.square(self.C_eta_param + d_safe)
+        C_eta_safe_repeated = cp.vstack([C_eta_safe_sq for _ in range(M)])
+        C_eta_safe_flat = cp.vec(C_eta_safe_repeated)
+        
+        # 单个向量约束，包含所有安全约束
+        safety_constraint = g0_flat + cp.multiply(J_flat, u_diff_flat) >= C_eta_safe_flat
+        self.constraints.append(safety_constraint)
+        
+        # 构建问题
+        self.problem = cp.Problem(cp.Minimize(objective), self.constraints)
+        
+        # 初始编译
+        self._compile_with_dummy_data()
+    
+    def _compile_with_dummy_data(self):
+        """使用虚拟数据编译问题"""
+        dummy_data = np.ones(self.T)
+        dummy_matrix = np.ones((self.M, self.T))
+        
+        self.u_ref_param.value = dummy_data
+        self.u0_param.value = dummy_data
+        self.g0_param.value = dummy_matrix
+        self.J_param.value = dummy_matrix
+        self.C_eta_param.value = dummy_data
+        self.trust_region_radius_param.value = 1e6
+        
+        try:
+            self.problem.solve(solver=cp.GUROBI)
+            print("紧凑SCP求解器编译成功")
+        except Exception as e:
+            print(f"初始编译失败: {e}")
+    
+    def solve(self, u_ref, u0, g0, J, C_eta, trust_region_radius=None):
+        """求解方法"""
+        # 更新参数值
+        self.u_ref_param.value = u_ref
+        self.u0_param.value = u0
+        self.g0_param.value = g0
+        self.J_param.value = J
+        self.C_eta_param.value = C_eta
+        
+        if trust_region_radius is not None and trust_region_radius > 0:
+            self.trust_region_radius_param.value = trust_region_radius
+        else:
+            self.trust_region_radius_param.value = 1e6
+        
+        # 求解问题
+        # start_time = time.time()
+        self.problem.solve(solver=cp.GUROBI, warm_start=True)
+        # end_time = time.time()
+        # print(f"紧凑SCP求解器求解时间: {end_time - start_time:.4f}s")
+        
+        if self.u.value is None:
+            print(f"紧凑SCP求解器求解失败: {self.problem.status}")
+            raise RuntimeError("SCP子问题不可行或求解器失败")
+        
+        return np.asarray(self.u.value, dtype=np.float64)
 
 def load_eta_csv(path: str) -> Tuple[np.ndarray, List[Tuple[float, float]]]:
     df = pd.read_csv(path)
@@ -173,6 +279,33 @@ def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.devic
     J = np.sum(J, axis=2)  # [M,T]
     return g, J
 
+def analyze_timing(problem):
+    # 阶段1: 问题编译和转换
+    start_compile = time.time()
+    data, chain, inverse_data = problem.get_problem_data(solver=cp.ECOS)
+    end_compile = time.time()
+    compile_time = end_compile - start_compile
+    
+    # 阶段2: 求解器实际求解
+    start_solve = time.time()
+    solution = chain.solve_via_data(problem, data, verbose=False)
+    end_solve = time.time()
+    solve_time = end_solve - start_solve
+    
+    # 阶段3: 结果处理
+    start_process = time.time()
+    problem.unpack_results(solution, chain, inverse_data)
+    end_process = time.time()
+    process_time = end_process - start_process
+    
+    total_measured = compile_time + solve_time + process_time
+    
+    print(f"问题编译时间: {compile_time:.4f}s")
+    print(f"求解器求解时间: {solve_time:.4f}s") 
+    print(f"结果处理时间: {process_time:.4f}s")
+    print(f"测量总时间: {total_measured:.4f}s")
+    print(f"solver_stats时间: {problem.solver_stats.solve_time:.4f}s")
+
 
 def solve_scp_subproblem(
     u_ref: np.ndarray, 
@@ -252,6 +385,7 @@ def verify_constraints_multi(model: CausalPedestrianPredictor, device: torch.dev
 
 
 def scp_optimize(
+    solver: SCPSubproblemSolver,
     model_path: str,
     eta_csv_path: str,
     p_veh_0: np.ndarray,
@@ -269,25 +403,29 @@ def scp_optimize(
     trust_region_initial: float = 10.0,
     trust_region_decay: float = 0.8,
     log_file: str = None,
+    model: CausalPedestrianPredictor=None,
+    device: torch.device=None,
+    scaler: dict=None,
 ) -> Tuple[np.ndarray, int, List[int], np.ndarray, np.ndarray]:
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    # Load model
-    checkpoint = torch.load(model_path, map_location=device)
-    hidden_dim = int(checkpoint.get('config', {}).get('hidden_dim', 128))
-    num_layers = int(checkpoint.get('config', {}).get('num_layers', 2))
-    dropout = float(checkpoint.get('config', {}).get('dropout', 0.1))
-    model = CausalPedestrianPredictor(u_dim=1, hidden_dim=hidden_dim, num_layers=num_layers, dropout=dropout)
-    model.load_state_dict(checkpoint['model_state_dict'])
-    model.to(device)
-    model.eval()
-    scaler = None
-    if 'u_scaler' in checkpoint.keys():
-        scaler = {
-            'u_scaler': checkpoint['u_scaler'],
-            'p_veh0_scaler': checkpoint['p_veh0_scaler'],
-            'p_ped0_scaler': checkpoint['p_ped0_scaler'],
-            'p_seq_scaler': checkpoint['p_seq_scaler'],
-        }
+    if model is None:
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        # Load model
+        checkpoint = torch.load(model_path, map_location=device)
+        hidden_dim = int(checkpoint.get('config', {}).get('hidden_dim', 128))
+        num_layers = int(checkpoint.get('config', {}).get('num_layers', 2))
+        dropout = float(checkpoint.get('config', {}).get('dropout', 0.1))
+        model = CausalPedestrianPredictor(u_dim=1, hidden_dim=hidden_dim, num_layers=num_layers, dropout=dropout)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        model.to(device)
+        model.eval()
+        scaler = None
+        if 'u_scaler' in checkpoint.keys():
+            scaler = {
+                'u_scaler': checkpoint['u_scaler'],
+                'p_veh0_scaler': checkpoint['p_veh0_scaler'],
+                'p_ped0_scaler': checkpoint['p_ped0_scaler'],
+                'p_seq_scaler': checkpoint['p_seq_scaler'],
+            }
 
     # Load eta table
     eta_table, edges = load_eta_csv(eta_csv_path)  # [T,B] and edges
@@ -304,7 +442,9 @@ def scp_optimize(
     num_bins = eta_table.shape[1]
     reject_matrix = np.zeros((num_bins, num_bins), dtype=np.int64)  # rejected transitions
     transition_matrix = np.zeros((num_bins, num_bins), dtype=np.int64)  # all transitions (accepted + rejected)
-    
+    # M = p_ped_0_multi.shape[0]
+    # solver = SCPSubproblemSolver(T,M,u_min,u_max,rho_ref,d_safe)
+
     for it in range(outer_iters):
         # Freeze eta based on last_u
         C_eta = eta_of_u(eta_table, last_u.astype(np.float32), edges)  # [T]
@@ -330,11 +470,12 @@ def scp_optimize(
             )
 
             try:
-                u_new = solve_scp_subproblem(
-                    ref_u, u_curr, g0, J, C_eta, u_min, u_max, 
-                    rho_ref=rho_ref, d_safe=d_safe, rho_trust=rho_trust,
-                    trust_region_radius=trust_radius
-                )
+                # u_new = solve_scp_subproblem(
+                #     ref_u, u_curr, g0, J, C_eta, u_min, u_max, 
+                #     rho_ref=rho_ref, d_safe=d_safe, rho_trust=rho_trust,
+                #     trust_region_radius=trust_radius
+                # )
+                u_new = solver.solve(ref_u,u_curr,g0,J,C_eta,trust_radius)
             except Exception as e:
                 msg = f"SCP subproblem failed at outer iter {it}, inner iter {_inner}: {e}, p_veh={p_veh_0}"
                 if log_file:
@@ -401,5 +542,3 @@ def scp_optimize(
         # print(f"Reject statistics saved to {reject_stats_path}")
 
     return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, "success"
-
-

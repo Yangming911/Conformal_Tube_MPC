@@ -244,7 +244,8 @@ def run_episodes_scp(
             'p_ped0_scaler': checkpoint['p_ped0_scaler'],
             'p_seq_scaler': checkpoint['p_seq_scaler'],
         }
-
+    from models_control.scp import SCPSubproblemSolver
+    solver = SCPSubproblemSolver(horizon_T,num_pedestrians,u_min,u_max,rho_ref,d_safe)
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
         # Initial state from simulator
         car_speed = float(rng.uniform(1.0, 15.0))
@@ -288,7 +289,11 @@ def run_episodes_scp(
                 if method == "scp":
                     t0 = time.perf_counter()
                     u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, solver_state = scp_optimize(
+                        solver=solver,
                         model_path=model_path,
+                        model=model,
+                        device=device,
+                        scaler=scaler,
                         eta_csv_path=eta_csv,
                         p_veh_0=p_veh_0,
                         p_ped_0_multi=p_ped_0_multi,
@@ -450,7 +455,7 @@ def main():
     parser.add_argument('--episodes', type=int, default=200) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
-    parser.add_argument('--control_T', type=int, default=1, help='Control time length')
+    parser.add_argument('--control_T', type=int, default=10, help='Control time length')
     parser.add_argument('--outer_iters', type=int, default=5)
     parser.add_argument('--seed', type=int, default=123)
     parser.add_argument('--model_path', type=str, default='assets/control_ped_model.pth')
