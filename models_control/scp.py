@@ -132,11 +132,7 @@ class SCPSubproblemSolver:
         else:
             self.trust_region_radius_param.value = 1e6
         
-        # 求解问题
-        # start_time = time.time()
         self.problem.solve(solver=cp.GUROBI, warm_start=True)
-        # end_time = time.time()
-        # print(f"紧凑SCP求解器求解时间: {end_time - start_time:.4f}s")
         
         if self.u.value is None:
             print(f"紧凑SCP求解器求解失败: {self.problem.status}")
@@ -203,28 +199,17 @@ def nn_predict_positions(model: CausalPedestrianPredictor, device: torch.device,
 
 
 @torch.no_grad()
-def nn_predict_positions_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, scaler=None) -> np.ndarray:
+def nn_predict_positions_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray) -> np.ndarray:
     """Predict for M pedestrians in batch.
     u: [T], p_veh0: [2], p_ped0_multi: [M,2]
     Returns: [M,T,2]
     """
     T = u.shape[0]
     M = p_ped0_multi.shape[0]
-    # scaler
-    if scaler is not None:
-        u = scaler['u_scaler'].transform(u.reshape(-1, 1)).reshape(u.shape)
-        p_veh0 = scaler['p_veh0_scaler'].transform(p_veh0.reshape(-1, 2)).reshape(p_veh0.shape)
-        p_ped0_multi = scaler['p_ped0_scaler'].transform(p_ped0_multi.reshape(-1, 2)).reshape(p_ped0_multi.shape)
     u_tensor = torch.from_numpy(u.reshape(1, T, 1).astype(np.float32)).repeat(M, 1, 1).to(device)
     pveh0_tensor = torch.from_numpy(p_veh0.reshape(1, 2).astype(np.float32)).repeat(M, 1).to(device)
     pped0_tensor = torch.from_numpy(p_ped0_multi.astype(np.float32)).to(device)
     pred = model(u_tensor, pveh0_tensor, pped0_tensor)  # [M,T,2]
-    # inverse scaler
-    if scaler is not None:
-        pred_reshape = pred.reshape(-1, 2).detach().cpu().numpy()
-        pred_reshape = scaler['p_seq_scaler'].inverse_transform(pred_reshape)
-        pred = pred_reshape.reshape(pred.shape)
-        return pred
     return pred.cpu().numpy()
 
 
@@ -278,89 +263,6 @@ def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.devic
     #
     J = np.sum(J, axis=2)  # [M,T]
     return g, J
-
-def analyze_timing(problem):
-    # 阶段1: 问题编译和转换
-    start_compile = time.time()
-    data, chain, inverse_data = problem.get_problem_data(solver=cp.ECOS)
-    end_compile = time.time()
-    compile_time = end_compile - start_compile
-    
-    # 阶段2: 求解器实际求解
-    start_solve = time.time()
-    solution = chain.solve_via_data(problem, data, verbose=False)
-    end_solve = time.time()
-    solve_time = end_solve - start_solve
-    
-    # 阶段3: 结果处理
-    start_process = time.time()
-    problem.unpack_results(solution, chain, inverse_data)
-    end_process = time.time()
-    process_time = end_process - start_process
-    
-    total_measured = compile_time + solve_time + process_time
-    
-    print(f"问题编译时间: {compile_time:.4f}s")
-    print(f"求解器求解时间: {solve_time:.4f}s") 
-    print(f"结果处理时间: {process_time:.4f}s")
-    print(f"测量总时间: {total_measured:.4f}s")
-    print(f"solver_stats时间: {problem.solver_stats.solve_time:.4f}s")
-
-
-def solve_scp_subproblem(
-    u_ref: np.ndarray, 
-    u0: np.ndarray, 
-    g0: np.ndarray, 
-    J: np.ndarray, 
-    C_eta: np.ndarray, 
-    u_min: float, 
-    u_max: float, 
-    rho_ref: float, 
-    d_safe: float,
-    rho_trust: float = 1.0, 
-    trust_region_radius: float = None,
-) -> np.ndarray:
-    """Solve convex subproblem:
-        minimize   ||u - u_ref||_2^2
-        subject to g0 + J (u - u0) >= C_eta
-                   ||u - u0||_inf <= trust_region_radius  (if provided)
-                   u_min <= u <= u_max
-    Returns optimal u (numpy [T]).
-    
-    Args:
-        trust_region_radius: If provided, limits ||u - u0||_inf <= trust_region_radius
-                            (i.e., -R <= u_i - u0_i <= R for all i)
-    """
-    M,T = g0.shape
-    u = cp.Variable(T)
-    # diff matrix
-    D = np.eye(T) - np.roll(np.eye(T), 1, axis=0)
-    diff_u = D @ u
-
-    # objective function
-    objective = cp.sum_squares(u - u_ref) # + rho_ref * cp.sum_squares(diff_u[1:]) #+ 0.1*cp.sum_squares(u - 5)
-    # objective = cp.sum_squares(u - u_ref)
-    constraints = []
-    # Linearized constraints for all (m,t) flattened
-    for m in range(M):
-        # constraints.append(g0[m,-1] + J[m,-1] * (u[-1] - u0[-1]) >= (C_eta[-1] + d_safe)**2)
-        for t in range(T):
-            constraints.append(g0[m,t] + J[m,t] * (u[t] - u0[t]) >= (C_eta[t] + d_safe)**2)
-        # constraints.append(g0[m,:] + J[m,:] * (u - u0) >= (C_eta + d_safe)**2)
-    
-    # Trust region constraint (infinity norm, linear constraints)
-    # ||u - u0||_inf <= trust_region_radius  =>  -R <= u - u0 <= R
-    if trust_region_radius is not None and trust_region_radius > 0:
-        constraints.append(u - u0 <= trust_region_radius)
-        constraints.append(u - u0 >= -trust_region_radius)
-    
-    constraints += [u >= u_min, u <= u_max]
-    prob = cp.Problem(cp.Minimize(objective), constraints)
-    # prob.solve(solver=cp.OSQP, eps_abs=1e-4, eps_rel=1e-4, max_iter=20000, warm_start=True, verbose=False)
-    prob.solve(solver=cp.GUROBI)
-    if u.value is None:
-        raise RuntimeError("SCP subproblem infeasible or solver failed")
-    return np.asarray(u.value, dtype=np.float64)
 
 
 def verify_constraints_multi(model: CausalPedestrianPredictor, device: torch.device, u: np.ndarray, p_veh0: np.ndarray, p_ped0_multi: np.ndarray, C_eta: np.ndarray, dt: float,scaler=None, d_safe: float = 1.0) -> Tuple[bool, int]:
@@ -442,8 +344,6 @@ def scp_optimize(
     num_bins = eta_table.shape[1]
     reject_matrix = np.zeros((num_bins, num_bins), dtype=np.int64)  # rejected transitions
     transition_matrix = np.zeros((num_bins, num_bins), dtype=np.int64)  # all transitions (accepted + rejected)
-    # M = p_ped_0_multi.shape[0]
-    # solver = SCPSubproblemSolver(T,M,u_min,u_max,rho_ref,d_safe)
 
     for it in range(outer_iters):
         # Freeze eta based on last_u
@@ -470,11 +370,6 @@ def scp_optimize(
             )
 
             try:
-                # u_new = solve_scp_subproblem(
-                #     ref_u, u_curr, g0, J, C_eta, u_min, u_max, 
-                #     rho_ref=rho_ref, d_safe=d_safe, rho_trust=rho_trust,
-                #     trust_region_radius=trust_radius
-                # )
                 u_new = solver.solve(ref_u,u_curr,g0,J,C_eta,trust_radius)
             except Exception as e:
                 msg = f"SCP subproblem failed at outer iter {it}, inner iter {_inner}: {e}, p_veh={p_veh_0}"
@@ -483,20 +378,6 @@ def scp_optimize(
                         f.write(msg + '\n')
                 # print(msg)
                 return last_u, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, msg
-            # Log objective component magnitudes
-            # if log_file:
-            #     try:
-            #         ref_term = float(np.sum((u_new - ref_u) ** 2))
-            #         diff = u_new[1:] - u_new[:-1]
-            #         smooth_term = float(np.sum(diff ** 2))
-            #         with open(log_file, 'a') as f:
-            #             f.write(
-            #                 f"OBJ (outer={it}, inner={_inner}): ref={ref_term:.3e}, "
-            #                 f"smooth={smooth_term:.3e}, rho_ref={rho_ref:g}, "
-            #                 f"rho*smooth={(rho_ref*smooth_term):.3e}\n"
-            #             )
-            #     except Exception:
-            #         pass
             inner_steps += 1
             if np.linalg.norm(u_new - u_curr, ord=2) <= tol:
                 u_curr = u_new

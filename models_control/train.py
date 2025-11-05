@@ -339,7 +339,7 @@ def create_detailed_report(preds, targets, errors, save_dir):
     print(f"可视化结果已保存到: {save_dir}")
 
 def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device, 
-                                    scaler: Dict[str, StandardScaler] = None, visualize: bool = False) -> Dict[str, float]:
+                                 visualize: bool = False) -> Dict[str, float]:
     """
     增强的评估函数，包含可视化选项
     """
@@ -372,14 +372,6 @@ def evaluate_model(model: nn.Module, loader: DataLoader, device: torch.device,
     
     avg_mse = sum_mse / max(total, 1)
 
-    # 反归一化
-    if scaler:
-        p_seq_reshape = p_seq.reshape(-1, 2).detach().cpu().numpy()
-        pred_reshape = pred.reshape(-1, 2).detach().cpu().numpy()
-        p_seq_reshape = scaler['p_seq_scaler'].inverse_transform(p_seq_reshape)
-        pred_reshape = scaler['p_seq_scaler'].inverse_transform(pred_reshape)
-        p_seq = p_seq_reshape.reshape(p_seq.shape)
-        pred = pred_reshape.reshape(pred.shape)
 
     # 计算每步MSE
     per_step_sums = None
@@ -450,37 +442,9 @@ def main():
         print(f"Sim data shapes: u={u.shape}, p_veh0={p_veh0.shape}, p_ped0={p_ped0.shape}, p_seq={p_seq.shape}")
     else:
         u, p_veh0, p_ped0, p_seq = load_from_csv(data_path, args.T)
-        # u_real, p_veh0_real, p_ped0_real, p_seq_real = load_from_csv(args.citr_data, args.T)
-        # u = np.concatenate([u, u_real], axis=0)
-        # p_veh0 = np.concatenate([p_veh0, p_veh0_real], axis=0)
-        # p_ped0 = np.concatenate([p_ped0, p_ped0_real], axis=0)
-        # p_seq = np.concatenate([p_seq, p_seq_real], axis=0)
 
     N = u.shape[0]
     train_idx, val_idx, test_idx = split_train_val_test(N)
-    # # scale dataset
-
-    # u_scaler = StandardScaler()
-    # p_veh0_scaler = StandardScaler()
-    # p_ped0_scaler = StandardScaler()
-    # p_seq_scaler = StandardScaler()
-
-    # # 修复：将3维数据重塑为2维进行标准化
-    # # u的形状是 [N, T, 1]，需要重塑为 [N*T, 1]
-    # u_reshaped = u.reshape(-1, 1)
-    # u_scaler.fit(u_reshaped)
-    # u = u_scaler.transform(u_reshaped).reshape(u.shape)
-    
-    # # p_veh0的形状是 [N, 2]，可以直接标准化
-    # p_veh0 = p_veh0_scaler.fit_transform(p_veh0)
-    
-    # # p_ped0的形状是 [N, 2]，可以直接标准化
-    # p_ped0 = p_ped0_scaler.fit_transform(p_ped0)
-    
-    # # p_seq的形状是 [N, T, 2]，需要重塑为 [N*T, 2]
-    # p_seq_reshaped = p_seq.reshape(-1, 2)
-    # p_seq_scaler.fit(p_seq_reshaped)
-    # p_seq = p_seq_scaler.transform(p_seq_reshaped).reshape(p_seq.shape)
 
     train_ds = SequenceDataset(u[train_idx], p_veh0[train_idx], p_ped0[train_idx], p_seq[train_idx])
     val_ds = SequenceDataset(u[val_idx], p_veh0[val_idx], p_ped0[val_idx], p_seq[val_idx])
@@ -494,7 +458,6 @@ def main():
     print(f"Using device: {device}")
 
     model = CausalPedestrianPredictor(u_dim=1, hidden_dim=args.hidden_dim, num_layers=args.layers, dropout=args.dropout)
-    # model = LSTMPedestrianPredictor(u_dim=1, hidden_dim=args.hidden_dim, num_layers=args.layers, dropout=args.dropout)
     model.to(device)
 
     optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
@@ -550,33 +513,17 @@ def main():
                     'num_layers': args.layers,
                     'dropout': args.dropout,
                 },
-                # 'u_scaler': u_scaler,
-                # 'p_veh0_scaler': p_veh0_scaler,
-                # 'p_ped0_scaler': p_ped0_scaler,
-                # 'p_seq_scaler': p_seq_scaler,
             }, args.save_path)
         else:
             patience_counter += 1
             if patience_counter >= args.patience:
-                # print(f"Early stopping at epoch {epoch+1}")
-                # break
-                print("update learning rate")
-                lr = args.lr * 0.1
-                for param_group in optimizer.param_groups:
-                    param_group['lr'] = lr
-                patience_counter = 0
+                print(f"Early stopping at epoch {epoch+1}")
+                break
 
 
-    # 在测试评估后添加可视化
     # Load best and evaluate on test
     checkpoint = torch.load(args.save_path, map_location=device)
     model.load_state_dict(checkpoint['model_state_dict'])
-    # scaler = {
-    #     'u_scaler': checkpoint['u_scaler'],
-    #     'p_veh0_scaler': checkpoint['p_veh0_scaler'],
-    #     'p_ped0_scaler': checkpoint['p_ped0_scaler'],
-    #     'p_seq_scaler': checkpoint['p_seq_scaler'],
-    # }
     
     
     test_metrics = evaluate_model(model, test_loader, device)

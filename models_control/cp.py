@@ -142,15 +142,6 @@ def main():
     print(f"Collecting calibration dataset: episodes={args.episodes}, T={args.T}")
     u, p_veh0, p_ped0, p_seq = collect_constant_speed_dataset(args.episodes, args.T, seed=2025, p2p=args.p2p)
 
-    # # load real data
-    # real_u, real_p_veh0, real_p_ped0, real_p_seq = load_from_csv('assets/citr_data/citr_conformal_grid.csv', args.T)
-    
-    # # merge data
-    # u = np.concatenate([u, real_u], axis=0)
-    # p_veh0 = np.concatenate([p_veh0, real_p_veh0], axis=0)
-    # p_ped0 = np.concatenate([p_ped0, real_p_ped0], axis=0)
-    # p_seq = np.concatenate([p_seq, real_p_seq], axis=0)
-
     # Load model
     print(f"Loading model from {args.model_path}")
     model, scaler = load_model(args.model_path, device=device, T=args.T)

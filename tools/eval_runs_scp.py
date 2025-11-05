@@ -128,7 +128,7 @@ def calculate_smoothness_metrics(velocity_list):
         'jerk_std': jerk_std
     }
 
-def get_eta_ped(u_opt,state,eta_csv,model,device, scaler=None):
+def get_eta_ped(u_opt,state,eta_csv,model,device):
     """
     Get the eta value for pedestrians from the csv file.
     """
@@ -137,7 +137,7 @@ def get_eta_ped(u_opt,state,eta_csv,model,device, scaler=None):
     num_pedestrians = len(state["walker_x"])
     p_veh0 = np.array([state["car_x"], state["car_y"]])
     p_ped0 = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)])
-    pre_p_ped = nn_predict_positions_multi(model,device,u_opt, p_veh0, p_ped0, scaler)
+    pre_p_ped = nn_predict_positions_multi(model,device,u_opt, p_veh0, p_ped0)
     return eta,pre_p_ped
 
 def run_episodes_scp(
@@ -221,11 +221,8 @@ def run_episodes_scp(
             f.write("Execution Log:\n")
             f.write("="*70 + "\n\n")
 
-    # Initial state from file
-    with open(f"assets/initial_state.json", "r") as f:
-        initial_states = json.load(f)
 
-        # load our model
+    # load our model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Load model
     checkpoint = torch.load(model_path, map_location=device)
@@ -236,14 +233,6 @@ def run_episodes_scp(
     model.load_state_dict(checkpoint['model_state_dict'])
     model.to(device)
     model.eval()
-    scaler = None
-    if 'u_scaler' in checkpoint.keys():
-        scaler = {
-            'u_scaler': checkpoint['u_scaler'],
-            'p_veh0_scaler': checkpoint['p_veh0_scaler'],
-            'p_ped0_scaler': checkpoint['p_ped0_scaler'],
-            'p_seq_scaler': checkpoint['p_seq_scaler'],
-        }
     from models_control.scp import SCPSubproblemSolver
     solver = SCPSubproblemSolver(horizon_T,num_pedestrians,u_min,u_max,rho_ref,d_safe)
     for episode_idx in tqdm(range(num_episodes), desc="Running episodes"):
@@ -251,9 +240,6 @@ def run_episodes_scp(
         car_speed = float(rng.uniform(1.0, 15.0))
         # state = sim._initial_state(car_speed, rng)
         state = sim._initial_state_multi_pedestrian(car_speed, rng, num_pedestrians)
-
-        # Initial state from file
-        # state = initial_states[episode_idx]
         collided = False
 
         u_opt = None
@@ -274,18 +260,6 @@ def run_episodes_scp(
             if (step_idx % control_T) == 0 or u_opt is None:
                 p_veh_0 = np.array([state["car_x"], state["car_y"]], dtype=np.float32)
                 p_ped_0_multi = np.array([[state["walker_x"][i], state["walker_y"][i]] for i in range(num_pedestrians)], dtype=np.float32)
-                # # For multiple pedestrians: replicate current pedestrian with random Y offsets
-                # if num_pedestrians > 1:
-                #     import utils.constants as C
-                #     # Generate random Y positions around current pedestrian
-                #     y_offsets = rng.uniform(-2.0, 2.0, size=num_pedestrians - 1)
-                #     p_ped_0_multi = np.zeros((num_pedestrians, 2), dtype=np.float32)
-                #     p_ped_0_multi[0] = p_ped_0  # First pedestrian is the actual one
-                #     for i in range(1, num_pedestrians):
-                #         p_ped_0_multi[i] = [p_ped_0[0], np.clip(p_ped_0[1] + y_offsets[i-1], 
-                #                                                   C.WALKER_START_Y, C.WALKER_DESTINATION_Y)]
-                # else:
-                #     p_ped_0_multi = p_ped_0.reshape(1, 2)
                 if method == "scp":
                     t0 = time.perf_counter()
                     u_opt, iters_used, inner_scp_steps_list, reject_matrix, transition_matrix, solver_state = scp_optimize(
@@ -293,7 +267,6 @@ def run_episodes_scp(
                         model_path=model_path,
                         model=model,
                         device=device,
-                        scaler=scaler,
                         eta_csv_path=eta_csv,
                         p_veh_0=p_veh_0,
                         p_ped_0_multi=p_ped_0_multi,
@@ -310,7 +283,7 @@ def run_episodes_scp(
                         log_file=log_file,
                     )
                     t1 = time.perf_counter()
-                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device, scaler)
+                    eta,pre_p_ped = get_eta_ped(u_opt,state,eta_csv,model,device)
                     # metrics accumulation
                     total_plan_time.append(t1 - t0)
                     total_plan_iters.append(iters_used)
@@ -452,7 +425,7 @@ def run_episodes_scp(
 
 def main():
     parser = argparse.ArgumentParser(description="Evaluate SCP-controlled episodes")
-    parser.add_argument('--episodes', type=int, default=200) 
+    parser.add_argument('--episodes', type=int, default=20) 
     parser.add_argument('--steps', type=int, default=10000, help='Max steps per episode')
     parser.add_argument('--T', type=int, default=10, help='SCP horizon length')
     parser.add_argument('--control_T', type=int, default=10, help='Control time length')

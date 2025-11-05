@@ -201,7 +201,6 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
         state = sim._initial_state_multi_pedestrian(car_speed, rng, num_pedestrians)
 
         # Initial state from file
-        # state = initial_states[episode_idx]
         collided = False
 
         u_opt = None
@@ -259,23 +258,9 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
                     ppast_p_ped_multi[j, horizon_T - (max(length - horizon_T, 0) - t)-1] = np.array([states[t]["walker_x"][j], states[t]["walker_y"][j]], dtype=np.float32)
             past_pred_p_ped_multi = nn_predict_positions_multi(model, device, ppast_p_ped_multi) # [M, T, 2]
             pred_p_ped_multi = nn_predict_positions_multi(model, device, past_p_ped_multi) # [M, T, 2]
-            # if step_idx > 2 * horizon_T:
             # update eta
             gamma = 0.08
             eta_const = 0.1
-            # if ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0).all():
-            #     one_minus_eta = 1 - initial_eta
-            #     one_minus_eta = one_minus_eta + gamma*eta_const
-            #     initial_eta = 1 - one_minus_eta
-            #     initial_eta = min(max(0.05, initial_eta), 0.95)
-            #     print("new eta:", initial_eta)
-            # else:
-            #     one_minus_eta = 1 - initial_eta
-            #     one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
-            #     initial_eta = 1 - one_minus_eta
-            #     initial_eta = min(max(0.05, initial_eta), 0.95)
-            #     print("no satisfied. new eta:", initial_eta)
-            # C_eta = np.array([np.quantile(error_npy[:,i], initial_eta) for i in range(error_npy.shape[1])])
             if step_idx >= horizon_T:
                 mask = ((np.linalg.norm(past_p_ped_multi - past_pred_p_ped_multi, axis=2) - C_eta.reshape(1, -1)) < 0)
                 for t in range(horizon_T):
@@ -284,13 +269,13 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
                         one_minus_eta = one_minus_eta + gamma*eta_const
                         eta[t] = 1 - one_minus_eta
                         eta[t] = min(max(0.05, eta[t]), 0.99)
-                        # print("new eta:", eta[t])
+
                     else:
                         one_minus_eta = 1 - eta[t]
                         one_minus_eta = one_minus_eta + gamma*(eta_const - 1)
                         eta[t] = 1 - one_minus_eta
                         eta[t] = min(max(0.05, eta[t]), 0.99)
-                        # print("no satisfied. new eta:", eta[t])
+
                 C_eta = np.zeros(horizon_T)
                 for t in range(horizon_T):
                     C_eta[t] = np.quantile(error_npy[:,t], eta[t])
@@ -316,7 +301,6 @@ def run_mpc(num_episodes: int, max_steps_per_episode: int, horizon_T: int, contr
                     p_ped=pred_p_ped_multi,
                 )
             if u_opt is None:
-                # print("No feasible solution found.")
                 unsolver_count += 1
                 u_opt = last_u
             last_u = u_opt
