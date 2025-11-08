@@ -14,7 +14,7 @@ The system achieves safe vehicle-pedestrian interaction through the following co
 
 ---
 
-## 🎥 Demo
+<!-- ## 🎥 Demo
 
 See the high-definition demo video at `demo_HD/demo_HD.mp4`.
 
@@ -22,7 +22,7 @@ See the high-definition demo video at `demo_HD/demo_HD.mp4`.
   <img src="./demo_HD/demo_HD.gif" width="400"/>
 </p>
 
----
+--- -->
 
 ## Project Structure
 
@@ -230,11 +230,14 @@ All experiments are automatically logged to `logs/scp_eval.log` with:
 If you use this code in your research, please cite:
 
 ```bibtex
-@inproceedings{sparc2026,
-  title={SPARC: Safe Prediction-based Autonomous Robust Control with Conformal Prediction},
-  author={[Authors]},
-  booktitle={IFAC Conference},
-  year={2026}
+@misc{wang2025chanceconstrainedneuralmpcuncontrollable,
+      title={Chance-Constrained Neural MPC under Uncontrollable Agents via Sequential Convex Programming}, 
+      author={Shuqi Wang and Mingyang Feng and Yu Chen and Yue Gao and Xiang Yin},
+      year={2025},
+      eprint={2504.03293},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+      url={https://arxiv.org/abs/2504.03293}, 
 }
 ```
 
