@@ -114,9 +114,11 @@ class SCPSubproblemSolver:
         
         try:
             self.problem.solve(solver=cp.GUROBI)
-            print("紧凑SCP求解器编译成功")
+            # self.problem.solve(solver=cp.OSQP, eps_abs=1e-4, eps_rel=1e-4, max_iter=20000, warm_start=True, verbose=False)
+
+            print("successfully compile")
         except Exception as e:
-            print(f"初始编译失败: {e}")
+            print(f"error: {e}")
     
     def solve(self, u_ref, u0, g0, J, C_eta, trust_region_radius=None):
         """求解方法"""
@@ -133,6 +135,8 @@ class SCPSubproblemSolver:
             self.trust_region_radius_param.value = 1e6
         
         self.problem.solve(solver=cp.GUROBI, warm_start=True)
+        # self.problem.solve(solver=cp.OSQP, eps_abs=1e-4, eps_rel=1e-4, max_iter=20000, warm_start=True, verbose=False)
+
         
         if self.u.value is None:
             print(f"紧凑SCP求解器求解失败: {self.problem.status}")
@@ -235,7 +239,7 @@ def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.devic
     T = u0.shape[0]
     M = p_ped0_multi.shape[0]
     p_veh = vehicle_trajectory(p_veh0, u0, dt) # [T,2]
-    p_ped = nn_predict_positions_multi(model, device, u0, p_veh0, p_ped0_multi, scaler)  # [M,T,2]
+    p_ped = nn_predict_positions_multi(model, device, u0, p_veh0, p_ped0_multi)  # [M,T,2]
     # g = (p_veh - p_ped)^2
     g = np.linalg.norm(p_veh[None,:,:] - p_ped, axis=2)**2  # [M,T]
     L_x = np.tril(np.ones((T, T), dtype=np.float32))
@@ -247,7 +251,7 @@ def finite_diff_grad_multi(model: CausalPedestrianPredictor, device: torch.devic
         eps_u = u0
         eps_ = eps+np.random.normal(0, 0.1*eps)
         eps_u[t] += eps_
-        p_ped_eps = nn_predict_positions_multi(model, device, eps_u, p_veh0, p_ped0_multi, scaler)  # [M,T,2]
+        p_ped_eps = nn_predict_positions_multi(model, device, eps_u, p_veh0, p_ped0_multi)  # [M,T,2]
         diff = p_ped_eps - p_ped  # [M,T,2]
 
         delta_omiga[:, t, :, :] = diff / eps_  # [M,T,2]
@@ -270,7 +274,7 @@ def verify_constraints_multi(model: CausalPedestrianPredictor, device: torch.dev
     Verify constraints and return (ok, violated_t).
     violated_t = -1 if all satisfied, else first time step index where constraint violated.
     """
-    p_ped = nn_predict_positions_multi(model, device, u, p_veh0, p_ped0_multi,scaler)  # [M,T,2]
+    p_ped = nn_predict_positions_multi(model, device, u, p_veh0, p_ped0_multi)  # [M,T,2]
     p_veh = vehicle_trajectory(p_veh0, u, dt)  # [T,2]
     diff = p_veh.reshape(1, -1, 2) - p_ped
     norms = np.linalg.norm(diff, axis=2)  # [M,T]

@@ -18,6 +18,9 @@ import utils.constants as C
 
 def _initial_state(car_v: float, rng: np.random.RandomState) -> Dict[str, float]:
     """Create initial state; sample walker_y uniformly between start and destination to reduce bias."""
+    print()
+    print('\033[32m'+f"Car model config: Friction_flag={C.Friction_flag}, Wind_flag={C.Wind_flag}"+'\033[0m')
+    print('\033[32m'+("Nonlinear dynamic model" if C.Friction_flag or C.Wind_flag else "Linear dynamic model")+'\033[0m')
     return {
         "car_x": float(C.CAR_START_X),
         "car_y": float(C.CAR_LANE_Y),
@@ -31,6 +34,9 @@ def _initial_state(car_v: float, rng: np.random.RandomState) -> Dict[str, float]
 
 def _initial_state_multi_pedestrian(car_v: float, rng: np.random.RandomState, num_pedestrians: int = None) -> Dict[str, any]:
     """Create initial state for multiple pedestrians; sample walker positions uniformly."""
+    print()
+    print('\033[32m'+f"Car model config: Friction_flag={C.Friction_flag}, Wind_flag={C.Wind_flag}"+'\033[0m')
+    print('\033[32m'+("Nonlinear dynamic model" if C.Friction_flag or C.Wind_flag else "Linear dynamic model")+'\033[0m')
     if num_pedestrians is None:
         num_pedestrians = C.num_pedestrians
     
@@ -99,7 +105,15 @@ def _step(state: Dict[str, float], rng: np.random.RandomState = None) -> Tuple[D
     next_walker_x = walker_x + next_walker_vx * dt
     next_walker_y = walker_y + next_walker_vy * dt
 
-    next_car_x = car_x + car_v * dt
+    if C.Friction_flag:
+        next_car_x = car_x + car_v * dt - C.friction_alpha * car_v**2 * dt  # with friction
+    elif C.Wind_flag:
+        next_car_x = car_x + car_v * dt - 1/2 * C.wind_speed_sigma*(car_v+C.wind_speed)**2 * dt  # with wind
+    else:
+        next_car_x = car_x + car_v * dt # origin linear model
+    # next_car_x = car_x + car_v * dt # origin linear model
+    # next_car_x = car_x + car_v * dt - C.friction_alpha * car_v**2 * dt  # with friction
+    # next_car_x = car_x + car_v * dt - 1/2 * C.wind_speed_sigma*(car_v+C.wind_speed)**2 * dt  # with wind
 
     next_state = {
         "car_x": float(next_car_x),
@@ -191,7 +205,17 @@ def _step_multi_pedestrian(state: Dict[str, any], rng: np.random.RandomState = N
         next_walker_vx_list.append(float(next_walker_vx))
         next_walker_vy_list.append(float(next_walker_vy))
 
-    next_car_x = car_x + car_v * dt
+
+    if C.Friction_flag:
+        next_car_x = car_x + car_v * dt - C.friction_alpha * car_v**2 * dt  # with friction
+    elif C.Wind_flag:
+        next_car_x = car_x + car_v * dt - 1/2 * C.wind_speed_sigma*(car_v+C.wind_speed)**2 * dt  # with wind
+    else:
+        next_car_x = car_x + car_v * dt # origin linear model
+    # next_car_x = car_x + car_v * dt # origin linear model
+    # next_car_x = car_x + car_v * dt - C.friction_alpha * car_v**2 * dt  # with friction
+    # next_car_x = car_x + car_v * dt - 1/2 * C.wind_speed_sigma*(car_v+C.wind_speed)**2 * dt  # with wind
+
 
     next_state = {
         "car_x": float(next_car_x),

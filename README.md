@@ -150,6 +150,7 @@ Based on Helbing and Molnár's social force model, simulates realistic pedestria
 
 ```bash
 pip install -r requirements.txt
+pip install gurobipy # gurobi is required.
 ```
 
 Required packages:
