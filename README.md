@@ -1,10 +1,32 @@
-# Chance-Constrained Neural-Network MPC for Interactive Multi-Agent Systems via Sequential Convex Programming
+# Chance-Constrained Neural MPC under Uncontrollable Agents via Sequential Convex Programming
 
-This project implements a vehicle-pedestrian interaction safety control system based on **Sequential Convex Programming (SCP)** with **Conformal Prediction**, combining neural network-based pedestrian trajectory prediction and robust optimization techniques to ensure safe vehicle operation in complex traffic environments.
+This is the official code repository for the paper:
+
+> **Chance-Constrained Neural MPC under Uncontrollable Agents via Sequential Convex Programming**  
+> Shuqi Wang, Mingyang Feng, Yu Chen, Yue Gao, Xiang Yin  
+> [[arXiv]](https://arxiv.org/abs/2504.03293)
+
+If you use this code in your research, please cite:
+
+```bibtex
+@misc{wang2026chanceconstrainedneuralmpcuncontrollable,
+      title={Chance-Constrained Neural MPC under Uncontrollable Agents via Sequential Convex Programming}, 
+      author={Shuqi Wang and Mingyang Feng and Yu Chen and Yue Gao and Xiang Yin},
+      year={2026},
+      eprint={2504.03293},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+      url={https://arxiv.org/abs/2504.03293}, 
+}
+```
+
+---
 
 ## 📖 Project Overview
 
-The system achieves safe vehicle-pedestrian interaction through the following core technologies:
+We implement a vehicle-pedestrian interaction safety control system based on **Sequential Convex Programming (SCP)** with **Conformal Prediction**, combining neural network-based pedestrian trajectory prediction and robust optimization techniques to ensure safe vehicle operation in complex traffic environments.
+
+Core technologies:
 
 - **Causal Sequence Predictor**: GRU-based neural network that predicts pedestrian trajectories causally based on vehicle control inputs
 - **Conformal Prediction**: Quantifies prediction uncertainty and provides statistically valid safety regions
@@ -225,22 +247,6 @@ All experiments are automatically logged to `logs/scp_eval.log` with:
 - Reject messages with violated timestep details
 - CVXPY warnings (if any)
 - Final statistics (collision rate, speed, etc.)
-
-## 🎓 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{wang2025chanceconstrainedneuralmpcuncontrollable,
-      title={Chance-Constrained Neural MPC under Uncontrollable Agents via Sequential Convex Programming}, 
-      author={Shuqi Wang and Mingyang Feng and Yu Chen and Yue Gao and Xiang Yin},
-      year={2025},
-      eprint={2504.03293},
-      archivePrefix={arXiv},
-      primaryClass={eess.SY},
-      url={https://arxiv.org/abs/2504.03293}, 
-}
-```
 
 ## 📄 License
 
